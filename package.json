@@ -1,0 +1,15 @@
+{
+  "name": "dinosa",
+  "version": "1.0.0",
+  "description": "Du an dinosa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "duchoang",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1"
+  }
+}
