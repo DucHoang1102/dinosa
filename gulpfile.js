@@ -1,19 +1,12 @@
 // Reload trình duyệt with gulp
-var gulp        = require('gulp');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
+var gulp        = require('gulp'),
+	browserSync = require('browser-sync'),
+	reload      = browserSync.reload;
+
 //var scss        = require('gulp-sass');
 
 // Variable config
 var url         = "http://dinosa.app/";
-
-gulp.task('browser-sync', function () {
-	browserSync.init({
-		proxy: url,
-		//online: true,
-		//port: 8080
-	});
-});
 
 /*
 gulp.task('scss', function () {
@@ -23,12 +16,19 @@ gulp.task('scss', function () {
 });
 */
 
-gulp.task('watch', ['browser-sync'], function () {
+gulp.task('watch', function () {
+
 	var reloadFile = ['**/**/*.css',
 					  '**/**/*.php',
 					 ];
 	//var scssFile = 'admin/scss/style.scss';
 
 	//gulp.watch(scssFile, ['scss']);
+	browserSync({
+		proxy  : url,
+		online : true,
+		port   : 8080
+	});
+
 	gulp.watch(reloadFile, reload);
 });
