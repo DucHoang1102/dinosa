@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('bill', function () {
 	return view('bill.base');
 });
+
+Route::get('test', function() {
+	return DB::table('abc')->get();
+});

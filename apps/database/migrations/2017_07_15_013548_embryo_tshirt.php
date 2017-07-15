@@ -18,7 +18,7 @@ class EmbryoTshirt extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->>bigInteger('price');
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

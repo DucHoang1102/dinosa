@@ -8,7 +8,7 @@ class CategoryProduct extends Migration
 {
     /**
      * Bảng category_product: id, name, description, price
-     * Description: Bảng danh mục sản phẩm
+     * Description          : Bảng danh mục sản phẩm
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class CategoryProduct extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->>bigInteger('price');
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }
