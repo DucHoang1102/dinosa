@@ -4,20 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OrdersStatus extends Migration
+class CategoryProduct extends Migration
 {
     /**
-     * Bảng orders_status: id, name, description
-     * Description: Bảng trạng thái đơn hàng
+     * Bảng category_product: id, name, description, price
+     * Description: Bảng danh mục sản phẩm
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('orders_status', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->>bigInteger('price');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class OrdersStatus extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oders_status');
+        Schema::dropIfExists('category_product');
     }
 }
