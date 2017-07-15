@@ -16,7 +16,7 @@ class ImagePrint extends Migration
     {
         Schema::create('image_print', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();;
             $table->string('description');
             $table->bigInteger('price');
             $table->timestamps();
