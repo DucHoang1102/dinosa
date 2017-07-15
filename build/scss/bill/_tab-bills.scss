@@ -1,0 +1,25 @@
+.tab-bills {
+	.nav {
+		li {
+			a {
+				color: #000000;
+				font-size: 1.1em;
+				.glyphicon {
+					margin-right: 5px;
+				}
+				.label {
+					display: inline-block;
+					margin-left: 5px;
+					padding: 5px;
+					border-radius: 10px;
+				}
+			}
+		}
+		li.active {
+			a, a:hover, a:focus {
+				color: blue;
+	  			font-weight: bold;
+			}
+		}
+	}
+}

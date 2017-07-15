@@ -1,0 +1,70 @@
+.list-bills #donmoi tbody tr td {
+  border: none; }
+  .list-bills #donmoi tbody tr td.stt {
+    font-size: 1.2em; }
+  .list-bills #donmoi tbody tr td.chucnang .glyphicon {
+    margin-right: 4px; }
+  .list-bills #donmoi tbody tr td input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #eaeaea;
+    font-size: 1.2em;
+    width: 98%;
+    height: 100%; }
+    .list-bills #donmoi tbody tr td input:focus, .list-bills #donmoi tbody tr td input:hover {
+      outline: none;
+      border-bottom: 2px solid #00bfbf; }
+
+.list-bills #donmoi thead th {
+  color: #003f7f; }
+  .list-bills #donmoi thead th span {
+    margin-right: 4px; }
+
+.list-bills #donmoi .stt {
+  width: 2%; }
+
+.list-bills #donmoi .ngaynhan {
+  width: 10%; }
+
+.list-bills #donmoi .hoten {
+  width: 17%; }
+
+.list-bills #donmoi .phone {
+  width: 12%; }
+
+.list-bills #donmoi .diachi {
+  width: 30%; }
+
+.list-bills #donmoi .sanpham {
+  width: 9%; }
+
+.list-bills #donmoi .tongtien {
+  width: 9%; }
+
+.list-bills #donmoi .xacnhan {
+  width: 6%; }
+
+.list-bills #donmoi .add-bill {
+  display: block;
+  font-size: 2em;
+  transition: font-size .2s;
+  cursor: pointer;
+  padding-bottom: 15px; }
+  .list-bills #donmoi .add-bill:hover {
+    font-size: 2.3em; }
+
+.tab-bills .nav li a {
+  color: #000000;
+  font-size: 1.1em; }
+  .tab-bills .nav li a .glyphicon {
+    margin-right: 5px; }
+  .tab-bills .nav li a .label {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 10px; }
+
+.tab-bills .nav li.active a, .tab-bills .nav li.active a:hover, .tab-bills .nav li.active a:focus {
+  color: blue;
+  font-weight: bold; }

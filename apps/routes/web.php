@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/abc', function () {
-	return view('thu');
+Route::get('bill', function () {
+	return view('bill.base');
 });
