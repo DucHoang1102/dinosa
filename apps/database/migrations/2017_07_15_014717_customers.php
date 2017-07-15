@@ -19,10 +19,10 @@ class Customers extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('phone')->unique();;
+            $table->integer('phone')->unique();
             $table->string('address');
             $table->string('noted', 1000);
-            $table->string('deal_history', 1000)
+            $table->string('deal_history', 1000);
             $table->timestamps();
         });
     }

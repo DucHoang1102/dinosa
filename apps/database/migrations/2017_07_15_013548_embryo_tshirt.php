@@ -16,7 +16,7 @@ class EmbryoTshirt extends Migration
     {
         Schema::create('embryo_tshirt', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();;
+            $table->string('name')->unique();
             $table->string('description');
             $table->bigInteger('price');
             $table->timestamps();

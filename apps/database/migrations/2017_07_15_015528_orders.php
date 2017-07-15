@@ -16,7 +16,7 @@ class Orders extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('id_post')->unique();
             $table->integer('id_category_product')->unsigned();

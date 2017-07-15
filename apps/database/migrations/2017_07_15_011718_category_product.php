@@ -16,7 +16,7 @@ class CategoryProduct extends Migration
     {
         Schema::create('category_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();;
+            $table->string('name')->unique();
             $table->string('description');
             $table->bigInteger('price');
             $table->timestamps();

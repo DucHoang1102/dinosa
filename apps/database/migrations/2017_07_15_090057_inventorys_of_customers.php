@@ -16,10 +16,10 @@ class InventorysOfCustomers extends Migration
     public function up()
     {
         Schema::create('inventorys_of_customers', function (Blueprint $table) {
-            $table->string('id_inventorys')->unsigned();
+            $table->string('id_inventorys');
             $table->integer('id_customers')->unsigned();
-            $table->foreign('id_inventorys')->references('id')->on('inventorys')->onDelete('cascade');
-            $table->foreign('id_customers')->references('name')->on('customers')->onDelete('cascade');
+            $table->foreign('id_inventorys')->references('name')->on('inventorys')->onDelete('cascade');
+            $table->foreign('id_customers')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });
     }
