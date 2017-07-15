@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OdersStatus extends Migration
+class OrdersStatus extends Migration
 {
     /**
-     * Run the migrations.
+     * Bảng oders_status: id, name, description
+     * Description: Bảng trạng thái đơn hàng
      *
      * @return void
      */
@@ -15,6 +16,8 @@ class OdersStatus extends Migration
     {
         Schema::create('oders_status', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }
