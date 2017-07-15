@@ -7,19 +7,19 @@ use Illuminate\Database\Migrations\Migration;
 class ProductsOfOrders extends Migration
 {
     /**
-     * Bảng products_of_orders: id_order(FK), id_category_product(FK), id_image_print (FK), id_embryo_tshirt(
-     * FK), name(Tên sản phẩm kết hợp 3 cái kia)
+     * Bảng products_of_orders: id_order(FK), id_category_product(FK), id_image_print (FK),
+     * id_embryo_tshirt(FK), name(Tên sản phẩm kết hợp 3 cái kia)
      *
-     * Description   : Bảng kết hợp nhiều nhiều giữa: orders và products
+     * Description   : Bảng kết hợp nhiều - nhiều giữa: orders và products
      * @return void
      */
     public function up()
     {
         Schema::create('products_of_orders', function (Blueprint $table) {
-            $table->integer('id_orders');
-            $table->integer('id_category_product');
-            $table->integer('id_image_print');
-            $table->integer('id_embryo_tshirt');
+            $table->integer('id_orders')->unsigned();
+            $table->integer('id_category_product')->unsigned();
+            $table->integer('id_image_print')->unsigned();
+            $table->integer('id_embryo_tshirt')->unsigned();
             $table->foreign('id_orders')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('id_category_product')->references('id')->on('category_product')->onDelete('cascade');
             $table->foreign('id_image_print')->references('id')->on('image_print')->onDelete('cascade');
