@@ -19,11 +19,11 @@ class Orders extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->increments('id');
             $table->string('id_post')->unique();
-            $table->string('id_category_product')->unsigned();
-            $table->string('id_image_print')->unsigned();
-            $table->string('id_embryo_tshirt')->unsigned();
-            $table->string('id_customers')->unsigned();
-            $table->string('id_orders_status')->unsigned();
+            $table->integer('id_category_product')->unsigned();
+            $table->integer('id_image_print')->unsigned();
+            $table->integer('id_embryo_tshirt')->unsigned();
+            $table->integer('id_customers')->unsigned();
+            $table->integer('id_orders_status')->unsigned();
             $table->foreign('id_category_product')->references('id')->on('category_product')->onDelete('cascade');
             $table->foreign('id_image_print')->references('id')->on('image_print')->onDelete('cascade');
             $table->foreign('id_embryo_tshirt')->references('id')->on('embryo_tshirt')->onDelete('cascade');
