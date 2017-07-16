@@ -8,6 +8,21 @@
 			font-size: 1.2em;}
 		&.chucnang .glyphicon{
 			margin-right: $mr;}
+		&.sanpham {
+			.glyphicon {
+				font-size: 1.5em;
+				color: #8989ff;
+				cursor: pointer;
+				&:hover{
+					color: #1111ff;}}
+		}
+		.moneys {
+			border: 2px solid #d66d6d;
+			border-radius: 5px;
+			font-size: 1.1em;
+			font-weight: bold;
+			padding: 3px 5px;
+		}
 		input {
 			border-top: none;
 			border-left: none;
@@ -46,7 +61,7 @@
 
 .list-bills {
 	#donmoi {
-		@include base_list_bill(2%, 10%, 17%, 12%, 30%, 9%, 9%, 6%);
+		@include base_list_bill(2%, 0%, 17%, 12%, 33%, 10%, 10%, 16%);
 		.add-bill {
 			display: block;
 			font-size: 2em;

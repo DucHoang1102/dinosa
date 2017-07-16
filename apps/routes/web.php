@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('bill', function () {
+Route::get('orders', function () {
 	return view('bill.base');
 });
 
-Route::get('test', function() {
-	return DB::table('abc')->get();
+Route::get('ajax', function () {
+	return 'Nội dung trả về';
 });
