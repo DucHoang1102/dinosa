@@ -18,7 +18,7 @@ class CategoryProduct extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('description');
-            $table->bigInteger('price');
+            $table->bigInteger('price')->default(0);
             $table->timestamps();
         });
     }

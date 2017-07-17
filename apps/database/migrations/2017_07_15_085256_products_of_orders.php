@@ -16,15 +16,18 @@ class ProductsOfOrders extends Migration
     public function up()
     {
         Schema::create('products_of_orders', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('id_orders')->unsigned();
-            $table->integer('id_category_product')->unsigned();
-            $table->integer('id_image_print')->unsigned();
-            $table->integer('id_embryo_tshirt')->unsigned();
+            $table->string('name_category_product');
+            $table->string('name_image_print');
+            $table->string('name_embryo_tshirt');
             $table->foreign('id_orders')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('id_category_product')->references('id')->on('category_product')->onDelete('cascade');
-            $table->foreign('id_image_print')->references('id')->on('image_print')->onDelete('cascade');
-            $table->foreign('id_embryo_tshirt')->references('id')->on('embryo_tshirt')->onDelete('cascade');
+            $table->foreign('name_category_product')->references('name')->on('category_product')->onDelete('cascade');
+            $table->foreign('name_image_print')->references('name')->on('image_print')->onDelete('cascade');
+            $table->foreign('name_embryo_tshirt')->references('name')->on('embryo_tshirt')->onDelete('cascade');
             $table->string('name');
+            $table->string('size');
+            $table->string('status', 1);
             $table->timestamps();
         });
     }

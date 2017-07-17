@@ -22,7 +22,6 @@ class Customers extends Migration
             $table->integer('phone')->unique();
             $table->string('address');
             $table->string('noted', 1000);
-            $table->string('deal_history', 1000);
             $table->timestamps();
         });
     }
