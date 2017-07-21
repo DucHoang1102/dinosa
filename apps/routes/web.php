@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('orders', function () {
-	return view('bill.base');
+Route::get('/test', function () {
+    return view('bill.base');
 });
 
-Route::get('ajax', function () {
-	return 'Nội dung trả về';
+Route::group(['prefix'=>'orders'], function(){
+	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
+
+	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\OrderController@postAdd']);
+
+	Route::get('view', ['as' => 'viewOrders', 'uses' => 'Orders\OrderController@getView']);
 });
+

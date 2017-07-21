@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>@yield('title', 'Dinosa')</title>
 	<!-- Bootstrap 3.3.7 CSS -->
 	<link href="dist\plugins\bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">

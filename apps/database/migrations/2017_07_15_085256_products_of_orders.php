@@ -27,6 +27,7 @@ class ProductsOfOrders extends Migration
             $table->foreign('name_embryo_tshirt')->references('name')->on('embryo_tshirt')->onDelete('cascade');
             $table->string('name');
             $table->string('size');
+            $table->string('money', 10);
             $table->string('status', 1);
             $table->timestamps();
         });

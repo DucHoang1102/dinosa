@@ -1,0 +1,138 @@
+// Variables
+$color-list-head : #003f7f;
+$color-list-body : #000000;
+$margin-icon     : 4px;
+$font-size-head  : 1.2em;
+$font-size-body  : 1.25em;
+$align-body      : 1.6em;
+$color-produce   : #0000a0;
+
+@mixin width_head($stt:0%, $ngaynhan:0%, $hoten:0%, $phone:0%, 
+				  $diachi:0%, $sanpham:0%, $tongtien:0%, $functions:0%)
+{
+	.stt {
+		width: $stt;}
+	.ngaynhan {
+		width: $ngaynhan;}
+	.hoten {
+		width: $hoten;}
+	.phone {
+		width: $phone;}
+	.diachi {
+		width: $diachi;}
+	.sanpham {
+		width: $sanpham;}
+	.tongtien {
+		width: $tongtien;}
+	.xacnhan {
+		width: $functions;}
+}
+
+@mixin tbody_tr_td($border, $margin, $size-icon)
+{
+	tbody tr td {
+		border: $border;
+		font-size: $font-size-body;
+		padding-left: $align-body;
+		&.moneys {
+			.label {
+				display: block;
+				border-radius: 8px;
+				font-size: 1em;
+				text-align: center;
+				padding: 5px 8px;
+				color: #ffffff;
+				background: #d66d6d;
+				.glyphicon {
+					font-size: 0.9em;
+					color: #d3b1b1;
+					cursor: pointer;
+					&:hover{
+						color: #1111ff;}}
+			}};
+		&.stt {
+			padding-left: 0px;}
+		&.functions .glyphicon {
+			margin-right: $margin;
+			font-size: $size-icon;}
+		&.sanpham {
+			color: $color-produce;
+			.size {
+				font-weight: bold;
+			}
+			.glyphicon {
+				font-size: 1.5em;
+				color: #8989ff;
+				cursor: pointer;
+				&:hover{
+					color: #1111ff;}}
+		}
+	}
+}
+
+@mixin thead_tr_th()
+{
+	thead tr th {
+		color: $color-list-head;
+		font-size: $font-size-head;
+		padding-top: 20px;
+		span {
+			margin-right: $margin-icon;}
+	}
+}
+
+.list-bills {
+	#donmoi {
+		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:10%, $tongtien:10%, $functions:17%);
+		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
+		@include thead_tr_th();
+		input {
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			border-bottom: 2px solid #f7f7f7;
+			width: 98%;
+			height: 100%;
+			&:focus, &:hover {
+				outline: none;
+				border-bottom: 2px solid #00bfbf;}
+		}
+		.load {
+			width: 30px;
+		}
+		.add-order {
+			display: block;
+			font-size: 2em;
+			transition: font-size .2s;
+			cursor: pointer;
+			padding-bottom: 15px;
+			&:hover {
+				font-size: 2.3em;}
+		}
+	}
+
+	#daxacnhan {
+		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:12%, $tongtien:10%, $functions:15%);
+		@include tbody_tr_td($border:'', $margin:none, $size-icon:1.5em);
+		@include thead_tr_th();
+	}
+	#dangin {
+
+	}
+	#dainxong {
+
+	}
+	#dangchuyen {
+
+	}
+	#chuyenthanhcong {
+
+	}
+	#chuyenthatbai {
+
+	}
+	#thungrac {
+
+	}
+
+}

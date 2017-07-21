@@ -1,40 +1,5 @@
-.list-bills #donmoi tbody tr td {
-  border: none; }
-  .list-bills #donmoi tbody tr td.stt {
-    font-size: 1.2em; }
-  .list-bills #donmoi tbody tr td.chucnang .glyphicon {
-    margin-right: 4px; }
-  .list-bills #donmoi tbody tr td.sanpham .glyphicon {
-    font-size: 1.5em;
-    color: #8989ff;
-    cursor: pointer; }
-    .list-bills #donmoi tbody tr td.sanpham .glyphicon:hover {
-      color: #1111ff; }
-  .list-bills #donmoi tbody tr td .moneys {
-    border: 2px solid #d66d6d;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 3px 5px; }
-  .list-bills #donmoi tbody tr td input {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #eaeaea;
-    font-size: 1.2em;
-    width: 98%;
-    height: 100%; }
-    .list-bills #donmoi tbody tr td input:focus, .list-bills #donmoi tbody tr td input:hover {
-      outline: none;
-      border-bottom: 2px solid #00bfbf; }
-
-.list-bills #donmoi thead th {
-  color: #003f7f; }
-  .list-bills #donmoi thead th span {
-    margin-right: 4px; }
-
 .list-bills #donmoi .stt {
-  width: 2%; }
+  width: 1%; }
 
 .list-bills #donmoi .ngaynhan {
   width: 0%; }
@@ -55,16 +20,136 @@
   width: 10%; }
 
 .list-bills #donmoi .xacnhan {
-  width: 16%; }
+  width: 17%; }
 
-.list-bills #donmoi .add-bill {
+.list-bills #donmoi tbody tr td {
+  border: none;
+  font-size: 1.25em;
+  padding-left: 1.6em; }
+  .list-bills #donmoi tbody tr td.moneys .label {
+    display: block;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    padding: 5px 8px;
+    color: #ffffff;
+    background: #d66d6d; }
+    .list-bills #donmoi tbody tr td.moneys .label .glyphicon {
+      font-size: 0.9em;
+      color: #d3b1b1;
+      cursor: pointer; }
+      .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover {
+        color: #1111ff; }
+  .list-bills #donmoi tbody tr td.stt {
+    padding-left: 0px; }
+  .list-bills #donmoi tbody tr td.functions .glyphicon {
+    margin-right: 4px;
+    font-size: none; }
+  .list-bills #donmoi tbody tr td.sanpham {
+    color: #0000a0; }
+    .list-bills #donmoi tbody tr td.sanpham .size {
+      font-weight: bold; }
+    .list-bills #donmoi tbody tr td.sanpham .glyphicon {
+      font-size: 1.5em;
+      color: #8989ff;
+      cursor: pointer; }
+      .list-bills #donmoi tbody tr td.sanpham .glyphicon:hover {
+        color: #1111ff; }
+
+.list-bills #donmoi thead tr th {
+  color: #003f7f;
+  font-size: 1.2em;
+  padding-top: 20px; }
+  .list-bills #donmoi thead tr th span {
+    margin-right: 4px; }
+
+.list-bills #donmoi input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #f7f7f7;
+  width: 98%;
+  height: 100%; }
+  .list-bills #donmoi input:focus, .list-bills #donmoi input:hover {
+    outline: none;
+    border-bottom: 2px solid #00bfbf; }
+
+.list-bills #donmoi .load {
+  width: 30px; }
+
+.list-bills #donmoi .add-order {
   display: block;
   font-size: 2em;
   transition: font-size .2s;
   cursor: pointer;
   padding-bottom: 15px; }
-  .list-bills #donmoi .add-bill:hover {
+  .list-bills #donmoi .add-order:hover {
     font-size: 2.3em; }
+
+.list-bills #daxacnhan .stt {
+  width: 1%; }
+
+.list-bills #daxacnhan .ngaynhan {
+  width: 0%; }
+
+.list-bills #daxacnhan .hoten {
+  width: 17%; }
+
+.list-bills #daxacnhan .phone {
+  width: 12%; }
+
+.list-bills #daxacnhan .diachi {
+  width: 33%; }
+
+.list-bills #daxacnhan .sanpham {
+  width: 12%; }
+
+.list-bills #daxacnhan .tongtien {
+  width: 10%; }
+
+.list-bills #daxacnhan .xacnhan {
+  width: 15%; }
+
+.list-bills #daxacnhan tbody tr td {
+  border: "";
+  font-size: 1.25em;
+  padding-left: 1.6em; }
+  .list-bills #daxacnhan tbody tr td.moneys .label {
+    display: block;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    padding: 5px 8px;
+    color: #ffffff;
+    background: #d66d6d; }
+    .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon {
+      font-size: 0.9em;
+      color: #d3b1b1;
+      cursor: pointer; }
+      .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover {
+        color: #1111ff; }
+  .list-bills #daxacnhan tbody tr td.stt {
+    padding-left: 0px; }
+  .list-bills #daxacnhan tbody tr td.functions .glyphicon {
+    margin-right: none;
+    font-size: 1.5em; }
+  .list-bills #daxacnhan tbody tr td.sanpham {
+    color: #0000a0; }
+    .list-bills #daxacnhan tbody tr td.sanpham .size {
+      font-weight: bold; }
+    .list-bills #daxacnhan tbody tr td.sanpham .glyphicon {
+      font-size: 1.5em;
+      color: #8989ff;
+      cursor: pointer; }
+      .list-bills #daxacnhan tbody tr td.sanpham .glyphicon:hover {
+        color: #1111ff; }
+
+.list-bills #daxacnhan thead tr th {
+  color: #003f7f;
+  font-size: 1.2em;
+  padding-top: 20px; }
+  .list-bills #daxacnhan thead tr th span {
+    margin-right: 4px; }
 
 .tab-bills .nav li a {
   color: #000000;

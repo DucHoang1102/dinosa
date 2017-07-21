@@ -1,5 +1,4 @@
 <div role="tabpanel" class="tab-pane active" id="donmoi"><!--Content Tab Đơn mới -->	
-	<h1>Đơn mới</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -38,5 +37,8 @@
 			</tr>-->
 		</tbody>
 	</table>
-	<div class="add-bill"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div>
+	<div class="add-order">
+		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+	</div>
+<button id="testajax">Test Ajax</button>
 </div> <!--/.donmoi-->

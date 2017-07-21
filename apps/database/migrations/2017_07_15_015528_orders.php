@@ -21,6 +21,7 @@ class Orders extends Migration
             $table->string('id_post')->unique();
             $table->integer('id_customers')->unsigned();
             $table->integer('id_orders_status')->unsigned();
+            $table->string('money', 10);
             $table->foreign('id_customers')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('id_orders_status')->references('id')->on('orders_status')->onDelete('cascade');
             $table->timestamps();
