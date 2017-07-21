@@ -65,10 +65,10 @@ var orders = {
 		$this.flagAjax = false;
 
 		$.ajax({
-			url      : 'orders/add',
-			type     : 'post',	
+			url      : datas.url,
+			type     : datas.type,	
 			dataType : 'text',	
-			data     : datas,
+			data     : datas.datas,
 			success  : function (result) {
 				if (result != null) {
 					$this.viewTemplate(result);
@@ -95,7 +95,11 @@ var orders = {
 	},
 
 	view: function () {
-		this.Ajax({_action_order: 'view'});
+		this.Ajax({
+			url   : 'orders/view',
+			type  : 'get',
+			datas : ''
+		});
 	},
 
 	timeout: null,
@@ -105,7 +109,6 @@ var orders = {
 			var this_order = $(this).parent().parent();
 
 			var datas = {
-				_action_order : 'add',
 				_id_order     : this_order.find('input[name=_id_order]').val(),
 				_id_customer  : this_order.find('input[name=_id_customer]').val(),
 				name          : this_order.find('input[name=name]').val(),
@@ -124,7 +127,11 @@ var orders = {
 				clearTimeout($this.timeout);
 			}
 			$this.timeout = setTimeout(function() {
-				$this.Ajax(datas);
+				$this.Ajax({
+					url   : 'orders/add',
+					type  : 'post',
+					datas : datas
+				});
 			}, 3000);
 
 			return false;

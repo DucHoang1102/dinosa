@@ -14,7 +14,7 @@ class OrderController extends Controller
 {
     function index () {
     	View::share([
-    		'orders_donMoi'                       => OrdersHandling::get(1), // Sửa lại sau
+    		'orders_donMoi'                       => OrdersHandling::get(1), // Sửa lại sau, sẽ xóa
     		'orders_daXacNhan'                    => OrdersHandling::get(2),
     		'orders_daInXong'                     => OrdersHandling::get(3),
     		'orders_dangChuyen'                   => OrdersHandling::get(4),
@@ -27,6 +27,12 @@ class OrderController extends Controller
     	return view('bill.base');
     }
 
+    function getView()
+    {
+    	$customers = DB::table('customers')->get();
+    	return json_encode($customers);
+    }
+
     function postAdd (Request $request) {
     	// Không validate dữ liệu chung, validate ở duy nhất mục sản phẩm
     	//
@@ -35,37 +41,32 @@ class OrderController extends Controller
     	// Lưu khách hàng 
     	// Lấy id khách hàng lưu orders
     	// Lấy id orders lưu products_of_orders => Hàm phân tích sản phẩm => Tính tiền => Tổng tiền
-    
-    	$_action_order = isset($request->_action_order) ? $request->_action_order : 'view';
+    	
+    	$_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
+		$name         = isset($request->name)         ? $request->name         : "";
+    	$phone        = isset($request->phone)        ? $request->phone        : ""; 
+    	$address      = isset($request->address)      ? $request->address      : ""; 
 
-    	if ($_action_order === 'add') 
-    	{
-    		$name         = isset($request->name)         ? $request->name         : "";
-	    	$phone        = isset($request->phone)        ? $request->phone        : ""; 
-	    	$address      = isset($request->address)      ? $request->address      : ""; 
-	    	$_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
-
-    		if (!empty($_id_customer)) {
-	    		DB::table('customers')
-	    					->where('id', $_id_customer)
-	    					->update([
-	    						'name'    => $name,
-	    						'phone'   => $phone,
-	    						'address' => $address,
-	    					]);
-	    	}
-	    	else {
-	    		$_id_customer = DB::table('customers')->insertGetId([
-		    		'name'    => $name,
-		    		'phone'   => $phone,
-		    		'address' => $address,
-
-	    		]);
-	    	}
+		if (!empty($_id_customer)) {
+    		DB::table('customers')
+    					->where('id', $_id_customer)
+    					->update([
+    						'name'    => $name,
+    						'phone'   => $phone,
+    						'address' => $address,
+    					]);
     	}
+    	else {
+    		$_id_customer = DB::table('customers')->insertGetId([
+	    		'name'    => $name,
+	    		'phone'   => $phone,
+	    		'address' => $address,
 
+    		]);
+    	}
+    	return $this->getView();
     	// Trả dữ liệu tất cả bảng:
-    	$customers = DB::table('customers')->get();
-    	return json_encode($customers);
+    	//$customers = DB::table('customers')->get();
+    	//return json_encode($customers);
     }
 }
