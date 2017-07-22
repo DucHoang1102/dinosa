@@ -8,7 +8,6 @@
 	<link href="dist\plugins\bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!-- Dinosa CSS -->
 	<link href="dist\css\main.css" rel="stylesheet" type="text/css">
-	
 	<!-- Jquery-ui CSS -->
 	<link href="dist\plugins\jquery-ui\jquery-ui.min.css" rel="stylesheet" type="text/css">
 
