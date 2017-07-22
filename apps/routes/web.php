@@ -25,5 +25,7 @@ Route::group(['prefix'=>'orders'], function(){
 	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\OrderController@postAdd']);
 
 	Route::get('view', ['as' => 'viewOrders', 'uses' => 'Orders\OrderController@getView']);
+
+	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\OrderController@postAutoComplete']);
 });
 

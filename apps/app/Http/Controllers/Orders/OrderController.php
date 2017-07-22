@@ -29,8 +29,8 @@ class OrderController extends Controller
 
     function getView()
     {
-    	$customers = DB::table('customers')->get();
-    	return json_encode($customers);
+    	$result = ['orders' => DB::table('customers')->get()];
+    	return json_encode($result);
     }
 
     function postAdd (Request $request) {
@@ -43,30 +43,44 @@ class OrderController extends Controller
     	// Lấy id orders lưu products_of_orders => Hàm phân tích sản phẩm => Tính tiền => Tổng tiền
     	
     	$_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
-		$name         = isset($request->name)         ? $request->name         : "";
-    	$phone        = isset($request->phone)        ? $request->phone        : ""; 
-    	$address      = isset($request->address)      ? $request->address      : ""; 
+    	$colum        = isset($request->colum)        ? $request->colum        : "";
+    	$value        = isset($request->value)        ? $request->value        : "";
 
 		if (!empty($_id_customer)) {
     		DB::table('customers')
-    					->where('id', $_id_customer)
-    					->update([
-    						'name'    => $name,
-    						'phone'   => $phone,
-    						'address' => $address,
-    					]);
+					->where('id', $_id_customer)
+					->update([
+						$colum => $value
+					]);
     	}
     	else {
     		$_id_customer = DB::table('customers')->insertGetId([
-	    		'name'    => $name,
-	    		'phone'   => $phone,
-	    		'address' => $address,
-
+	    		$colum => $value
     		]);
+    		return json_encode(['_id_customer' => $_id_customer]);
     	}
-    	return $this->getView();
-    	// Trả dữ liệu tất cả bảng:
-    	//$customers = DB::table('customers')->get();
-    	//return json_encode($customers);
+    	exit();
+    }
+
+    function postAutoComplete(Request $request, $colum)
+    {
+    	if ($colum == 'phone') {
+    		$phoneInput = isset($request->phoneInput) ? $request->phoneInput : "";
+    		$phones = DB::table('customers')
+    					->select('phone', 'name')
+    					->where('phone', 'like', $phoneInput.'%')
+    					->offset(0)
+    					->limit(5)
+    					->get();
+    		return json_encode($phones);
+    	}
+
+    	else if ($colums == "produce") {
+
+    	}
+
+   		else {
+   			
+   		}
     }
 }
