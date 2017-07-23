@@ -25,10 +25,10 @@ function patternHTML (name="", phone="", address="", _id_customer="") {
 			<td class="stt">${stt}.</td>
 			<td class="hoten"><input type="text" name="name" value="${name}" maxlength="35"></td>
 			<td class="phone"><input type="text" name="phone" value="${phone}" maxlength="11"></td>
-			<td class="address"><input type="text" name="address" value="${address}" maxlength="99"></td>
+			<td class="diachi address"><input type="text" name="address" value="${address}" maxlength="99"></td>
 			<td class="sanpham"><input type="text" name="produce" value="" placeholder=""><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
-			<td class="moneys"><div class="label">250,000 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
-			<td class='functions'>
+			<td class="tongtien moneys"><div class="label">250,000 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
+			<td class='xacnhan functions'>
 				<button type="button" class="btn btn-success btn-sm disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Xác nhận</button>
 				<button type="button" class="btn btn-danger btn-sm cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Xóa</button>
 			</td>

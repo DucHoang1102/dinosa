@@ -6,9 +6,29 @@ $font-size-head  : 1.2em;
 $font-size-body  : 1.25em;
 $align-body      : 1.6em;
 $color-produce   : #0000a0;
+$color-backgorund: #fcfcfc;
 
+@mixin scrollbar()
+{
+	::-webkit-scrollbar {
+	    width: 7px;
+	}
+	::-webkit-scrollbar-track {
+	    background-color: #eaeaea;
+	    border-left: 2px solid #ccc;
+	    border-radius: 8px;
+	}
+	::-webkit-scrollbar-thumb {
+	    background-color: #444444;
+	    border-radius: 8px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+	  background-color: #aaa;
+	  border-radius: 8px;
+	}
+}
 @mixin width_head($stt:0%, $ngaynhan:0%, $hoten:0%, $phone:0%, 
-				  $diachi:0%, $sanpham:0%, $tongtien:0%, $functions:0%)
+				  $diachi:0%, $sanpham:0%, $tongtien:0%, $xacnhan:0%)
 {
 	.stt {
 		width: $stt;}
@@ -25,7 +45,7 @@ $color-produce   : #0000a0;
 	.tongtien {
 		width: $tongtien;}
 	.xacnhan {
-		width: $functions;}
+		width: $xacnhan;}
 }
 
 @mixin tbody_tr_td($border, $margin, $size-icon)
@@ -75,15 +95,19 @@ $color-produce   : #0000a0;
 	thead tr th {
 		color: $color-list-head;
 		font-size: $font-size-head;
-		padding-top: 20px;
+		padding-top: 70px;
 		span {
 			margin-right: $margin-icon;}
 	}
 }
 
+body {overflow:hidden;} // Xẽ xóa sau
+
+@include scrollbar();
+
 .list-bills {
 	#donmoi {
-		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:10%, $tongtien:10%, $functions:17%);
+		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:10%, $tongtien:10%, $xacnhan:17%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 		input {
@@ -93,9 +117,11 @@ $color-produce   : #0000a0;
 			border-bottom: 2px solid #eaeaea;
 			width: 98%;
 			height: 100%;
+			background: $color-backgorund;
 			&:focus, &:hover {
 				outline: none;
-				border-bottom: 2px solid #00bfbf;}
+				border-bottom: 2px solid #125FBB;
+				box-shadow: 0px 7px 10px -8px;}
 		}
 		.load {
 			width: 30px;
@@ -109,10 +135,20 @@ $color-produce   : #0000a0;
 			&:hover {
 				font-size: 2.3em;}
 		}
+		.table-tbody {
+			margin-top: -20px;
+			height: 500px;
+			overflow-y: auto;
+			padding-top: 18px;
+			background: $color-backgorund;
+		}
+		.table-thead {
+			
+		}
 	}
 
 	#daxacnhan {
-		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:12%, $tongtien:10%, $functions:15%);
+		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:12%, $tongtien:10%, $xacnhan:15%);
 		@include tbody_tr_td($border:'', $margin:none, $size-icon:1.5em);
 		@include thead_tr_th();
 	}

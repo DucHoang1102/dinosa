@@ -1,3 +1,22 @@
+body {
+  overflow: hidden; }
+
+::-webkit-scrollbar {
+  width: 7px; }
+
+::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 2px solid #ccc;
+  border-radius: 8px; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #444444;
+  border-radius: 8px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+  border-radius: 8px; }
+
 .list-bills #donmoi .stt {
   width: 1%; }
 
@@ -59,7 +78,7 @@
 .list-bills #donmoi thead tr th {
   color: #003f7f;
   font-size: 1.2em;
-  padding-top: 20px; }
+  padding-top: 70px; }
   .list-bills #donmoi thead tr th span {
     margin-right: 4px; }
 
@@ -69,10 +88,12 @@
   border-right: none;
   border-bottom: 2px solid #eaeaea;
   width: 98%;
-  height: 100%; }
+  height: 100%;
+  background: #fcfcfc; }
   .list-bills #donmoi input:focus, .list-bills #donmoi input:hover {
     outline: none;
-    border-bottom: 2px solid #00bfbf; }
+    border-bottom: 2px solid #125FBB;
+    box-shadow: 0px 7px 10px -8px; }
 
 .list-bills #donmoi .load {
   width: 30px; }
@@ -85,6 +106,13 @@
   padding-bottom: 15px; }
   .list-bills #donmoi .add-order:hover {
     font-size: 2.3em; }
+
+.list-bills #donmoi .table-tbody {
+  margin-top: -20px;
+  height: 500px;
+  overflow-y: auto;
+  padding-top: 18px;
+  background: #fcfcfc; }
 
 .list-bills #daxacnhan .stt {
   width: 1%; }
@@ -147,21 +175,22 @@
 .list-bills #daxacnhan thead tr th {
   color: #003f7f;
   font-size: 1.2em;
-  padding-top: 20px; }
+  padding-top: 70px; }
   .list-bills #daxacnhan thead tr th span {
     margin-right: 4px; }
 
-.tab-bills .nav li a {
-  color: #000000;
-  font-size: 1.1em; }
-  .tab-bills .nav li a .glyphicon {
-    margin-right: 5px; }
-  .tab-bills .nav li a .label {
-    display: inline-block;
-    margin-left: 5px;
-    padding: 5px;
-    border-radius: 10px; }
-
-.tab-bills .nav li.active a, .tab-bills .nav li.active a:hover, .tab-bills .nav li.active a:focus {
-  color: blue;
-  font-weight: bold; }
+.tab-bills .nav {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, #4284F4), color-stop(0.7, #6fa1f2)); }
+  .tab-bills .nav li a {
+    color: #ededed;
+    font-size: 1.2em; }
+    .tab-bills .nav li a .glyphicon {
+      margin-right: 5px; }
+    .tab-bills .nav li a .label {
+      display: inline-block;
+      margin-left: 5px;
+      padding: 5px;
+      border-radius: 10px; }
+  .tab-bills .nav li.active a, .tab-bills .nav li.active a:hover, .tab-bills .nav li.active a:focus {
+    color: blue;
+    font-weight: bold; }

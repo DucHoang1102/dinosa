@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('bill.base');
+    return view('test');
 });
 
 Route::group(['prefix'=>'orders'], function(){
@@ -28,4 +28,3 @@ Route::group(['prefix'=>'orders'], function(){
 
 	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\OrderController@postAutoComplete']);
 });
-

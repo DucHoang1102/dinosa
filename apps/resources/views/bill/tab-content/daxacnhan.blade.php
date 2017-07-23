@@ -1,5 +1,4 @@
 <div role="tabpanel" class="tab-pane" id="daxacnhan"><!--Content Tab Đơn mới -->	
-	<h1>Đã xác nhận</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -13,7 +12,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			@php $i = 0; @endphp
 			@foreach ($orders_donMoi as $stt => $order)
 			<tr>
 				<td class="stt">

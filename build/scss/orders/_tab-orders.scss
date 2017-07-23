@@ -1,9 +1,10 @@
 .tab-bills {
 	.nav {
+		background: -webkit-gradient(linear,left bottom,left top,color-stop(0.3, #4284F4),color-stop(0.7, #6fa1f2));
 		li {
 			a {
-				color: #000000;
-				font-size: 1.1em;
+				color: #ededed;
+				font-size: 1.2em;
 				.glyphicon {
 					margin-right: 5px;
 				}

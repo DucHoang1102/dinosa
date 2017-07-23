@@ -9,7 +9,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12">
-						<ul class="nav nav-tabs" role="tablist" >
+						<ul class="nav nav-tabs navbar-fixed-top" role="tablist" >
 							<li role="presentation" class="active">
 								<a href="#donmoi" aria-controls="home" role="tab" data-toggle="tab">
 								<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Đơn mới<span class="label label-danger">30</span></a>
