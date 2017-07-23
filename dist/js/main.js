@@ -5,24 +5,35 @@ var flagAjax = true;
 var timeout  = null;
 
 var helper = { 
-	getToday  : function() {
+	getToday  : function () {
 		var date = new Date();
 		return (date.getDate()) + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 	},
-	increments: function() {
+	increments: function () {
 		var getSttLast = Array.from($('#donmoi tbody td.stt')).reverse()[0];
 		getSttLast = parseInt($(getSttLast).text());
 		getSttLast = isNaN(getSttLast) ? 0 : getSttLast;
 		return getSttLast + 1;
 	},
+	incrementsOK: function () {
+		var getSttLast = $('#donmoi tbody td.stt');
+		$.each(getSttLast, function(index, stt) {
+			$(stt).text((index+1)+'.');
+		});
+	},
+	scrollTop: function () {
+		var tbody = $('#donmoi .table-tbody');
+		var scrollTop = parseInt(tbody.prop('scrollHeight') - tbody.height()) + 10;
+		tbody.scrollTop(scrollTop);
+	},
 };
 
 function patternHTML (name="", phone="", address="", _id_customer="") {
-	var stt = helper.increments();
+	//var stt = helper.incrementsOK();
 		return `<tr>
 			<input type="hidden" name="_id_order" value=""/>
 			<input type="hidden" name="_id_customer" value="${_id_customer}" maxlength="9"/>
-			<td class="stt">${stt}.</td>
+			<td class="stt"></td>
 			<td class="hoten"><input type="text" name="name" value="${name}" maxlength="35"></td>
 			<td class="phone"><input type="text" name="phone" value="${phone}" maxlength="11"></td>
 			<td class="diachi address"><input type="text" name="address" value="${address}" maxlength="99"></td>
@@ -38,8 +49,16 @@ function patternHTML (name="", phone="", address="", _id_customer="") {
 // Thêm đơn hàng
 (function createOrdersNode () {
 	$('#donmoi .add-order').click(function () {
-		$('#donmoi tbody').append(patternHTML());
+		$(patternHTML()).appendTo('#donmoi tbody')
+					    .hide()
+					    .show(300, function () {
+					        $(this).find('input[name=name]')
+					    	     .focus();
+					    });
+		helper.incrementsOK();
+		helper.scrollTop();
 		return false;
+
 	});
 })();
 
@@ -56,6 +75,7 @@ function patternHTML (name="", phone="", address="", _id_customer="") {
 	$('#donmoi').on('click', '.functions .cancel', function () {
 		$(this).parent().parent().hide('200', function() {
 			$(this).remove();
+			helper.incrementsOK();
 		});;
 		return false;
 	});
@@ -91,6 +111,8 @@ function Ajax (datas) {
 					var _id_customer = order.id           ? order.id           : '';
 					$('#donmoi tbody').append(patternHTML(name, phone, address, _id_customer));
 				});
+				helper.scrollTop();
+				helper.incrementsOK();
 			}
 		}
 	}
@@ -157,6 +179,25 @@ function Ajax (datas) {
 	});
 })();
 
+// Nhớ tab khi load lại trang
+(function saveTabReload () {
+	if(typeof(Storage) !== 'undefined'){
+		var tabElement        = $('.tab-bills .nav-tabs li');
+		var tabContentElement = $('.list-bills .tab-content .tab-pane');
+
+		tabElement.removeClass('active');
+		tabContentElement.removeClass('active');
+
+		tabElement.click(function () {
+			sessionStorage.tabNow = $(this).find('a').attr('href');
+		});
+
+		var tabNow = sessionStorage.tabNow ? sessionStorage.tabNow : '#donmoi';
+
+		tabElement.find('a[href="' + tabNow + '"]').parent().addClass('active');
+		tabContentElement.filter(tabNow).addClass('active');
+	}
+})();
 
 
 })(jQuery);

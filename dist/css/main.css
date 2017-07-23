@@ -180,17 +180,30 @@ body {
     margin-right: 4px; }
 
 .tab-bills .nav {
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, #4284F4), color-stop(0.7, #6fa1f2)); }
-  .tab-bills .nav li a {
-    color: #ededed;
-    font-size: 1.2em; }
-    .tab-bills .nav li a .glyphicon {
-      margin-right: 5px; }
-    .tab-bills .nav li a .label {
-      display: inline-block;
-      margin-left: 5px;
-      padding: 5px;
-      border-radius: 10px; }
-  .tab-bills .nav li.active a, .tab-bills .nav li.active a:hover, .tab-bills .nav li.active a:focus {
+  border-bottom: none; }
+  .tab-bills .nav li {
+    border-right: 1px solid #bcd6ff;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, #4284F4), color-stop(0.7, #6fa1f2)); }
+    .tab-bills .nav li a {
+      color: #f4f4f4;
+      font-size: 1.2em;
+      width: 100%;
+      height: 100%; }
+      .tab-bills .nav li a .glyphicon {
+        margin-right: 5px; }
+      .tab-bills .nav li a .label-danger {
+        display: inline-block;
+        margin-left: 5px;
+        padding: 4px;
+        border-radius: 10px;
+        background: #d67371; }
+    .tab-bills .nav li:hover a {
+      border-radius: 0px;
+      background: #80acf2;
+      border: 1px solid #80acf2; }
+  .tab-bills .nav li.active a {
     color: blue;
-    font-weight: bold; }
+    font-weight: bold;
+    border-radius: 0px;
+    border: none;
+    background: white; }
