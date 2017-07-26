@@ -17,29 +17,29 @@
 	<div class="table-tbody">
 		<table class="table">
 			<tbody>
-				<!--<tr>
-					<td>
-						1.
+				@foreach ($orders_donMoi as $order)
+				<tr>
+					<input type="hidden" name="_id_order" value="{{ $order->id }}"/>
+					<input type="hidden" name="_id_customer" value="{{ $order->id_customers }}"/>
+					<td class="stt"></td>
+					<td class="hoten"><input type="text" name="name" value="{{ $order->name }}" maxlength="35" autocomplete="off"></td>
+					<td class="phone"><input type="text" name="phone" value="{{ $order->name }}" maxlength="11" autocomplete="off"></td>
+					<td class="diachi address"><input type="text" name="address" value="${address}" maxlength="99" autocomplete="off"></td>
+
+					<td class="sanpham">
+					@foreach ($order->products as $product)
+						<input type="text" id="{{ $product->id }}" name="product" value="{{ $product->name }}" placeholder="" autocomplete="off">
+					@endforeach
+					<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
 					</td>
-					<td>
-						30-11-1993
+
+					<td class="tongtien moneys"><div class="label">{{ $order->total_money }} <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
+					<td class='xacnhan functions'>
+					<button type="button" class="btn btn-success btn-sm disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Xác nhận</button>
+					<button type="button" class="btn btn-danger btn-sm cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Xóa</button>
 					</td>
-					<td>
-						<input type="text" name="" title="Nguyễn Đức Hoàng">
-					</td>
-					<td>
-						<input type="text" name="">
-					</td>
-					<td>
-						<input type="text" name="">
-					</td>
-					<td>
-						<input type="text" name="">
-					</td>
-					<td>
-						<input type="number" name="">
-					</td>
-				</tr>-->
+				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
@@ -47,3 +47,4 @@
 		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 	</div>
 </div> <!--/.donmoi-->
+

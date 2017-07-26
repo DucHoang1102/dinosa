@@ -27,13 +27,11 @@
 					{{ $order->address }}
 				</td>
 				<td class="sanpham">
-					@foreach ($order->produces as $produces)
-						<span> {{ $produces->name }} <span class="size">({{ $produces->size }})</span> </span>
-					@endforeach
+					 
 				</td>
 				<td class="moneys">
 					<div class="label">
-						{{ $order->money }}
+						{{ $order->total_money }}
 					</div>
 				</td>
 				<td>

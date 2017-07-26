@@ -15,7 +15,7 @@
 </head>
 <body>
 
-	<div class="wrapper container-fluid">
+	<div class="wrapper">
 
 		<!-- Header -->
 		@include('layouts.header')

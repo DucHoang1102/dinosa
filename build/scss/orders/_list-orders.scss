@@ -31,7 +31,8 @@ $color-backgorund: #fcfcfc;
 				  $diachi:0%, $sanpham:0%, $tongtien:0%, $xacnhan:0%)
 {
 	.stt {
-		width: $stt;}
+		width: $stt;
+		padding-left: 10px;}
 	.ngaynhan {
 		width: $ngaynhan;}
 	.hoten {
@@ -70,8 +71,6 @@ $color-backgorund: #fcfcfc;
 					&:hover{
 						color: #1111ff;}}
 			}};
-		&.stt {
-			padding-left: 0px;}
 		&.functions .glyphicon {
 			margin-right: $margin;
 			font-size: $size-icon;}
@@ -95,7 +94,6 @@ $color-backgorund: #fcfcfc;
 	thead tr th {
 		color: $color-list-head;
 		font-size: $font-size-head;
-		padding-top: 70px;
 		span {
 			margin-right: $margin-icon;}
 	}
@@ -107,15 +105,15 @@ body {overflow:hidden;} // Xẽ xóa sau
 
 .list-bills {
 	#donmoi {
-		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:10%, $tongtien:10%, $xacnhan:17%);
+		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:10%, $tongtien:10%, $xacnhan:17%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 		input {
 			border-top: none;
 			border-left: none;
+			width: 99%;
 			border-right: none;
 			border-bottom: 2px solid #eaeaea;
-			width: 98%;
 			height: 100%;
 			background: $color-backgorund;
 			&:focus, &:hover {
@@ -127,13 +125,17 @@ body {overflow:hidden;} // Xẽ xóa sau
 			width: 30px;
 		}
 		.add-order {
+			position: absolute;
+			bottom: 20px;
 			display: block;
-			font-size: 2em;
-			transition: font-size .2s;
+			font-size: 2.3em;
 			cursor: pointer;
 			padding-bottom: 15px;
+			opacity: 0.5;
+			transition: all .2s;
 			&:hover {
-				font-size: 2.3em;}
+				font-size: 2.8em;
+				opacity: 1;}
 		}
 		.table-tbody {
 			margin-top: -20px;
@@ -148,7 +150,7 @@ body {overflow:hidden;} // Xẽ xóa sau
 	}
 
 	#daxacnhan {
-		@include width_head($stt:1%, $hoten:17%, $phone:12%, $diachi:33%, $sanpham:12%, $tongtien:10%, $xacnhan:15%);
+		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:12%, $tongtien:10%, $xacnhan:15%);
 		@include tbody_tr_td($border:'', $margin:none, $size-icon:1.5em);
 		@include thead_tr_th();
 	}

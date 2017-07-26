@@ -18,19 +18,20 @@ body {
   border-radius: 8px; }
 
 .list-bills #donmoi .stt {
-  width: 1%; }
+  width: 3%;
+  padding-left: 10px; }
 
 .list-bills #donmoi .ngaynhan {
   width: 0%; }
 
 .list-bills #donmoi .hoten {
-  width: 17%; }
+  width: 16%; }
 
 .list-bills #donmoi .phone {
   width: 12%; }
 
 .list-bills #donmoi .diachi {
-  width: 33%; }
+  width: 32%; }
 
 .list-bills #donmoi .sanpham {
   width: 10%; }
@@ -59,8 +60,6 @@ body {
       cursor: pointer; }
       .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover {
         color: #1111ff; }
-  .list-bills #donmoi tbody tr td.stt {
-    padding-left: 0px; }
   .list-bills #donmoi tbody tr td.functions .glyphicon {
     margin-right: 4px;
     font-size: none; }
@@ -77,17 +76,16 @@ body {
 
 .list-bills #donmoi thead tr th {
   color: #003f7f;
-  font-size: 1.2em;
-  padding-top: 70px; }
+  font-size: 1.2em; }
   .list-bills #donmoi thead tr th span {
     margin-right: 4px; }
 
 .list-bills #donmoi input {
   border-top: none;
   border-left: none;
+  width: 99%;
   border-right: none;
   border-bottom: 2px solid #eaeaea;
-  width: 98%;
   height: 100%;
   background: #fcfcfc; }
   .list-bills #donmoi input:focus, .list-bills #donmoi input:hover {
@@ -99,13 +97,17 @@ body {
   width: 30px; }
 
 .list-bills #donmoi .add-order {
+  position: absolute;
+  bottom: 20px;
   display: block;
-  font-size: 2em;
-  transition: font-size .2s;
+  font-size: 2.3em;
   cursor: pointer;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  opacity: 0.5;
+  transition: all .2s; }
   .list-bills #donmoi .add-order:hover {
-    font-size: 2.3em; }
+    font-size: 2.8em;
+    opacity: 1; }
 
 .list-bills #donmoi .table-tbody {
   margin-top: -20px;
@@ -115,19 +117,20 @@ body {
   background: #fcfcfc; }
 
 .list-bills #daxacnhan .stt {
-  width: 1%; }
+  width: 3%;
+  padding-left: 10px; }
 
 .list-bills #daxacnhan .ngaynhan {
   width: 0%; }
 
 .list-bills #daxacnhan .hoten {
-  width: 17%; }
+  width: 16%; }
 
 .list-bills #daxacnhan .phone {
   width: 12%; }
 
 .list-bills #daxacnhan .diachi {
-  width: 33%; }
+  width: 32%; }
 
 .list-bills #daxacnhan .sanpham {
   width: 12%; }
@@ -156,8 +159,6 @@ body {
       cursor: pointer; }
       .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover {
         color: #1111ff; }
-  .list-bills #daxacnhan tbody tr td.stt {
-    padding-left: 0px; }
   .list-bills #daxacnhan tbody tr td.functions .glyphicon {
     margin-right: none;
     font-size: 1.5em; }
@@ -174,36 +175,27 @@ body {
 
 .list-bills #daxacnhan thead tr th {
   color: #003f7f;
-  font-size: 1.2em;
-  padding-top: 70px; }
+  font-size: 1.2em; }
   .list-bills #daxacnhan thead tr th span {
     margin-right: 4px; }
 
-.tab-bills .nav {
-  border-bottom: none; }
-  .tab-bills .nav li {
-    border-right: 1px solid #bcd6ff;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, #4284F4), color-stop(0.7, #6fa1f2)); }
-    .tab-bills .nav li a {
-      color: #f4f4f4;
-      font-size: 1.2em;
-      width: 100%;
-      height: 100%; }
-      .tab-bills .nav li a .glyphicon {
-        margin-right: 5px; }
-      .tab-bills .nav li a .label-danger {
-        display: inline-block;
-        margin-left: 5px;
-        padding: 4px;
-        border-radius: 10px;
-        background: #d67371; }
-    .tab-bills .nav li:hover a {
-      border-radius: 0px;
-      background: #80acf2;
-      border: 1px solid #80acf2; }
-  .tab-bills .nav li.active a {
-    color: blue;
-    font-weight: bold;
-    border-radius: 0px;
-    border: none;
-    background: white; }
+.tab-bills nav {
+  border-radius: 0px;
+  border: none; }
+
+.tab-bills .nav-tabs {
+  border: none; }
+  .tab-bills .nav-tabs li {
+    font-size: 1.1em; }
+    .tab-bills .nav-tabs li .glyphicon {
+      margin-right: 5px; }
+    .tab-bills .nav-tabs li .label {
+      margin-left: 2px;
+      padding: 4px;
+      border-radius: 10px; }
+    .tab-bills .nav-tabs li a {
+      color: #eaeaea; }
+  .tab-bills .nav-tabs li.active a, .tab-bills .nav-tabs li.active a:hover, .tab-bills .nav-tabs li.active a:focus {
+    background: #ffffff;
+    color: #1111dd;
+    font-weight: bold; }
