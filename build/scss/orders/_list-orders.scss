@@ -76,15 +76,37 @@ $color-backgorund: #fcfcfc;
 			font-size: $size-icon;}
 		&.sanpham {
 			color: $color-produce;
-			.size {
-				font-weight: bold;
-			}
-			.glyphicon {
+			.glyphicon-ok-circle {
+				display: inline-block;
+				padding-top: 5px;
 				font-size: 1.5em;
 				color: #8989ff;
 				cursor: pointer;
 				&:hover{
 					color: #1111ff;}}
+			.product_success {
+				position: relative;
+				margin-bottom: 2px;
+				cursor: pointer;
+				color: #f2f2f2;
+				font-size: 0.9em;
+				background: #8989ff;
+				border-radius: 5px;
+				padding: 2px;
+				&:hover {
+					background: #3a3aff;
+				}
+				.glyphicon-remove {
+					position: absolute;
+					right: 3px;
+					top: 50%;
+					transform: translateY(-50%);
+					font-size: 0.7em;
+					&:hover {
+						color: #bfbfbf;
+					}
+				}
+			}
 		}
 	}
 }
@@ -105,7 +127,7 @@ body {overflow:hidden;} // Xẽ xóa sau
 
 .list-bills {
 	#donmoi {
-		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:10%, $tongtien:10%, $xacnhan:17%);
+		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:11%, $tongtien:9%, $xacnhan:17%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 		input {

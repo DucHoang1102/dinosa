@@ -34,10 +34,10 @@ body {
   width: 32%; }
 
 .list-bills #donmoi .sanpham {
-  width: 10%; }
+  width: 11%; }
 
 .list-bills #donmoi .tongtien {
-  width: 10%; }
+  width: 9%; }
 
 .list-bills #donmoi .xacnhan {
   width: 17%; }
@@ -65,14 +65,33 @@ body {
     font-size: none; }
   .list-bills #donmoi tbody tr td.sanpham {
     color: #0000a0; }
-    .list-bills #donmoi tbody tr td.sanpham .size {
-      font-weight: bold; }
-    .list-bills #donmoi tbody tr td.sanpham .glyphicon {
+    .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle {
+      display: inline-block;
+      padding-top: 5px;
       font-size: 1.5em;
       color: #8989ff;
       cursor: pointer; }
-      .list-bills #donmoi tbody tr td.sanpham .glyphicon:hover {
+      .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle:hover {
         color: #1111ff; }
+    .list-bills #donmoi tbody tr td.sanpham .product_success {
+      position: relative;
+      margin-bottom: 2px;
+      cursor: pointer;
+      color: #f2f2f2;
+      font-size: 0.9em;
+      background: #8989ff;
+      border-radius: 5px;
+      padding: 2px; }
+      .list-bills #donmoi tbody tr td.sanpham .product_success:hover {
+        background: #3a3aff; }
+      .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon-remove {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.7em; }
+        .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon-remove:hover {
+          color: #bfbfbf; }
 
 .list-bills #donmoi thead tr th {
   color: #003f7f;
@@ -164,14 +183,33 @@ body {
     font-size: 1.5em; }
   .list-bills #daxacnhan tbody tr td.sanpham {
     color: #0000a0; }
-    .list-bills #daxacnhan tbody tr td.sanpham .size {
-      font-weight: bold; }
-    .list-bills #daxacnhan tbody tr td.sanpham .glyphicon {
+    .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle {
+      display: inline-block;
+      padding-top: 5px;
       font-size: 1.5em;
       color: #8989ff;
       cursor: pointer; }
-      .list-bills #daxacnhan tbody tr td.sanpham .glyphicon:hover {
+      .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle:hover {
         color: #1111ff; }
+    .list-bills #daxacnhan tbody tr td.sanpham .product_success {
+      position: relative;
+      margin-bottom: 2px;
+      cursor: pointer;
+      color: #f2f2f2;
+      font-size: 0.9em;
+      background: #8989ff;
+      border-radius: 5px;
+      padding: 2px; }
+      .list-bills #daxacnhan tbody tr td.sanpham .product_success:hover {
+        background: #3a3aff; }
+      .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon-remove {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.7em; }
+        .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon-remove:hover {
+          color: #bfbfbf; }
 
 .list-bills #daxacnhan thead tr th {
   color: #003f7f;

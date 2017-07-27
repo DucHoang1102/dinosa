@@ -1,4 +1,5 @@
 <?php
+use App\functions\ConverseNameProduct;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
+	return ConverseNameProduct::get('50000');
 });
 
 Route::group(['prefix'=>'orders'], function(){
@@ -22,7 +24,9 @@ Route::group(['prefix'=>'orders'], function(){
 
 	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\OrderController@postAddOrdersAjax']);
 
-	Route::post('addproduct', ['as' => 'addproductOrders', 'uses' => 'Orders\OrderController@postAddProductsAjax']);
+	Route::post('addproduct', ['as' => 'addProductOrders', 'uses' => 'Orders\OrderController@postAddProductsAjax']);
+
+	Route::post('deleteproduct', ['as' => 'deleteProductOrders', 'uses' => 'Orders\OrderController@postDeleteProductsAjax']);
 
 	Route::get('view', ['as' => 'viewOrders', 'uses' => 'Orders\OrderController@getView']);
 

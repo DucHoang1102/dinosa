@@ -17,23 +17,23 @@
 	<div class="table-tbody">
 		<table class="table">
 			<tbody>
-				@foreach ($orders_donMoi as $order)
+				@foreach ($orders_donMoi as $stt => $order)
 				<tr>
 					<input type="hidden" name="_id_order" value="{{ $order->id }}"/>
 					<input type="hidden" name="_id_customer" value="{{ $order->id_customers }}"/>
-					<td class="stt"></td>
+					<td class="stt">{{ $stt + 1 }}.</td>
 					<td class="hoten"><input type="text" name="name" value="{{ $order->name }}" maxlength="35" autocomplete="off"></td>
-					<td class="phone"><input type="text" name="phone" value="{{ $order->name }}" maxlength="11" autocomplete="off"></td>
-					<td class="diachi address"><input type="text" name="address" value="${address}" maxlength="99" autocomplete="off"></td>
+					<td class="phone"><input type="text" name="phone" value="{{ $order->phone }}" maxlength="11" autocomplete="off"></td>
+					<td class="diachi address"><input type="text" name="address" value="{{ $order->address }}" maxlength="99" autocomplete="off"></td>
 
 					<td class="sanpham">
 					@foreach ($order->products as $product)
-						<input type="text" id="{{ $product->id }}" name="product" value="{{ $product->name }}" placeholder="" autocomplete="off">
+						<div class="product_success" id="{{ $product->id }}">{{ $product->name }}<span class="glyphicon glyphicon-remove"></span></div>
 					@endforeach
 					<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
 					</td>
 
-					<td class="tongtien moneys"><div class="label">{{ $order->total_money }} <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
+					<td class="tongtien moneys"><div class="label">{{ $order->total_money }} <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></td>
 					<td class='xacnhan functions'>
 					<button type="button" class="btn btn-success btn-sm disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Xác nhận</button>
 					<button type="button" class="btn btn-danger btn-sm cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Xóa</button>

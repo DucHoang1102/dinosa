@@ -28,30 +28,31 @@ var helper = {
 	},
 };
 
-function patternHTML (name="", phone="", address="", total_money ="0", products=[], _id_order="", _id_customer="") {
-		var productsHtml = "";
-		$.each(products, function(index, product) {
-			productsHtml = productsHtml + patternProduct(product["id"], product["name"]);
-		});
-
+function patternHTML () {
 		return `<tr>
-			<input type="hidden" name="_id_order" value="${_id_order}"/>
-			<input type="hidden" name="_id_customer" value="${_id_customer}"/>
+			<input type="hidden" name="_id_order" value=""/>
+			<input type="hidden" name="_id_customer" value=""/>
 			<td class="stt"></td>
-			<td class="hoten"><input type="text" name="name" value="${name}" maxlength="35" autocomplete="off"></td>
-			<td class="phone"><input type="text" name="phone" value="${phone}" maxlength="11" autocomplete="off"></td>
-			<td class="diachi address"><input type="text" name="address" value="${address}" maxlength="99" autocomplete="off"></td>
-			<td class="sanpham">${productsHtml}<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
-			<td class="tongtien moneys"><div class="label">${total_money} <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
+			<td class="hoten"><input type="text" name="name" value="" maxlength="35" autocomplete="off"></td>
+			<td class="phone"><input type="text" name="phone" value="" maxlength="11" autocomplete="off"></td>
+			<td class="diachi address"><input type="text" name="address" value="" maxlength="99" autocomplete="off"></td>
+			<td class="sanpham"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
+			<td class="tongtien moneys"><div class="label">0 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
 			<td class='xacnhan functions'>
 				<button type="button" class="btn btn-success btn-sm disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Xác nhận</button>
 				<button type="button" class="btn btn-danger btn-sm cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Xóa</button>
+				<span class="glyphicon glyphicon-info-sign"></span>
 			</td>
 		</tr>`;
 }
 
-function patternProduct (id="", name="") {
-	return `<input type="text" id="${id}" name="product" value="${name}" placeholder="" autocomplete="off">`;
+function patternProduct () {
+	return '<input type="text" id="" name="product" value="" placeholder="" autocomplete="off">';
+}
+
+function patternProductSuccess(id="", name="") {
+	var name = name.toUpperCase();
+	return `<div class="product_success" id="${id}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
 // Thêm đơn hàng
@@ -73,7 +74,7 @@ function patternProduct (id="", name="") {
 
 // Tạo thêm sản phẩm
 (function createProductsNode () {
-	$('#donmoi tbody').on('click', '.sanpham .glyphicon', function () {
+	$('#donmoi tbody').on('click', '.sanpham .glyphicon-ok-circle', function () {
 		$(this).before(patternProduct());
 		return false;
 	});
@@ -103,36 +104,6 @@ function Ajax (datas) {
 		flagAjax = true;
 	});
 }
-/*
-// Hiển thị mặc định đơn mới
-(function viewDefaultAjax () {
-	var datas = {
-		url      : 'orders/view',
-		type     : 'get',
-		datas    : '',
-		dataType : 'json',
-		success  : function (orders) {
-			if (orders != null) {
-				// Cái này trả về hết dữ liệu dưới đây chỉ có một số.
-				$.each(orders, function(index, order) {
-					var _id_order    = order.id           ? order.id           : '';
-					var _id_customer = order.id_customers ? order.id_customers : '';
-					var name         = order.name         ? order.name         : '';
-					var phone        = order.phone        ? order.phone        : '';
-					var address      = order.address      ? order.address      : '';
-					var total_money  = order.total_money  ? order.total_money  : '0';
-					var products     = order.products.length > 0 ? order.products : [{'id':'', 'name':'', 'price':'0'}];
-
-					$('#donmoi tbody').append(patternHTML(name, phone, address, total_money, products, _id_order, _id_customer));
-				});
-				helper.scrollTop();
-				helper.incrementsOK();
-			}
-		}
-	}
-	$('#donmoi tbody').html('');
-	Ajax(datas);
-})();*/
 
 // Thêm đơn hàng vào cơ sở dữ liệu
 (function addOrdersAjax () {
@@ -166,6 +137,9 @@ function Ajax (datas) {
 			return false;
 		}
 
+		// Validate dấu cách
+		if ($($this).val().trim() == "") return false;
+
 		if (timeout) clearTimeout(timeout);
 
 		timeout = setTimeout(function() {
@@ -189,13 +163,15 @@ function Ajax (datas) {
 			data    : {
 				_id_order    : $($this).parent().parent().find('input[name=_id_order]').val(),
 				_id_customer : $($this).parent().parent().find('input[name=_id_customer]').val(),
+				_id_product  : $($this).attr('id'),
 				product      : $($this).val(),
 			},
 			success : function (result) {
-				if (result.hasOwnProperty('id_product')) {
-					$($this).attr('id', result.id_product);
-					$($this).parent().parent().find('.money .label').text(result.total_money);
-					return result;
+				if (result.hasOwnProperty('id_product') && result.hasOwnProperty('total_money')) {
+					$('.sanpham').find($this)
+								 .after(patternProductSuccess(result.id_product, datas.data.product))
+								 .remove();
+					$('#donmoi .table-tbody .moneys .label').html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -223,11 +199,45 @@ function Ajax (datas) {
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 2000);
+		}, 500);
 
 		return false;
 	});
 })(); 
+
+// Xóa sản phẩm khỏi đơn hàng
+(function DeleteProductAjax () {
+	$('#donmoi .table-tbody tbody').on('click', '.sanpham .glyphicon-remove', function () {
+		var $this = this;
+
+		var datas = {
+			url     : 'orders/deleteproduct',
+			type    : 'post',
+			dataType: 'json',
+			data    : {
+				_id_order   : $($this).parent().parent().parent().find('input[name=_id_order]').val(),
+				_id_product : $($this).parent().attr('id'),
+			},
+			success : function (result) {
+				if (result.hasOwnProperty('total_money')) {
+					$('#donmoi .table-tbody .moneys .label').html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+				}
+			},
+			error: function (xhr, status, errorThrown) {
+		        //The message added to Response object in Controller can be retrieved as following.
+		        $('html').html(xhr.responseText);
+		    }
+		};
+
+		$($this).parent().hide('300', function() {
+			$(this).remove();
+			Ajax(datas);
+		});
+
+		return false;
+	});
+})();
+
 // Auto Complete
 (function autoCompleteAjax () {
 	$('#donmoi tbody').on('keyup', 'input[name=phone]', function (){
