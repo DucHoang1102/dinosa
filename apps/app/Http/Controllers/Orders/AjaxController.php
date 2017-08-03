@@ -161,6 +161,8 @@ class AjaxController extends Controller
         $file_path       = $path . $file_name;
         $orders_daInXong = OrdersHandling::get(3);
 
+        if (count($orders_daInXong) < 1) return ["status" => 0];
+        
         // Tạo file excel đơn hàng
         $excel      = new Excel();
         $excel->setDatas($orders_daInXong)->saveFile($path, $file_name );
