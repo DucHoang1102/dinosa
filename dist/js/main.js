@@ -318,7 +318,7 @@ function Ajax (datas) {
 	$('#donmoi tbody').on('keyup', 'input[name=product]', function () {
 		var $this = this;
 		var datas = {
-			url     : 'orders/addproduct',
+			url     : 'orders/add-product',
 			type    : 'post',
 			dataType: 'json',
 			data    : {
@@ -375,7 +375,7 @@ function Ajax (datas) {
 		var $this = this;
 
 		var datas = {
-			url     : 'orders/deleteproduct',
+			url     : 'orders/delete-product',
 			type    : 'post',
 			dataType: 'json',
 			data    : {
@@ -447,7 +447,7 @@ function Ajax (datas) {
 				.html('<img src="upload/loads/load_1.gif" width="20px"> Đang gửi...');
 
 		var datas = {
-			url      : 'orders/sendmail',
+			url      : 'orders/send-mail',
 			type     : 'get',
 			data     : {},
 			dataType : 'json',
