@@ -70,4 +70,20 @@ class OrderController extends Controller
             return view('bill.print.products', compact('orders_daXacNhan'));
         }
     }
+
+    function getDeletePermanentlyOrders($id_customer, $id_order)
+    {
+        if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
+            return redirect(action('Orders\OrderController@index'));
+            exit();
+        }
+
+        $result = DB::table('orders')->where([
+            ['orders.id_customers', $id_customer],
+            ['orders.id'          , $id_order]
+        ])->delete();
+
+        return redirect(action('Orders\OrderController@index'));
+        exit();
+    }
 }

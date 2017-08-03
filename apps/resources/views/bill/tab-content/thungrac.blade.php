@@ -26,7 +26,7 @@
 									<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
 								</button>
 							</a>
-							<a href="orders/move/status=9+id={{ $order->id }}+no_update=true">
+							<a class="delete" href="orders/delete-permanently/{{ $order->id_customers }}/{{ $order->id }}">
 								<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa vĩnh viễn">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								</button>

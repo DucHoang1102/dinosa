@@ -32,6 +32,8 @@ Route::group(['prefix'=>'orders'], function(){
 
 	Route::post('deleteproduct', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
 
+	Route::get('delete-permanently/{id_customer}/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanentlyOrders']);
+
 	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\AjaxController@postAutoCompleteAjax']);
 
 	// Chuyển đơn qua lại giữa các trường;
