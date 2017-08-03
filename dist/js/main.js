@@ -22,7 +22,7 @@ var helper = {
 		tbody.scrollTop(scrollTop);
 	},
 	validateProduct: function (string) {
-		var re = /^(A|D)([0-9]*)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)(\s*)\((S|M|L|XL|XXL)\)$/;
+		var re = /^(A|D)([0-9]*)([A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)(\s*)\((S|M|L|XL|XXL)\)$/;
 		var string = string.toUpperCase().trim();
 		return re.test(string);
 	},
@@ -39,9 +39,18 @@ function patternHTML () {
 			<td class="sanpham"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
 			<td class="tongtien moneys"><div class="label">0 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
 			<td class='xacnhan functions'>
-				<button type="button" class="btn btn-success btn-sm disabled"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Xác nhận</button>
-				<button type="button" class="btn btn-danger btn-sm cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Xóa</button>
-				<span class="glyphicon glyphicon-info-sign"></span>
+				<div class="menu_funs">
+					<a class="move-right" href="">
+						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xác nhận">
+							<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+						</button>
+					</a>
+					<a class="delete" href="">
+						<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</a>
+				</div>
 			</td>
 		</tr>`;
 }
@@ -50,10 +59,17 @@ function patternProduct () {
 	return '<input type="text" id="" name="product" value="" placeholder="" autocomplete="off">';
 }
 
-function patternProductSuccess(id="", name="") {
+function patternProductSuccess(id="", name="", url_image="") {
 	var name = name.toUpperCase();
-	return `<div class="product_success" id="${id}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
+	return `<div class="product_success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
+
+/*
+ *
+ * CÁC NÚT CHỨC NĂNG FRONT END
+ *
+ *
+ **/
 
 // Thêm đơn hàng
 (function createOrdersNode () {
@@ -75,7 +91,7 @@ function patternProductSuccess(id="", name="") {
 // Tạo thêm sản phẩm
 (function createProductsNode () {
 	$('#donmoi tbody').on('click', '.sanpham .glyphicon-ok-circle', function () {
-		$(this).before(patternProduct());
+		$(patternProduct()).insertBefore(this).focus();
 		return false;
 	});
 })();
@@ -90,6 +106,148 @@ function patternProductSuccess(id="", name="") {
 		return false;
 	});
 })();
+
+// Move right chuyển tab 
+(function moveRight() {
+	$('body').on('click', '.menu_funs .move-right', function(){
+		var $this = this;
+		var lenght = $(window).width() + 50 + 'px';
+		$($this).parent().parent().parent()
+				.css({
+					transition: "all 0.5s",
+					transform: `translateX(${lenght})`,
+				});
+		setTimeout(function(){
+			$($this).parent().parent().parent().remove()
+		},550);
+
+	});
+})();
+
+// Move left chuyển tab 
+(function moveLeft() {
+	$('body').on('click', '.menu_funs .move-left', function(){
+		var $this = this;
+		var lenght = $(window).width() + 50 + 'px';
+		$($this).parent().parent().parent() 
+				.css({
+					transition: "all 0.5s",
+					transform: `translateX(-${lenght})`,
+				});
+		setTimeout(function(){
+			$($this).parent().parent().parent().remove()
+		},550);
+
+	});
+})();
+
+// Delete xóa tab vào thùng rác 
+(function moveDelete() {
+	$('body').on('click', '.menu_funs .delete', function(){
+		var $this = this;
+		var height = $(window).height() + 10 + 'px';
+		var this_order = $($this).parent().parent().parent();
+		this_order
+			.css({
+				transition: "all 0.6s",
+				transform: `translateY(-${height})`,
+			});
+		setTimeout(function(){
+			this_order.remove()
+		},650);
+	});
+})();
+
+// Bấm ảnh sản phẩm view ảnh
+(function viewImageProduct() {
+	$('.table-tbody').on('mousedown', '.sanpham .product_success', function (event) {
+		if (!($(event.target).attr('class') == "glyphicon glyphicon-remove")){
+
+			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
+
+			$(`<div class="img_product"><img src="${url_image}" width="300"></div>`)
+				.appendTo('body')
+				.css({
+					position : "absolute",
+					top      : "50%",
+					left     : "50%",
+					transform: "translate(-50%, -50%)",
+					border   : "3px solid #ba1010",
+				});
+
+			return false;
+		}
+	});
+
+	$('html').on('mouseup', 'body', function(){
+		$('.img_product').remove();
+		return false;
+	});
+})();
+
+// Bấm nút in một sản phẩm
+(function printProduct() {
+	$('.table-tbody').on('mousedown', '.sanpham .product_success .glyphicon-print', function(){
+		var id_order   = $(this).parent().parent().parent().find('input[name=_id_order]').val();
+		var id_product = $(this).parent().attr('id');
+
+		var url_image = 'orders/print/products/' + id_order + '/' + id_product;
+		window.open(url_image, "windowChild", 'width=1100, height=600').print();
+
+		return false;
+	});
+})();
+
+// Bấm nút in nhiều sản phẩm
+(function printProducts() {
+	$('.funs-xacnhan .print-product').click(function(){
+		window.open("orders/print/products/all/all", "windowChild", 'width=1100, height=600').print()
+		return false;
+	});
+})();
+
+// Nút in nhãn đơn hàng
+(function printOrders() {
+	$('.print-orders').click(function () {
+		window.open('orders/print/orders', "windowChild", 'width=1100, height=600').print();
+		return false;
+	}); 
+})();
+
+// Nhớ tab khi load lại trang
+(function saveTabReload () {
+	if(typeof(Storage) !== 'undefined'){
+		var tabElement        = $('.tab-bills .nav-tabs li');
+		var tabContentElement = $('.list-bills .tab-content .tab-pane');
+
+		tabElement.removeClass('active');
+		tabContentElement.removeClass('active');
+
+		tabElement.click(function () {
+			sessionStorage.tabNow = $(this).find('a').attr('href');
+		});
+
+		var tabNow = sessionStorage.tabNow ? sessionStorage.tabNow : '#donmoi';
+
+		tabElement.find('a[href="' + tabNow + '"]').parent().addClass('active');
+		tabContentElement.filter(tabNow).addClass('active');
+	}
+})();
+
+// Title các nút chức năng
+(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})();
+
+
+/*
+ *
+ * AJAX
+ * 
+ *
+ * Thêm, sửa đơn hàng | Thêm, sửa, xóa sản phẩm | Autocomplete
+ *
+ **/
 
 // Ajax xử lý chung
 function Ajax (datas) {
@@ -123,6 +281,9 @@ function Ajax (datas) {
 				if (result._id_order && result._id_customer) {
 					$($this).parent().parent().find('input[name=_id_order]').val(result._id_order);
 					$($this).parent().parent().find('input[name=_id_customer]').val(result._id_customer);
+
+					$($this).parent().parent().find('.menu_funs .move-right').attr('href', 'orders/move/status=2+id=' + result._id_order + '+no_update=false');
+					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -144,7 +305,7 @@ function Ajax (datas) {
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 2000);
+		}, 500);
 
 		return false;
 	});
@@ -168,10 +329,13 @@ function Ajax (datas) {
 			},
 			success : function (result) {
 				if (result.hasOwnProperty('id_product') && result.hasOwnProperty('total_money')) {
+
+					$($this).parent().parent().find('.moneys .label')
+							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+
 					$('.sanpham').find($this)
-								 .after(patternProductSuccess(result.id_product, datas.data.product))
-								 .remove();
-					$('#donmoi .table-tbody .moneys .label').html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+								 .after(patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3))
+								 .remove(); // Remove đã xóa $(this) nên phải ghi tổng tiền ở phía trên
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -220,7 +384,10 @@ function Ajax (datas) {
 			},
 			success : function (result) {
 				if (result.hasOwnProperty('total_money')) {
-					$('#donmoi .table-tbody .moneys .label').html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+					$($this).parent().parent().parent()
+							.find('.moneys .label')
+							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+					$($this).parent().remove();
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -230,7 +397,6 @@ function Ajax (datas) {
 		};
 
 		$($this).parent().hide('300', function() {
-			$(this).remove();
 			Ajax(datas);
 		});
 
@@ -268,25 +434,49 @@ function Ajax (datas) {
 	});
 })();
 
-// Nhớ tab khi load lại trang
-(function saveTabReload () {
-	if(typeof(Storage) !== 'undefined'){
-		var tabElement        = $('.tab-bills .nav-tabs li');
-		var tabContentElement = $('.list-bills .tab-content .tab-pane');
+// Nút gửi Email VnPost
+(function sendMail() {
+	$('.funs-dainxong .send-mail').click(function () {
+		var $this = this;
 
-		tabElement.removeClass('active');
-		tabContentElement.removeClass('active');
+		// Button
+		$($this).find('button')
+				.css({
+					background: "#000000",
+				})
+				.html('<img src="upload/loads/load_1.gif" width="20px"> Đang gửi...');
 
-		tabElement.click(function () {
-			sessionStorage.tabNow = $(this).find('a').attr('href');
-		});
+		var datas = {
+			url      : 'orders/sendmail',
+			type     : 'get',
+			data     : {},
+			dataType : 'json',
+			success  : function(result) {
+				if (result.hasOwnProperty('status')) {
+					if (result.status == 1) {
+						console.log(result);
+						$($this).find('button')
+								.css({
+									background: "#009fcc",
+								})
+								.html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Gửi thành công')
+					}
+					else {
+						$($this).find('button')
+								.css({
+									background: "#C9302C",
+								})
+								.html('<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Gửi thất bại');
+					}
+				}
+				else alert('Lỗi send Mail Ajax');
+			}
+		};
 
-		var tabNow = sessionStorage.tabNow ? sessionStorage.tabNow : '#donmoi';
+		Ajax(datas);
 
-		tabElement.find('a[href="' + tabNow + '"]').parent().addClass('active');
-		tabContentElement.filter(tabNow).addClass('active');
-	}
+		return false;
+	});
 })();
-
 
 })(jQuery);

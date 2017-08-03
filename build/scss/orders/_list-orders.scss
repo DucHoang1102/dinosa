@@ -4,7 +4,7 @@ $color-list-body : #000000;
 $margin-icon     : 4px;
 $font-size-head  : 1.2em;
 $font-size-body  : 1.25em;
-$align-body      : 1.6em;
+$align-body      : 1.1em;
 $color-produce   : #0000a0;
 $color-backgorund: #fcfcfc;
 
@@ -51,6 +51,16 @@ $color-backgorund: #fcfcfc;
 
 @mixin tbody_tr_td($border, $margin, $size-icon)
 {
+	.table-tbody {
+		margin-top: -20px;
+		height: 500px;
+		overflow-y: auto;
+		padding-top: 18px;
+		background: $color-backgorund;
+	}
+	.table-thead {
+		
+	}
 	tbody tr td {
 		border: $border;
 		font-size: $font-size-body;
@@ -71,9 +81,8 @@ $color-backgorund: #fcfcfc;
 					&:hover{
 						color: #1111ff;}}
 			}};
-		&.functions .glyphicon {
-			margin-right: $margin;
-			font-size: $size-icon;}
+		&.functions {
+		}
 		&.sanpham {
 			color: $color-produce;
 			.glyphicon-ok-circle {
@@ -93,6 +102,11 @@ $color-backgorund: #fcfcfc;
 				background: #8989ff;
 				border-radius: 5px;
 				padding: 2px;
+				.glyphicon {
+					margin: 0 3px;
+					&:hover {
+						color: #000000;}
+				}
 				&:hover {
 					background: #3a3aff;
 				}
@@ -101,7 +115,7 @@ $color-backgorund: #fcfcfc;
 					right: 3px;
 					top: 50%;
 					transform: translateY(-50%);
-					font-size: 0.7em;
+					font-size: 1em;
 					&:hover {
 						color: #bfbfbf;
 					}
@@ -117,7 +131,18 @@ $color-backgorund: #fcfcfc;
 		color: $color-list-head;
 		font-size: $font-size-head;
 		span {
-			margin-right: $margin-icon;}
+			margin-right: $margin-icon;
+			&.glyphicon-info-sign {
+				position: relative;
+				display: inline-block;
+				right: -90%;
+				font-size: 1.2em;
+				color: #4169E1;
+				&:hover {
+					color: #6988e5;
+				}
+			}
+		}
 	}
 }
 
@@ -126,8 +151,8 @@ body {overflow:hidden;} // Xẽ xóa sau
 @include scrollbar();
 
 .list-bills {
-	#donmoi {
-		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:11%, $tongtien:9%, $xacnhan:17%);
+	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		@include width_head($stt:3%, $hoten:17%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 		input {
@@ -159,40 +184,43 @@ body {overflow:hidden;} // Xẽ xóa sau
 				font-size: 2.8em;
 				opacity: 1;}
 		}
-		.table-tbody {
-			margin-top: -20px;
-			height: 500px;
-			overflow-y: auto;
-			padding-top: 18px;
-			background: $color-backgorund;
-		}
-		.table-thead {
-			
+	}
+	
+	#daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		tbody tr td {
+			border-bottom: 1px solid #e0e0e0;
 		}
 	}
-
 	#daxacnhan {
-		@include width_head($stt:3%, $hoten:16%, $phone:12%, $diachi:32%, $sanpham:12%, $tongtien:10%, $xacnhan:15%);
-		@include tbody_tr_td($border:'', $margin:none, $size-icon:1.5em);
-		@include thead_tr_th();
-	}
-	#dangin {
-
+		.funs-xacnhan {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			.glyphicon-print {
+				font-size: 2em;
+			}
+			&:hover  button{
+				background: #000000;
+			}
+		}
 	}
 	#dainxong {
-
+		.funs-dainxong {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+		}
 	}
-	#dangchuyen {
 
-	}
-	#chuyenthanhcong {
-
-	}
-	#chuyenthatbai {
-
-	}
-	#thungrac {
-
+	#dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		.date {
+			font-weight: bold;
+			font-style: italic;
+			padding: 5px 10px;
+			font-size: 1.3em;
+			margin-bottom: 20px;
+			background: #efefef;
+		}
 	}
 
 }

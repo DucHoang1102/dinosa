@@ -1,0 +1,18 @@
+.menu_funs {
+	width: 100%;
+	button {
+		position: relative;
+		display: inline-block;
+		top: 0px;
+		margin: 2px;
+		padding: 4px 7px;
+		transition: all 0.2s;
+		text-align: center;
+		&:hover {
+			top: -5px;
+		}
+	}
+	.glyphicon {
+		font-size: 1.2em;
+	}
+}

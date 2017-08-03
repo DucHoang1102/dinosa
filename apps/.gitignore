@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/d-p-1234/
+/public/mail-orders/
 /storage/*.key
 /vendor
 /.idea

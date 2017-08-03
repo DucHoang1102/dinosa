@@ -27,7 +27,7 @@ class ParserProduct
 
     public $name_category_product = "";
 
-    public $name_image_print      = "";
+    public $id_image_print      = "";
 
     public $name_embryo_tshirt    = "";
 
@@ -41,11 +41,11 @@ class ParserProduct
     {
     	$subject = strtoupper(trim($subject));
 
-		$re = '/^((A|D)[0-9]*)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)\((S|M|L|XL|XXL)\)$/';
+		$re = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)\((S|M|L|XL|XXL)\)$/';
 
 		if (preg_match($re, $subject, $matches)) {
 			$this->name_category_product = $matches[2];
-			$this->name_image_print      = $matches[1];
+			$this->id_image_print        = $matches[1];
 			$this->name_embryo_tshirt    = $matches[3];
 			$this->name                  = $matches[0];
 			$this->size                  = $matches[4];
@@ -70,86 +70,11 @@ class ParserProduct
 
 }
 
-class SumTotalMoney
+class TotalMoney
 {
-    // Cộng tổng tiền
-    public static function get($id_order, $money_product)
+    // Convert tiền dạng 100,000
+    public static function convert ($name)
     {
-        $total_money = DB::table('orders')
-                           ->select('total_money')
-                           ->where('id',$id_order)
-                           ->first();
-
-        $total_money = $total_money->total_money + $money_product;
-
-        $check = DB::table('orders')
-                ->where('id', $id_order)
-                ->update([
-                    'total_money' => $total_money
-                ]);
-
-        if ($check == 1) 
-        {
-            return ConverseTotalMoney::get($total_money);
-        }
-        return 0;
-    }
-}
-
-class SubTotalMoney
-{
-    // Trừ tổng tiền
-    public static function get($id_order, $id_product)
-    {
-        if (!empty($id_order) && !empty($id_product)) {
-
-            // Lấy tổng tiền hiện tại
-            $total_money_old = DB::table('orders')
-                                    ->select('total_money')
-                                    ->where('id',$id_order)
-                                    ->first();
-
-            // Lấy giá tiền sản phẩm cần trừ
-            $price_product = DB::table('products_of_orders')
-                                    ->select('price')
-                                    ->where([
-                                        ['products_of_orders.id_orders', $id_order],
-                                        ['products_of_orders.id', $id_product]
-                                    ])
-                                    ->first();
-
-            // Xóa xản phẩm
-            $check_1 = DB::table('products_of_orders')
-                            ->select('price')
-                            ->where([
-                                ['products_of_orders.id_orders', $id_order],
-                                ['products_of_orders.id', $id_product]
-                            ])
-                            ->delete();
-
-
-            // Cập nhật lại tổng tiền và trả về tổng tiền
-            $total_money = $total_money_old->total_money - $price_product->price;
-
-            $check_2 = DB::table('orders')
-                         ->where('id', $id_order)
-                         ->update([
-                             'total_money' => $total_money
-                         ]);
-
-            if ($check_1 == 1 && $check_2 == 1) 
-            {
-                return ConverseTotalMoney::get($total_money);
-            }
-            return 0;
-        }
-    }
-}
-
-class ConverseTotalMoney
-{
-    public static function get($name) {
-
         $result = "";
         $name   = strrev($name);
         $div    = 0;
@@ -166,4 +91,59 @@ class ConverseTotalMoney
         }
         return $result;
     }
+
+    // Cộng tổng tiền
+    public static function get($id_order="")
+    {
+        $total_money = 0;
+
+        $order    = DB::table('orders')
+                    ->select('surcharge_money', 'ship_customer_money')
+                    ->where('id', $id_order)
+                    ->first();
+
+        $products = DB::table('products_of_orders')
+                    ->select('products_of_orders.price')
+                    ->where([
+                        ['products_of_orders.id_orders', $id_order]
+                    ])
+                    ->get();
+
+        $total_money = $order->surcharge_money + $order->ship_customer_money;
+
+        foreach ($products as $product) {
+            $total_money = $total_money + $product->price;
+        }
+
+        return self::convert($total_money);
+    }
 }
+
+class DateHandling
+{
+    public static function convert ($date_sql="") 
+    {
+        //$date_sql = "2017-07-26 23:58:05";
+
+        $date_sql = date('Y-m-d', strtoTime($date_sql)); // Chuyển từ 2017-07-27 14:58:05 => 2017-07-27
+
+        $today_number = strtoTime(date('Y-m-d')); // Chuyển từ Y-m-d => ra số
+
+        $date_sql_number = strtoTime($date_sql); // Chuyển ra Y-m-d => số
+
+        // Mỗi ngày cách nhau: 86400s;
+        $ratio = ($today_number-$date_sql_number)/86400;
+
+        if ($ratio == 0) $time_string = "Hôm nay";
+        
+        else if ($ratio == 1) $time_string = "Hôm qua";
+
+        else if ($ratio > 1) $time_string = $ratio . ' ngày trước';
+
+        // Trả về dạng: Hôm nay (28-07-2017)
+        return $time_string . ' (' . date('d-m-Y', strtoTime($date_sql)) . ')';$date_sql;
+    }
+
+}
+//1501174800
+//1501088400

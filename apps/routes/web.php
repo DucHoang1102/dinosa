@@ -1,5 +1,5 @@
 <?php
-use App\functions\ConverseNameProduct;
+use App\functions\OrdersHandling;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,20 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-	return ConverseNameProduct::get('50000');
-});
-
 Route::group(['prefix'=>'orders'], function(){
+
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
 
-	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\OrderController@postAddOrdersAjax']);
+	Route::get('print/orders', ['as' => 'printOrders', 'uses' => 'Orders\OrderController@getPrintOrders']);
 
-	Route::post('addproduct', ['as' => 'addProductOrders', 'uses' => 'Orders\OrderController@postAddProductsAjax']);
+	Route::get('print/products/{id_order}/{id_product}', ['as' => 'printProducts', 'uses' => 'Orders\OrderController@getPrintProducts']);
+	Route::get('sendmail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']); // Test
 
-	Route::post('deleteproduct', ['as' => 'deleteProductOrders', 'uses' => 'Orders\OrderController@postDeleteProductsAjax']);
+	Route::get('sendmail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']);
 
-	Route::get('view', ['as' => 'viewOrders', 'uses' => 'Orders\OrderController@getView']);
+	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\AjaxController@postAddOrdersAjax']);
 
-	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\OrderController@postAutoCompleteAjax']);
+	Route::post('addproduct', ['as' => 'addProductOrders', 'uses' => 'Orders\AjaxController@postAddProductsAjax']);
+
+	Route::post('deleteproduct', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
+
+	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\AjaxController@postAutoCompleteAjax']);
+
+	// Chuyển đơn qua lại giữa các trường;
+	Route::get('move/status={status}+id={id}+no_update={no_update}', ['as' => 'moveOrders', 'uses' => 'Orders\OrderController@getMove']);
 });

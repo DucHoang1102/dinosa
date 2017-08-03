@@ -9,157 +9,65 @@ use App\functions\orders\thuxem;
 use View;
 use DB;
 use App\functions\OrdersHandling;
-use App\functions\RandomId;
-use App\functions\ParserProduct;
-use App\functions\SumTotalMoney;
-use App\functions\SubTotalMoney;
-use App\functions\ConverseTotalMoney;
 
 class OrderController extends Controller
 {
+    function __construct() {
+        View::share([
+            'count_donMoi'          => OrdersHandling::count(1),
+            'count_daXacNhan'       => OrdersHandling::count(2),
+            'count_daInXong'        => OrdersHandling::count(3),
+            'count_dangChuyen'      => OrdersHandling::count(4),
+            'count_chuyenThanhCong' => OrdersHandling::count(5,6),
+            'count_chuyenThatBai'   => OrdersHandling::count(7,8),
+            'count_thungRac'        => OrdersHandling::count(9),
+            //----------------------------------------------------------
+            'orders_donMoi'          => OrdersHandling::get(1), 
+            'orders_daXacNhan'       => OrdersHandling::get(2),
+            'orders_daInXong'        => OrdersHandling::get(3),
+            'orders_dangChuyen'      => OrdersHandling::getByGroupDate(4),
+            'orders_chuyenThanhCong' => OrdersHandling::getByGroupDate(5,6),
+            'orders_chuyenThatBai'   => OrdersHandling::getByGroupDate(7,8),
+            'orders_thungRac'        => OrdersHandling::get(9),
+        ]);
+    }
     function index () {
-    	View::share([
-    		'orders_donMoi'                       => OrdersHandling::get(1), 
-    		'orders_daXacNhan'                    => OrdersHandling::get(2),
-    		'orders_daInXong'                     => OrdersHandling::get(3),
-    		'orders_dangChuyen'                   => OrdersHandling::get(4),
-    		'orders_chuyenThanhCongChuaThanhToan' => OrdersHandling::get(5),
-    		'orders_chuyenThanhCongDaThanhToan'   => OrdersHandling::get(6),
-    		'orders_chuyenThatBaiChuaTraHang'     => OrdersHandling::get(7),
-    		'orders_chuyenThatBaiDaTraHang'       => OrdersHandling::get(8),
-    		'orders_thungRac'                     => OrdersHandling::get(9),
-    	]);
     	return view('bill.base');
     }
 
-    function getView()
-    {
-        $orders = OrdersHandling::get(1);
-        return $orders;
-    }
+    function getMove ($status="", $id="", $no_update = false) {
 
-    function postAddOrdersAjax (Request $request) {
-        $_id_order    = isset($request->_id_order) ? $request->_id_order : "";
-        $_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
-        $colum        = isset($request->colum)     ? $request->colum     : "";
-        $value        = isset($request->value)     ? $request->value     : "";
-
-        $colum_customers = ['name', 'phone', 'address'];
-
-        if (! in_array($colum, $colum_customers)) return [];
-
-        // Trường hợp thêm mới đơn hàng
-       if (empty($_id_order) || empty($_id_customer)) {
-            // Colums Customers
-            $colum_customers = ['name', 'phone', 'address'];
-
-            $id_customer = RandomId::get("CT", 10);
-            $id_order    = RandomId::get("DS", 10);
-
-            $check_1 = DB::table('customers')->insert([
-                'id'   => $id_customer,
-                $colum => $value,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
-            ]);
-
-            // Colums Orders
-            $check_2 = DB::table('orders')->insert([
-                'id'                  => $id_order,
-                'id_post'             => "",
-                'id_customers'        => $id_customer,
-                'id_orders_status'    => 1,
-                'surcharge_money'     => 0,
-                'ship_customer_money' => 0,
-                'total_money'         => 0,
-                'created_at'          => \Carbon\Carbon::now(),
-                'updated_at'          => \Carbon\Carbon::now()
-            ]);
-            if ($check_1 == true and $check_2 == true) {
-                return ['_id_order'=>$id_order, '_id_customer'=>$id_customer];
+        if (!empty($status) and !empty($id))
+        {
+            if ($no_update == true) {
+                $update = [
+                    'id_orders_status' => $status
+                ];
+            } else {
+                $update = [
+                    'id_orders_status' => $status,
+                    'updated_at' => \Carbon\Carbon::now()
+                ];
             }
-            else return [];
-       }
-       
-       // Trường hợp sửa
-       else 
-       {
-            DB::table('customers')
-                ->where('id', $_id_customer)
-                ->update([
-                    $colum => $value
-                ]);
-            return [];
-       }
-    }
 
-    function postAddProductsAjax (Request $request)
-    {
-        $_id_order   = isset($request->_id_order)   ? $request->_id_order   : "";
-        $_id_product = isset($request->_id_product) ? $request->_id_product : "";
-        $product     = isset($request->product)     ? $request->product     : "";
-
-        $product = new ParserProduct($product);
-
-        if (empty($_id_product)) {
-            // Tạo mới sản phẩm
-            $_id_product = RandomId::get("PO", 10);
-
-            $check = DB::table('products_of_orders')->insert([
-                'id'                    => $_id_product,
-                'id_orders'             => $_id_order,
-                'name_category_product' => $product->name_category_product,
-                'name_image_print'      => $product->name_image_print,
-                'name_embryo_tshirt'    => $product->name_embryo_tshirt,
-                'name'                  => $product->name,
-                'size'                  => $product->size,
-                'price'                 => $product->price,
-                'created_at'            => \Carbon\Carbon::now(),
-                'updated_at'            => \Carbon\Carbon::now()
-            ]);
-
-            if ($check == true) {
-                $total_money = SumTotalMoney::get($_id_order, $product->price);
-                return ['id_product' => $_id_product, 'total_money' => $total_money]; // Sửa lại sau
-            }
-            return [];
+            DB::table('orders')
+            ->where('orders.id', $id)
+            ->update($update);
         }
-        else return [];
+
+        return redirect(action('Orders\OrderController@index'));
     }
 
-    function postDeleteProductsAjax (Request $request)
-    {
-        $_id_order   = isset($request->_id_order)   ? $request->_id_order   : "";
-        $_id_product = isset($request->_id_product) ? $request->_id_product : "";
+    function getPrintOrders() {
+        return view('bill.print.orders');
+    }
 
-        if (!empty($_id_order) && !empty($_id_product)) {
+    function getPrintProducts($id_order="all", $id_product="all") {
+        if($id_order == "all" && $id_product="all") return view('bill.print.products');
 
-            $total_money = SubTotalMoney::get($_id_order, $_id_product);
-
-           return ['total_money' => $total_money];
-
+        else{
+            $orders_daXacNhan = OrdersHandling::get(2, 0, $id_order, $id_product);
+            return view('bill.print.products', compact('orders_daXacNhan'));
         }
-    }
-
-    function postAutoCompleteAjax (Request $request, $colum)
-    {
-    	if ($colum == 'phone') {
-    		$phoneInput = isset($request->phoneInput) ? $request->phoneInput : "";
-    		$phones = DB::table('customers')
-    					->select('phone', 'name')
-    					->where('phone', 'like', $phoneInput.'%')
-    					->offset(0)
-    					->limit(5)
-    					->get();
-    		return json_encode($phones);
-    	}
-
-    	else if ($colums == "product") {
-
-    	}
-
-   		else {
-   			
-   		}
     }
 }
