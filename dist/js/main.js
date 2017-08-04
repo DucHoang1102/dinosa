@@ -285,6 +285,13 @@ function Ajax (datas) {
 					$($this).parent().parent().find('.menu_funs .move-right').attr('href', 'orders/move/status=2+id=' + result._id_order + '+no_update=false');
 					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
+				if (result.customer_old) {
+					var c = result.customer_old;
+					$($this).parent().parent().find('input[name=name]').val(c.name);
+					$($this).parent().parent().find('input[name=phone]').val(c.phone);
+					$($this).parent().parent().find('input[name=address]').val(c.address);
+					console.log(result.customer_old);
+				}
 			},
 			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
@@ -415,21 +422,10 @@ function Ajax (datas) {
 				phoneInput : $($this).val()
 			},
 			success : function (result) {
-				var result = $.parseJSON(result);
-				var items = [];
-				$.each(result, function(index, result) {
-					if (result.name){
-						items[index] = result.phone + '(' + result.name + ')';
-					}
-				});
-				$($this).autocomplete({
-					source: items
-				});
-			},//error: function (xhr, status, errorThrown) {
-		        //The message added to Response object in Controller can be retrieved as following.
-		    //    $('html').html(xhr.responseText);
-		    //}
+				console.log(result);
+			},
 		};
+		
 		Ajax(datas);
 	});
 })();

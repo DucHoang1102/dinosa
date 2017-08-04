@@ -15,41 +15,22 @@ class OrderController extends BaseController
     	return view('orders.base');
     }
 
-    function getMove ($status="", $id="", $no_update = false) {
+    function getMove ($status='0', $id='000', $no_update = false) {
 
-        if (!empty($status) and !empty($id))
-        {
-            if ($no_update == true) {
-                $update = [
-                    'id_orders_status' => $status
-                ];
-            } else {
-                $update = [
-                    'id_orders_status' => $status,
-                    'updated_at' => \Carbon\Carbon::now()
-                ];
-            }
-
-            DB::table('orders')
-            ->where('orders.id', $id)
-            ->update($update);
-        }
+        OrdersHandling::move($status, $id, $no_update = false);
 
         return redirect(action('Orders\OrderController@index'));
         exit();
     }
 
-    function getDeletePermanently($id_customer, $id_order)
+    function getDeletePermanently($id_customer='000', $id_order='000')
     {
         if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
             return redirect(action('Orders\OrderController@index'));
             exit();
         }
 
-        $result = DB::table('orders')->where([
-            ['orders.id_customers', $id_customer],
-            ['orders.id'          , $id_order]
-        ])->delete();
+        OrdersHandling::deletePermanently($id_customer, $id_order);
 
         return redirect(action('Orders\OrderController@index'));
         exit();

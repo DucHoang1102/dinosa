@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('test', function () {
+	return var_dump(OrdersHandling::getByStatus(1,2));
+});
+
+
 Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
