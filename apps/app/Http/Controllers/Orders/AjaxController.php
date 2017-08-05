@@ -144,7 +144,9 @@ class AjaxController extends BaseController
                             ->offset(0)
                             ->limit(5)
                             ->get();
-            return json_encode($phones);
+
+            if (CustomerHandling::existsCustomer($phoneInput)) return [];
+            else return $phones;
         }
 
         else if ($colums == "product") {

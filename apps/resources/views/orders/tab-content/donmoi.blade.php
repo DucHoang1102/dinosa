@@ -11,7 +11,17 @@
 					<input type="hidden" name="_id_customer" value="{{ $order->id_customers }}"/>
 					<td class="stt">{{ $stt + 1 }}.</td>
 					<td class="hoten"><input type="text" name="name" value="{{ $order->name }}" maxlength="35" autocomplete="off"></td>
-					<td class="phone"><input type="text" name="phone" value="{{ $order->phone }}" maxlength="11" autocomplete="off"></td>
+					<td class="phone">
+						<input type="text" name="phone" value="{{ $order->phone }}" maxlength="11" autocomplete="off">
+						<!--Demo auto complete-->
+						<div class="autocomplete">
+							<!--<span class="atc-item">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<span class="atc-phone">0972982082</span>
+								<span class="atc-name">(Nguyễn Đức Hoàng)</span>
+							</span>-->
+						</div>
+					</td>
 					<td class="diachi address"><input type="text" name="address" value="{{ $order->address }}" maxlength="99" autocomplete="off"></td>
 
 					<td class="sanpham">
