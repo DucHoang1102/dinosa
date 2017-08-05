@@ -4,24 +4,116 @@
 		"selected_items":
 		[
 			[
+				"fade",
+				"fadeIn\t.fadeIn()"
+			],
+			[
+				"phone",
+				"phone_number"
+			],
+			[
+				"pho",
+				"phone_number"
+			],
+			[
+				"hi",
+				"hide\t.hide()"
+			],
+			[
+				"this",
+				"this_atc"
+			],
+			[
+				"thi",
+				"this_atc"
+			],
+			[
+				"c",
+				"customer"
+			],
+			[
+				"append",
+				"appendTo\t.appendTo()"
+			],
+			[
+				"pate",
+				"patternAutocomplete"
+			],
+			[
+				"paddi",
+				"padding-bottom"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"auto",
+				"autocomplete"
+			],
+			[
+				"id_",
+				"id_customers"
+			],
+			[
+				"id",
+				"id_customers"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"Order",
+				"OrdersHandling"
+			],
+			[
+				"_id",
+				"_id_customer"
+			],
+			[
+				"i",
+				"id_customer"
+			],
+			[
+				"or",
+				"orders_daXacNhan"
+			],
+			[
+				"nhận",
+				"nhận"
+			],
+			[
+				"hàng",
+				"hàng"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"e",
+				"email"
+			],
+			[
+				"fie",
+				"file_name"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"fi",
+				"file_title"
+			],
+			[
 				"produc",
 				"product"
 			],
 			[
 				"produ",
 				"product"
-			],
-			[
-				"id",
-				"id_product"
-			],
-			[
-				"id_",
-				"id_order"
-			],
-			[
-				"or",
-				"order_id"
 			],
 			[
 				"orders_d",
@@ -38,18 +130,6 @@
 			[
 				"isset",
 				"isset\tDefines an isset statement"
-			],
-			[
-				"for",
-				"foreach\tblade-foreach"
-			],
-			[
-				"pad",
-				"padding-left"
-			],
-			[
-				"paddi",
-				"padding-top"
 			],
 			[
 				"pa",
@@ -140,10 +220,6 @@
 				"transform"
 			],
 			[
-				"re",
-				"remove\t.remove()"
-			],
-			[
 				"Or",
 				"OrdersHandling"
 			],
@@ -166,10 +242,6 @@
 			[
 				"pri",
 				"private"
-			],
-			[
-				"_id",
-				"_id_order"
 			],
 			[
 				"che",
@@ -308,10 +380,6 @@
 				"scrollTop\t.scrollTop()"
 			],
 			[
-				"hi",
-				"hidden"
-			],
-			[
 				"di",
 				"display"
 			],
@@ -332,10 +400,6 @@
 				"table-fixed"
 			],
 			[
-				"c",
-				"colum"
-			],
-			[
 				"dt",
 				"datas"
 			],
@@ -346,10 +410,6 @@
 			[
 				"f",
 				"focus\t.focus()"
-			],
-			[
-				"this",
-				"this_element"
 			],
 			[
 				"parse",
@@ -454,113 +514,25 @@
 			[
 				"empty",
 				"empty"
-			],
-			[
-				"emp",
-				"empty"
-			],
-			[
-				"user",
-				"users"
-			],
-			[
-				"cla",
-				"class_methods"
-			],
-			[
-				"get_defined",
-				"get_defined_functions"
-			],
-			[
-				"fun",
-				"override_function"
-			],
-			[
-				"get_param",
-				"ps_get_parameter"
-			],
-			[
-				"func_get_ar",
-				"func_get_args"
-			],
-			[
-				"ar",
-				"articles"
-			],
-			[
-				"cat",
-				"category"
-			],
-			[
-				"ca",
-				"category"
-			],
-			[
-				"pu",
-				"public"
-			],
-			[
-				"caet",
-				"cateId"
-			],
-			[
-				"catg",
-				"categories"
-			],
-			[
-				"arra",
-				"array"
-			],
-			[
-				"encode",
-				"json_encode"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "- Các chức năng cần xây dựng:\n+ Hoàn thiện nốt các trường\n+ Validate trước khi thực hiện các chức năng: xóa,...\n+ Axjax load thêm tại các trường\n+ Xây dựng phần hiển thị chi tiết\n+ Chức năng in, in nhãn dán và gửi đơn vnpost\n+ Ajax autocomplete, kiểm tra KH và sản phẩm trước khi điền",
+			"contents": "- Các chức năng cần xây dựng:\n\n+ Auto Complete check khách hàng, sản phẩm tồn kho\n+ Validate dữ liệu độ dài chữ backend. Xem lại tiến trình ajax\n+ Dữ liệu trông ở những trường không có dữ liệu\n+ Xây dựng hiện thị phần chi tiết, thật chi tiết cả thông tin của bưu điện\n+ Chức năng search\n+ Đăng nhập đăng ký\n+ Trang báo cáo tất cả\n+ Chuẩn bị nhiều dữ liệu để xây dựng nốt các trường có hiển thị ngày",
 			"settings":
 			{
-				"buffer_size": 284,
+				"buffer_size": 398,
 				"line_ending": "Windows",
 				"name": "- Các chức năng cần xây dựng:"
 			}
 		},
 		{
-			"file": "apps/routes/web.php",
+			"file": "apps/app/functions/OrdersHandling.php",
 			"settings":
 			{
-				"buffer_size": 1564,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dist/js/main.js",
-			"settings":
-			{
-				"buffer_size": 12419,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Các loại ngày:\n- Ngày nhận đơn\n- Ngày in\n- Ngày giao hàng\n- Ngày thành công\n- Ngày thất bại\n\nDate::convert('') => Hôm nay(20/11/1993)",
-			"settings":
-			{
-				"buffer_size": 133,
-				"line_ending": "Windows",
-				"name": "Các loại ngày:"
-			}
-		},
-		{
-			"file": "apps/app/Http/Controllers/Orders/OrderController.php",
-			"settings":
-			{
-				"buffer_size": 2453,
-				"encoding": "UTF-8",
+				"buffer_size": 3178,
 				"line_ending": "Unix"
 			}
 		}
@@ -609,40 +581,69 @@
 		"/D/laravelproject/dinosa",
 		"/D/laravelproject/dinosa/apps",
 		"/D/laravelproject/dinosa/apps/app",
-		"/D/laravelproject/dinosa/apps/app/Http",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders"
+		"/D/laravelproject/dinosa/apps/resources",
+		"/D/laravelproject/dinosa/apps/resources/views",
+		"/D/laravelproject/dinosa/apps/resources/views/layouts",
+		"/D/laravelproject/dinosa/apps/resources/views/orders",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts",
+		"/D/laravelproject/dinosa/build",
+		"/D/laravelproject/dinosa/build/scss",
+		"/D/laravelproject/dinosa/build/scss/orders"
 	],
 	"file_history":
 	[
-		"/D/laravelproject/dinosa/dinosa.sublime-project",
-		"/C/Users/HP/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/D/laravelproject/dinosa/.git/index.lock",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/OrderController.php",
 		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
-		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/thungrac.blade.php",
-		"/D/laravelproject/dinosa/apps/resources/views/bill/print/products.blade.php",
-		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/daxacnhan.blade.php",
-		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/donmoi.blade.php",
+		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
+		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/donmoi.blade.php",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/BaseController.php",
+		"/D/laravelproject/dinosa/apps/routes/web.php",
+		"/D/laravelproject/dinosa/apps/app/functions/CustomerHandling.php",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
+		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
+		"/D/laravelproject/dinosa/dist/js/main.js",
+		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
+		"/D/laravelproject/blog/node_modules/less/lib/source-map/source-map-0.1.31.js",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/thungrac.blade.php",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/PrintController.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/base.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/chuyenthanhcong.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts/menufuns.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/daxacnhan.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/dangchuyen.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/dainxong.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/chuyenthatbai.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print/orders.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/bill/print/products.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/thungrac.blade.php",
+		"/D/laravelproject/dinosa/.git/.gitignore",
+		"/D/laravelproject/dinosa/apps/.gitignore",
+		"/D/laravelproject/dinosa/.gitignore",
+		"/D/laravelproject/dinosa/apps/app/functions/email.php",
+		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/dainxong.blade.php",
+		"/D/laravelproject/dinosa/apps/app/functions/excel.php",
+		"/D/xampp/htdocs/email/test.php",
+		"/D/xampp/htdocs/email/email.php",
+		"/D/xampp/htdocs/email/mailer/class.phpmailer.php",
+		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/daxacnhan.blade.php",
+		"/D/laravelproject/dinosa/dinosa.sublime-project",
+		"/C/Users/HP/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/donmoi.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print-product.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/colums.blade.php",
-		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
-		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/dainxong.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/dangchuyen.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/chuyenthatbai.blade.php",
-		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/chuyenthanhcong.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print-product",
-		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/base.blade.php",
 		"/D/laravelproject/dinosa/build/scss/orders/_tab-orders.scss",
 		"/D/laravelproject/dinosa/build/scss/orders/_menu-funs.scss",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/menufuns.blade.php",
 		"/D/laravelproject/dinosa/node_modules/gaze/lib/helper.js",
 		"/D/laravelproject/dinosa/build/scss/main.scss",
-		"/D/laravelproject/dinosa/apps/routes/web.php",
 		"/D/laravelproject/dinosa/build/scss/orders/_button-orders.scss",
 		"/D/laravelproject/dinosa/apps/resources/views/test.blade.php",
 		"/D/laravelproject/dinosa/apps/composer.json",
@@ -651,12 +652,9 @@
 		"/D/laravelproject/dinosa/node_modules/caniuse-db/features-json/web-bluetooth.json",
 		"/D/laravelproject/dinosa/dist/css/main.css",
 		"/D/laravelproject/dinosa/gulpfile.js",
-		"/D/laravelproject/dinosa/dist/js/main.js",
 		"/D/laravelproject/dinosa/apps/.env.example",
-		"/D/laravelproject/dinosa/apps/.gitignore",
 		"/D/laravelproject/dinosa/apps/app/functions/AutoComplete.php",
 		"/D/laravelproject/blog/public/js/main.js",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/BaseController.php",
 		"/D/laravelproject/dinosa/apps/database/seeds/DatabaseSeeder.php",
 		"/D/laravelproject/dinosa/build/scss/bill/_list-bills.scss",
 		"/D/laravelproject/dinosa/build/scss/bill/_tab-bills.scss",
@@ -721,28 +719,7 @@
 		"/D/laravelproject/test/index.php",
 		"/D/laravelproject/test/apps/bootstrap/autoload.php",
 		"/D/laravelproject/test/apps/bootstrap/app.php",
-		"/D/laravelproject/dinosa/app/package.json",
-		"/D/laravelproject/dinosa/app/bootstrap/app.php",
-		"/D/laravelproject/dinosa/app/bootstrap/autoload.php",
-		"/C/Windows/System32/drivers/etc/hosts",
-		"/D/laravelproject/blog/public/adminlte/test/index.php",
-		"/D/laravelproject/blog/resources/views/layout.blade.php",
-		"/D/laravelproject/blog/public/adminlte/dist/js/adminlte.js",
-		"/D/laravelproject/blog/public/adminlte/pages/UI/sliders.html",
-		"/D/laravelproject/blog/public/adminlte/pages/UI/general.html",
-		"/D/laravelproject/blog/public/adminlte/pages/UI/buttons.html",
-		"/D/laravelproject/blog/public/adminlte/pages/charts/chartjs.html",
-		"/D/laravelproject/blog/public/css/styles.less",
-		"/D/laravelproject/blog/public/css/var.css",
-		"/D/laravelproject/blog/public/adminlte/bower_components/chart.js/Chart.js",
-		"/D/laravelproject/blog/public/lesss/less.js",
-		"/D/laravelproject/blog/public/lesss/styles.less",
-		"/D/laravelproject/blog/public/lesss/styles.css",
-		"/D/laravelproject/blog/resources/views/form.blade.php",
-		"/D/laravelproject/blog/app/Http/Controllers/FormController.php",
-		"/D/laravelproject/blog/resources/views/file.blade.php",
-		"/D/laravelproject/blog/app/Http/Controllers/FileController.php",
-		"/D/laravelproject/blog/public/upload/index.html"
+		"/D/laravelproject/dinosa/app/package.json"
 	],
 	"find":
 	{
@@ -761,6 +738,18 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"keyup",
+			"console.log",
+			"event",
+			"handler",
+			"red",
+			"delete",
+			"xóa vĩnh ",
+			"redirect",
+			"thuxem",
+			"bill",
+			"bills",
+			"bill",
 			"over",
 			"patternProductSuccess",
 			"name_image_print",
@@ -876,19 +865,7 @@
 			"loadding",
 			"content",
 			"abd",
-			"đây",
-			"__sdt",
-			"sdt",
-			"md",
-			"border",
-			"red",
-			"\"",
-			"item-icon-addition",
-			"redirect",
-			"include",
-			"inclide",
-			">\n",
-			"table"
+			"đây"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -907,7 +884,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -915,15 +892,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 284,
+						"buffer_size": 398,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								284,
-								284
+								398,
+								398
 							]
 						],
 						"settings":
@@ -938,114 +915,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "apps/routes/web.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1564,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								531,
-								531
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 263.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "dist/js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12419,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5299,
-								5299
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2260.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 133,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								133,
-								133
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Các loại ngày:",
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"default_dir": "D:\\laravelproject\\blog",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "apps/app/Http/Controllers/Orders/OrderController.php",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "apps/app/functions/OrdersHandling.php",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2453,
+						"buffer_size": 3178,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1018,
-								1018
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1055,7 +942,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1117,8 +1004,36 @@
 		"selected_items":
 		[
 			[
+				"main",
+				"dinosa\\dist\\js\\main.js"
+			],
+			[
+				"donmoi",
+				"dinosa\\apps\\resources\\views\\orders\\tab-content\\donmoi.blade.php"
+			],
+			[
 				"web",
 				"dinosa\\apps\\routes\\web.php"
+			],
+			[
+				"help",
+				"dinosa\\apps\\app\\functions\\helpers.php"
+			],
+			[
+				"hel",
+				"dinosa\\apps\\app\\functions\\helpers.php"
+			],
+			[
+				"thung",
+				"dinosa\\apps\\resources\\views\\orders\\tab-content\\thungrac.blade.php"
+			],
+			[
+				"xacnhan",
+				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
+			],
+			[
+				"inxong",
+				"dinosa\\apps\\resources\\views\\bill\\tab-content\\dainxong.blade.php"
 			],
 			[
 				"thungr",
@@ -1129,23 +1044,11 @@
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
 			[
-				"donmoi",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\donmoi.blade.php"
-			],
-			[
 				"daxacnha",
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
 			[
 				"xacnha",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
-			],
-			[
-				"inxong",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\dainxong.blade.php"
-			],
-			[
-				"xacnhan",
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
 			[
@@ -1175,14 +1078,6 @@
 			[
 				"orderscontr",
 				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\OrderController.php"
-			],
-			[
-				"main",
-				"dinosa\\dist\\js\\main.js"
-			],
-			[
-				"thung",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\thungrac.blade.php"
 			],
 			[
 				"dangchu",
@@ -1461,7 +1356,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 233.0,
+	"side_bar_width": 481.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
