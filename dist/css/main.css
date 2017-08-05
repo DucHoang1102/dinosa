@@ -82,6 +82,25 @@ body {
       cursor: pointer; }
       .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover, .list-bills #dainxong tbody tr td.moneys .label .glyphicon:hover, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon:hover, .list-bills #thungrac tbody tr td.moneys .label .glyphicon:hover {
         color: #1111ff; }
+  .list-bills #donmoi tbody tr td.phone, .list-bills #daxacnhan tbody tr td.phone, .list-bills #dainxong tbody tr td.phone, .list-bills #dangchuyen tbody tr td.phone, .list-bills #chuyenthanhcong tbody tr td.phone, .list-bills #chuyenthatbai tbody tr td.phone, .list-bills #thungrac tbody tr td.phone {
+    position: relative; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete .atc-item, .list-bills #daxacnhan tbody tr td.phone .autocomplete .atc-item, .list-bills #dainxong tbody tr td.phone .autocomplete .atc-item, .list-bills #dangchuyen tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete .atc-item, .list-bills #thungrac tbody tr td.phone .autocomplete .atc-item {
+      display: block;
+      padding: 5px 3px 5px 7px;
+      border-radius: 5px;
+      border-bottom: 1px solid #fcfcfc;
+      background: #0a0a0a;
+      color: #fcfcfc; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #daxacnhan tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #dainxong tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #dangchuyen tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #thungrac tbody tr td.phone .autocomplete .atc-item:hover {
+      background: #515151; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete, .list-bills #daxacnhan tbody tr td.phone .autocomplete, .list-bills #dainxong tbody tr td.phone .autocomplete, .list-bills #dangchuyen tbody tr td.phone .autocomplete, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete, .list-bills #thungrac tbody tr td.phone .autocomplete {
+      z-index: 10;
+      cursor: pointer;
+      position: absolute;
+      font-size: 0.85em;
+      top: 35px;
+      left: 20px;
+      width: 300px; }
   .list-bills #donmoi tbody tr td.sanpham, .list-bills #daxacnhan tbody tr td.sanpham, .list-bills #dainxong tbody tr td.sanpham, .list-bills #dangchuyen tbody tr td.sanpham, .list-bills #chuyenthanhcong tbody tr td.sanpham, .list-bills #chuyenthatbai tbody tr td.sanpham, .list-bills #thungrac tbody tr td.sanpham {
     color: #0000a0; }
     .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #dainxong tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #dangchuyen tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #chuyenthanhcong tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #chuyenthatbai tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #thungrac tbody tr td.sanpham .glyphicon-ok-circle {

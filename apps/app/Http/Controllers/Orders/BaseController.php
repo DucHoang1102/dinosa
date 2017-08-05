@@ -21,13 +21,13 @@ class BaseController extends Controller
             'count_chuyenThatBai'   => OrdersHandling::count(7,8),
             'count_thungRac'        => OrdersHandling::count(9),
             //----------------------------------------------------------
-            'orders_donMoi'          => OrdersHandling::get(1), 
-            'orders_daXacNhan'       => OrdersHandling::get(2),
-            'orders_daInXong'        => OrdersHandling::get(3),
-            'orders_dangChuyen'      => OrdersHandling::getByGroupDate(4),
-            'orders_chuyenThanhCong' => OrdersHandling::getByGroupDate(5,6),
-            'orders_chuyenThatBai'   => OrdersHandling::getByGroupDate(7,8),
-            'orders_thungRac'        => OrdersHandling::get(9),
+            'orders_donMoi'          => OrdersHandling::getByStatus(1), 
+            'orders_daXacNhan'       => OrdersHandling::getByStatus(2),
+            'orders_daInXong'        => OrdersHandling::getByStatus(3),
+            'orders_dangChuyen'      => OrdersHandling::getByDateStatus(4),
+            'orders_chuyenThanhCong' => OrdersHandling::getByDateStatus(5,6),
+            'orders_chuyenThatBai'   => OrdersHandling::getByDateStatus(7,8),
+            'orders_thungRac'        => OrdersHandling::getByStatus(9),
         ]);
     }
 }

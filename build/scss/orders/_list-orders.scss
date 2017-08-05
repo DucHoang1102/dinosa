@@ -81,7 +81,28 @@ $color-backgorund: #fcfcfc;
 					&:hover{
 						color: #1111ff;}}
 			}};
-		&.functions {
+		&.phone {
+			position: relative;
+			.autocomplete .atc-item {
+				display: block;
+				padding: 5px 3px 5px 7px;
+				border-radius: 5px;
+				border-bottom: 1px solid #fcfcfc;
+				background: #0a0a0a;
+				color: #fcfcfc;
+			}
+			.autocomplete .atc-item:hover {
+				background: #515151;
+			} 
+			.autocomplete {
+				z-index: 10;
+				cursor: pointer;
+				position: absolute;
+				font-size: 0.85em;
+				top: 35px;
+				left: 20px;
+				width: 300px;
+			}
 		}
 		&.sanpham {
 			color: $color-produce;

@@ -6,69 +6,47 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use DB;
-use App\functions\RandomId;
-use App\functions\ParserProduct;
-use App\functions\TotalMoney;
 use App\functions\OrdersHandling;
+use App\functions\CustomerHandling;
 use App\functions\Excel;
 use App\functions\Email;
 
 class AjaxController extends BaseController
 {
-	// Thêm đơn hàng
+    // Thêm đơn hàng
     function postAddOrdersAjax (Request $request) {
         $_id_order    = isset($request->_id_order)    ? $request->_id_order    : "";
         $_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
         $colum        = isset($request->colum)        ? $request->colum        : "";
         $value        = isset($request->value)        ? $request->value        : "";
 
+        // Ràng buộc các colums
         $colum_customers = ['name', 'phone', 'address'];
-
         if (! in_array($colum, $colum_customers)) return [];
 
         // Trường hợp thêm mới đơn hàng
-        if (empty($_id_order) || empty($_id_customer)) {
-            // Colums Customers
-            $colum_customers = ['name', 'phone', 'address'];
+        if (empty($_id_order)) {
 
-            $id_customer = RandomId::get("CT", 10);
-            $id_order    = RandomId::get("DS", 10);
+            // Thêm khách hàng
+            $id_customer = CustomerHandling::create($colum, $value);
 
-            $check_1 = DB::table('customers')->insert([
-                'id'   => $id_customer,
-                $colum => $value,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
-            ]);
+            // Thêm order
+            $id_order    = OrdersHandling::create($id_customer);
 
-            // Colums Orders
-            $check_2 = DB::table('orders')->insert([
-                'id'                  => $id_order,
-                'id_post'             => "",
-                'id_customers'        => $id_customer,
-                'id_orders_status'    => 1,
-                'surcharge_money'     => 0,
-                'ship_customer_money' => 0,
-                'total_money'         => 0,
-                'created_at'          => \Carbon\Carbon::now(),
-                'updated_at'          => \Carbon\Carbon::now()
-            ]);
-            if ($check_1 == true and $check_2 == true) {
-                return ['_id_order'=>$id_order, '_id_customer'=>$id_customer];
+            if (!empty($id_customer) && !empty($id_order)) {
+                return [
+                    '_id_order'    => $id_order, 
+                    '_id_customer' => $id_customer
+                ];
             }
             else return [];
         }
        
-       // Trường hợp sửa đơn hàng
-       else 
-       {
-            DB::table('customers')
-                ->where('id', $_id_customer)
-                ->update([
-                    $colum => $value
-                ]);
+       // Trường hợp sửa đơn hàng bản chất là sửa khách hàng
+        else {
+            CustomerHandling::update($_id_customer, $colum, $value);
             return [];
-       }
+        }
     }
 
     // Thêm sản phẩm
@@ -134,24 +112,26 @@ class AjaxController extends BaseController
 
     function postAutoCompleteAjax (Request $request, $colum)
     {
-    	if ($colum == 'phone') {
-    		$phoneInput = isset($request->phoneInput) ? $request->phoneInput : "";
-    		$phones = DB::table('customers')
-    					->select('phone', 'name')
-    					->where('phone', 'like', $phoneInput.'%')
-    					->offset(0)
-    					->limit(5)
-    					->get();
-    		return json_encode($phones);
-    	}
+        if ($colum == 'phone') {
+            $phoneInput = isset($request->phoneInput) ? $request->phoneInput : "";
+            $phones     = DB::table('customers')
+                            ->select('phone', 'name')
+                            ->where('phone', 'like', $phoneInput.'%')
+                            ->offset(0)
+                            ->limit(5)
+                            ->get();
 
-    	else if ($colums == "product") {
+            if (CustomerHandling::existsCustomer($phoneInput)) return [];
+            else return $phones;
+        }
 
-    	}
+        else if ($colums == "product") {
 
-   		else {
-   			
-   		}
+        }
+
+        else {
+            
+        }
     }
 
     function getSendMailAjax (Request $request)

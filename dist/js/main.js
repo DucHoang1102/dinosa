@@ -34,7 +34,10 @@ function patternHTML () {
 			<input type="hidden" name="_id_customer" value=""/>
 			<td class="stt"></td>
 			<td class="hoten"><input type="text" name="name" value="" maxlength="35" autocomplete="off"></td>
-			<td class="phone"><input type="text" name="phone" value="" maxlength="11" autocomplete="off"></td>
+			<td class="phone">
+				<input type="text" name="phone" value="" maxlength="11" autocomplete="off">
+				<div class="autocomplete"></div>
+			</td>
 			<td class="diachi address"><input type="text" name="address" value="" maxlength="99" autocomplete="off"></td>
 			<td class="sanpham"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
 			<td class="tongtien moneys"><div class="label">0 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
@@ -64,6 +67,14 @@ function patternProductSuccess(id="", name="", url_image="") {
 	return `<div class="product_success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
+function patternAutocomplete(phone="", name="") {
+	return `<span class="atc-item">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<span class="atc-phone">${phone}</span>
+				<span class="atc-name">(${name})</span>
+			</span>`;
+}
+
 /*
  *
  * CÁC NÚT CHỨC NĂNG FRONT END
@@ -76,11 +87,9 @@ function patternProductSuccess(id="", name="", url_image="") {
 	$('#donmoi .add-order').click(function () {
 		$(patternHTML()).appendTo('#donmoi tbody')
 						.find('.sanpham .glyphicon').click().parent().parent()
+						.find('input[name=name]').focus()
 					    .hide()
-					    .show(400, function () {
-					        $(this).find('input[name=name]')
-					    	    .focus();
-					    });
+					    .fadeIn(400);
 		helper.incrementsOK();
 		helper.scrollTop();
 		return false;
@@ -285,6 +294,12 @@ function Ajax (datas) {
 					$($this).parent().parent().find('.menu_funs .move-right').attr('href', 'orders/move/status=2+id=' + result._id_order + '+no_update=false');
 					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
+				if (result.customer_old) {
+					var c = result.customer_old;
+					$($this).parent().parent().find('input[name=name]').val(c.name);
+					$($this).parent().parent().find('input[name=phone]').val(c.phone);
+					$($this).parent().parent().find('input[name=address]').val(c.address);
+				}
 			},
 			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
@@ -411,26 +426,49 @@ function Ajax (datas) {
 		var datas = {
 			url     : 'orders/autocomplete/phone',
 			type    : 'post',
+			dataType: 'json',
 			data    : {
 				phoneInput : $($this).val()
 			},
 			success : function (result) {
-				var result = $.parseJSON(result);
-				var items = [];
-				$.each(result, function(index, result) {
-					if (result.name){
-						items[index] = result.phone + '(' + result.name + ')';
-					}
-				});
-				$($this).autocomplete({
-					source: items
-				});
-			},//error: function (xhr, status, errorThrown) {
-		        //The message added to Response object in Controller can be retrieved as following.
-		    //    $('html').html(xhr.responseText);
-		    //}
+				if (result) {
+
+					var html = '';
+
+					$.each(result, function(index, customer) {
+						html = html + patternAutocomplete(customer.phone, customer.name);
+					});
+
+					function atc(html) {
+						$($this).parent()
+						    .parent()
+						    .find('.autocomplete')
+						    .html(html);
+					}; atc(html);
+
+					$('#donmoi').on('click', '.atc-item', function () {
+
+						var phone_number = $(this).find('.atc-phone').text();
+
+						$(this).parent().parent().parent()
+							   .find('input[name=phone]')
+							   .val(phone_number).focus(function(){$(this).keyup()}).focus();
+
+						$(this).parent().fadeOut(300, function(){atc('');});
+
+						return false;
+					});
+
+					$(document).click(function (event) {	
+						atc('');
+						return false;
+					});
+				} 
+			},
 		};
+		
 		Ajax(datas);
+		return false;
 	});
 })();
 
@@ -454,7 +492,6 @@ function Ajax (datas) {
 			success  : function(result) {
 				if (result.hasOwnProperty('status')) {
 					if (result.status == 1) {
-						console.log(result);
 						$($this).find('button')
 								.css({
 									background: "#009fcc",
