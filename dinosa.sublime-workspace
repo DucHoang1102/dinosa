@@ -529,11 +529,15 @@
 			}
 		},
 		{
-			"file": "apps/app/functions/OrdersHandling.php",
+			"contents": "",
+			"file": "apps/resources/views/layouts/base.blade.php",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 3178,
-				"line_ending": "Unix"
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -581,17 +585,22 @@
 		"/D/laravelproject/dinosa",
 		"/D/laravelproject/dinosa/apps",
 		"/D/laravelproject/dinosa/apps/app",
+		"/D/laravelproject/dinosa/apps/app/functions",
+		"/D/laravelproject/dinosa/apps/app/Http",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders",
 		"/D/laravelproject/dinosa/apps/resources",
 		"/D/laravelproject/dinosa/apps/resources/views",
 		"/D/laravelproject/dinosa/apps/resources/views/layouts",
-		"/D/laravelproject/dinosa/apps/resources/views/orders",
-		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts",
 		"/D/laravelproject/dinosa/build",
 		"/D/laravelproject/dinosa/build/scss",
 		"/D/laravelproject/dinosa/build/scss/orders"
 	],
 	"file_history":
 	[
+		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
+		"/D/laravelproject/dinosa/dist/js/main.js",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
 		"/D/laravelproject/dinosa/.git/index.lock",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/OrderController.php",
 		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
@@ -601,10 +610,7 @@
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/BaseController.php",
 		"/D/laravelproject/dinosa/apps/routes/web.php",
 		"/D/laravelproject/dinosa/apps/app/functions/CustomerHandling.php",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
 		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
-		"/D/laravelproject/dinosa/dist/js/main.js",
-		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
 		"/D/laravelproject/blog/node_modules/less/lib/source-map/source-map-0.1.31.js",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/thungrac.blade.php",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/PrintController.php",
@@ -920,11 +926,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "apps/app/functions/OrdersHandling.php",
-					"semi_transient": true,
+					"file": "apps/resources/views/layouts/base.blade.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3178,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -937,9 +943,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
