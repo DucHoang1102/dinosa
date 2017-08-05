@@ -13,14 +13,14 @@ use App\functions\OrdersHandling;
 use App\functions\Excel;
 use App\functions\Email;
 
-class AjaxController extends Controller
+class AjaxController extends BaseController
 {
 	// Thêm đơn hàng
     function postAddOrdersAjax (Request $request) {
-        $_id_order    = isset($request->_id_order)    ? $request->_id_order : "";
+        $_id_order    = isset($request->_id_order)    ? $request->_id_order    : "";
         $_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
-        $colum        = isset($request->colum)        ? $request->colum     : "";
-        $value        = isset($request->value)        ? $request->value     : "";
+        $colum        = isset($request->colum)        ? $request->colum        : "";
+        $value        = isset($request->value)        ? $request->value        : "";
 
         $colum_customers = ['name', 'phone', 'address'];
 
@@ -101,7 +101,7 @@ class AjaxController extends Controller
                 return [
                     'id_product'  => $_id_product, 
                     'total_money' => TotalMoney::get($_id_order), 
-                    'url_image'    => OrdersHandling::get_url_image($product->id_image_print)
+                    'url_image'    => OrdersHandling::getUrlImage($product->id_image_print)
                 ]; 
             }
             return [];
@@ -177,5 +177,21 @@ class AjaxController extends Controller
         if ($result) return ["status" => 1, 'time_current'=> date('d-m-Y H:i:s'), 'file' => $file_name];
         
         return ["status" => 0];
+    }
+
+    function getDeletePermanentlyAjax($id_customer, $id_order)
+    {
+        if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
+            return redirect(action('Orders\OrderController@index'));
+            exit();
+        }
+
+        $result = DB::table('orders')->where([
+            ['orders.id_customers', $id_customer],
+            ['orders.id'          , $id_order]
+        ])->delete();
+
+        return redirect(action('Orders\OrderController@index'));
+        exit();
     }
 }

@@ -71,7 +71,7 @@ class OrdersHandling
     		->get();
 
         foreach ($products as $product) {
-            $product->url_image = self::get_url_image($product->id_image_print);
+            $product->url_image = self::getUrlImage($product->id_image_print);
         }
 
     	return $products;
@@ -86,7 +86,7 @@ class OrdersHandling
         return $count_orders->count;
     }
 
-    public static function get_url_image($id_image=0) {
+    public static function getUrlImage($id_image=0) {
         $url_image = DB::table('image_print')
                         ->select('src_f_a3')
                         ->where('id', $id_image)

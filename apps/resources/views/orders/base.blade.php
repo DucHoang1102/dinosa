@@ -65,26 +65,26 @@
 <div class="list-bills">
 	<div class="tab-content">
 
-		<!-- Tab Đơn Mới     /// bill > tab-content > donmoi.blade.php -->
-		@include('bill.tab-content.donmoi')
+		<!-- Tab Đơn Mới  -->
+		@include('orders.tab-content.donmoi')
 		
-		<!-- Tab Đã xác nhận /// bill > tab-content > daxacnhan.blade.php -->
-		@include('bill.tab-content.daxacnhan')
+		<!-- Tab Đã xác nhận -->
+		@include('orders.tab-content.daxacnhan')
 
-		<!-- Tab Đã in xong /// bill > tab-content > dainxong.blade.php -->
-		@include('bill.tab-content.dainxong')
+		<!-- Tab Đã in xong -->
+		@include('orders.tab-content.dainxong')
 
-		<!-- Tab Đamg chuyển /// bill > tab-content > dangchuyen.blade.php -->
-		@include('bill.tab-content.dangchuyen')
+		<!-- Tab Đamg chuyển -->
+		@include('orders.tab-content.dangchuyen')
 
-		<!-- Tab Chuyển thành công /// bill > tab-content > chuyenthanhcong.blade.php -->
-		@include('bill.tab-content.chuyenthanhcong')
+		<!-- Tab Chuyển thành công -->
+		@include('orders.tab-content.chuyenthanhcong')
 
-		<!-- Tab Chuyển thất bại /// bill > tab-content > chuyenthatbai.blade.php -->
-		@include('bill.tab-content.chuyenthatbai')
+		<!-- Tab Chuyển thất bại -->
+		@include('orders.tab-content.chuyenthatbai')
 
-		<!-- Tab Thùng rác /// bill > tab-content > thungrac.blade.php -->
-		@include('bill.tab-content.thungrac')
+		<!-- Tab Thùng rác -->
+		@include('orders.tab-content.thungrac')
 
 	</div> <!-- /.tab-content -->
 </div> <!-- /.list-bills -->

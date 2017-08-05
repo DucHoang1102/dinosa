@@ -1,6 +1,5 @@
 <div role="tabpanel" class="tab-pane" id="thungrac">
-
-	@include('bill.tab-content.colums')
+	@include('orders.layouts.colums')
 
 	<div class="table-tbody">
 		<table class="table table-hover">

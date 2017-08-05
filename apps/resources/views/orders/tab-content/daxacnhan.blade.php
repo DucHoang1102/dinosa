@@ -1,6 +1,6 @@
 <div role="tabpanel" class="tab-pane" id="daxacnhan"><!--Content Tab Đơn mới -->	
 
-	@include('bill.tab-content.colums')
+	@include('orders.layouts.colums')
 
 	<div class="table-tbody">
 		<table class="table table-hover">

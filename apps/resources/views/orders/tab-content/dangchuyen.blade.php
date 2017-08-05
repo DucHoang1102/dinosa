@@ -1,5 +1,5 @@
 <div role="tabpanel" class="tab-pane" id="dangchuyen">
-	@include('bill.tab-content.colums')
+	@include('orders.layouts.colums')
 
 	<div class="table-tbody">
 		@foreach ($orders_dangChuyen as $date => $orders)

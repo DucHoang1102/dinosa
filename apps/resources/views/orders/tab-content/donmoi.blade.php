@@ -1,6 +1,6 @@
 <div role="tabpanel" class="tab-pane active" id="donmoi"><!--Content Tab Đơn mới -->
 
-	@include('bill.tab-content.colums')
+	@include('orders.layouts.colums')
 
 	<div class="table-tbody">
 		<table class="table">

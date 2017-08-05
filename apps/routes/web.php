@@ -16,26 +16,33 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'orders'], function(){
-
+	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
 
-	Route::get('print/orders', ['as' => 'printOrders', 'uses' => 'Orders\OrderController@getPrintOrders']);
+	// Gửi mail
+	Route::get('send-mail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']);
 
-	Route::get('print/products/{id_order}/{id_product}', ['as' => 'printProducts', 'uses' => 'Orders\OrderController@getPrintProducts']);
-	Route::get('sendmail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']); // Test
-
-	Route::get('sendmail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']);
-
+	// Thêm orders
 	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\AjaxController@postAddOrdersAjax']);
 
-	Route::post('addproduct', ['as' => 'addProductOrders', 'uses' => 'Orders\AjaxController@postAddProductsAjax']);
+	// Thêm sản phẩm
+	Route::post('add-product', ['as' => 'addProductOrders', 'uses' => 'Orders\AjaxController@postAddProductsAjax']);
 
-	Route::post('deleteproduct', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
+	// Xóa sản phẩm
+	Route::post('delete-product', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
 
-	Route::get('delete-permanently/{id_customer}/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanentlyOrders']);
+	// Xóa vĩnh viễn
+	Route::get('delete-permanently/{id_customer}/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanently']);
 
+	// Autocomplete: Phone
 	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\AjaxController@postAutoCompleteAjax']);
 
-	// Chuyển đơn qua lại giữa các trường;
+	// Get Move
 	Route::get('move/status={status}+id={id}+no_update={no_update}', ['as' => 'moveOrders', 'uses' => 'Orders\OrderController@getMove']);
+
+	// Prints
+	Route::group(['prefix'=>'print'], function(){
+		Route::get('orders', ['as' => 'printOrders', 'uses' => 'Orders\PrintController@getPrintOrders']);
+		Route::get('products/{id_order}/{id_product}', ['as' => 'printProducts', 'uses' => 'Orders\PrintController@getPrintProducts']);
+	});
 });
