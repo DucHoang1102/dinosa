@@ -96,7 +96,7 @@ class AjaxController extends BaseController
         $path            = 'upload/mail-orders/';
         $file_name       = 'Nguyễn Đức Hoàng ' . date('d-m-Y') . '.xlsx';
         $file_path       = $path . $file_name;
-        $orders_daInXong = OrdersHandling::get(3);
+        $orders_daInXong = OrdersHandling::getByStatus(3);
 
         // Tạo file excel đơn hàng
         $excel      = new Excel();
