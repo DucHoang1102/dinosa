@@ -1,5 +1,5 @@
 <?php
-use App\functions\OrdersHandling;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return var_dump(OrdersHandling::getByStatus(1,2));
+
 });
 
 
@@ -36,11 +36,11 @@ Route::group(['prefix'=>'orders'], function(){
 	// Xóa sản phẩm
 	Route::post('delete-product', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
 
-	// Xóa vĩnh viễn
-	Route::get('delete-permanently/{id_customer}/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanently']);
+	// Xóa vĩnh viễn đơn hàng
+	Route::get('delete-permanently/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanently']);
 
 	// Autocomplete: Phone
-	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\AjaxController@postAutoCompleteAjax']);
+	Route::get('autocomplete/phone', ['as' => 'autoCompletePhone', 'uses' => 'Orders\AutocompleteController@getPhone']);
 
 	// Get Move
 	Route::get('move/status={status}+id={id}+no_update={no_update}', ['as' => 'moveOrders', 'uses' => 'Orders\OrderController@getMove']);

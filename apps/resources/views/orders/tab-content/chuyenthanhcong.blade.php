@@ -3,6 +3,7 @@
 	@include('orders.layouts.colums')
 
 	<div class="table-tbody">
+		@if (count($orders_chuyenThanhCong) == 0){!! '<div style="font-style:italic;font-weight:bold;padding-left:10px">Dữ liệu trống</div>' !!}@endif
 		@foreach ($orders_chuyenThanhCong as $date => $orders)
 		<div class="date">{{ $date }}</div>
 		<table class="table table-hover">

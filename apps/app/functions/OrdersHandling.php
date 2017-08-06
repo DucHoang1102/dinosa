@@ -30,7 +30,7 @@ class OrdersHandling
             foreach ($orders as $order) {
                 $products = ProductHandling::get($order->id);
                 $order->products = $products;
-                $order->total_money = self::TotalMoney($order->id);
+                $order->total_money = self::totalMoney($order->id);
             }
             return $orders;
         }
@@ -81,11 +81,12 @@ class OrdersHandling
     }
 
     // Sử lý Total Money
-    public static function TotalMoney ($id_order=0)
+    // Hàm OK
+    public static function totalMoney ($id_order='000')
     {
         $total_money = 0;
 
-        $order  = DB::table('orders')
+        $order    = DB::table('orders')
                       ->select('surcharge_money', 'ship_customer_money')
                       ->where('id', $id_order)
                       ->first();
@@ -95,19 +96,23 @@ class OrdersHandling
                       ->where([
                           ['products_of_orders.id_orders', $id_order]
                       ])
-                      ->get();
+                      ->get(); // Bắt buộc phải để get
 
-        foreach ($products as $product) {
-            $total_money = $total_money + $product->price;
+        if ( empty($order) ) return 0;
+
+        if ( !empty($products) ) {  
+            foreach ($products as $product) {
+                $total_money = $total_money + $product->price;
+            }
+
+            $total_money = $total_money + $order->surcharge_money + $order->ship_customer_money;
         }
-
-        $total_money = $total_money + $order->surcharge_money + $order->ship_customer_money;
 
         return ConvertMoney::get($total_money);
     }
 
     // Move orders, chuyển qua lại giữa các trường
-    public static function move($status='0', $id='000', $no_update = false) 
+    public static function move($status, $id, $no_update = false) 
     {
         if (!empty($status) and !empty($id))
         {
@@ -135,6 +140,7 @@ class OrdersHandling
     public static function create($id_customer)
     {
         $id_order = RandomId::get("DS", 10);
+
         $result   = DB::table('orders')
                       ->insert([
             'id'                  => $id_order,
@@ -159,12 +165,51 @@ class OrdersHandling
     }
 
     // Delete Permanently Orders -> Xóa vĩnh viễn
-    public static function deletePermanently ($id_customer='000', $id_order='000') {
-        $result = DB::table('orders')->where([
-            ['orders.id_customers', $id_customer],
-            ['orders.id'          , $id_order]
-        ])->delete();
+    public static function deletePermanently ($id_order) {
+        if ( $id_order === 0 ) return false;
+
+        $result = DB::table('orders')->where(
+            'id', $id_order 
+        )->delete(); 
 
         return $result;
+    }
+
+    public static function deletePermanentlyAll () {
+        $result = DB::table('orders')->where([
+            [ 'id_orders_status', 9 ]
+        ])->delete(); 
+
+        return $result;
+    }
+
+    // Kiểm tra orders thuộc đơn mới
+    public static function is_order_of_donmoi($id_order)
+    {
+        $result = DB::table('orders')
+                    ->select('id')
+                    ->where([
+                        [ 'id', $id_order ],
+                        [ 'id_orders_status', 1 ]
+                    ])
+                    ->first(); // trả về rarray hoặc null
+
+        if ( $result ) return true;
+        else           return false;
+    }
+
+    // Kiểm tra orders thuộc thùng rác
+    public static function is_order_of_thungrac($id_order)
+    {
+        $result = DB::table('orders')
+                    ->select('id')
+                    ->where([
+                        [ 'id', $id_order ],
+                        [ 'id_orders_status', 9 ]
+                    ])
+                    ->first(); // trả về rarray hoặc null | get trả về [] hoặc array
+
+        if ( $result ) return true;
+        else           return false;
     }
 }

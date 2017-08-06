@@ -3,6 +3,7 @@
 
 var flagAjax = true;
 var timeout  = null;
+var timeout1 = null;
 var errors = {};
 
 var helper = { 
@@ -26,6 +27,35 @@ var helper = {
 		var string = string.toUpperCase().trim();
 		return re.test(string);
 	},
+	viewBackground: function($this='', show=true) {
+		if (show == false){
+			$('#donmoi .load-oldcustomer').hide();
+			return false;
+		}
+
+		function setSize($this) {
+			var width  = $($this).width();
+			var height = $($this).height();
+			var top    = $($this).position().top;
+			var left   = $($this).position().left;
+
+			$('#donmoi .load-oldcustomer').css({
+				width  : width,
+				height : height,
+				top    : top,
+				left   : left
+			});
+		}
+		$(window).resize(function(){
+			setSize($this);
+		});
+
+		setSize($this);
+
+		$('#donmoi .load-oldcustomer').show();
+
+		return false;
+		},
 };
 
 function patternHTML () {
@@ -36,7 +66,6 @@ function patternHTML () {
 			<td class="hoten"><input type="text" name="name" value="" maxlength="35" autocomplete="off"></td>
 			<td class="phone">
 				<input type="text" name="phone" value="" maxlength="11" autocomplete="off">
-				<div class="autocomplete"></div>
 			</td>
 			<td class="diachi address"><input type="text" name="address" value="" maxlength="99" autocomplete="off"></td>
 			<td class="sanpham"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
@@ -105,16 +134,6 @@ function patternAutocomplete(phone="", name="") {
 	});
 })();
 
-// Xóa đơn hàng - Đơn xóa sẽ thêm vào trường Thùng rác
-(function deleteOrdersNode () {
-	$('#donmoi').on('click', '.functions .cancel', function () {
-		$(this).parent().parent().hide('200', function() {
-			$(this).remove();
-			helper.incrementsOK();
-		});;
-		return false;
-	});
-})();
 
 // Move right chuyển tab 
 (function moveRight() {
@@ -126,10 +145,6 @@ function patternAutocomplete(phone="", name="") {
 					transition: "all 0.5s",
 					transform: `translateX(${lenght})`,
 				});
-		setTimeout(function(){
-			$($this).parent().parent().parent().remove()
-		},550);
-
 	});
 })();
 
@@ -143,10 +158,6 @@ function patternAutocomplete(phone="", name="") {
 					transition: "all 0.5s",
 					transform: `translateX(-${lenght})`,
 				});
-		setTimeout(function(){
-			$($this).parent().parent().parent().remove()
-		},550);
-
 	});
 })();
 
@@ -156,14 +167,21 @@ function patternAutocomplete(phone="", name="") {
 		var $this = this;
 		var height = $(window).height() + 10 + 'px';
 		var this_order = $($this).parent().parent().parent();
-		this_order
-			.css({
+		this_order.css({
 				transition: "all 0.6s",
 				transform: `translateY(-${height})`,
 			});
-		setTimeout(function(){
-			this_order.remove()
-		},650);
+	});
+})();
+
+// Xóa tất cả - Dọn dẹp thùng rác
+(function deleteAll() {
+	$('#thungrac .delete-all').click(function() {
+		$('#thungrac .table-tbody').css({
+			transition : 'all 0.6s',
+			transform  : `scale(0.001,0.001)`,
+		});
+
 	});
 })();
 
@@ -300,6 +318,7 @@ function Ajax (datas) {
 					$($this).parent().parent().find('input[name=phone]').val(c.phone);
 					$($this).parent().parent().find('input[name=address]').val(c.address);
 				}
+				helper.viewBackground('',false);
 			},
 			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
@@ -419,55 +438,58 @@ function Ajax (datas) {
 	});
 })();
 
-// Auto Complete
+// Auto Complete: 1 mình một ajax riêng vì tiến trình này phải xử lý song song
 (function autoCompleteAjax () {
 	$('#donmoi tbody').on('keyup', 'input[name=phone]', function (){
 		var $this = this;
-		var datas = {
-			url     : 'orders/autocomplete/phone',
-			type    : 'post',
-			dataType: 'json',
-			data    : {
-				phoneInput : $($this).val()
-			},
-			success : function (result) {
-				if (result) {
 
-					var html = '';
+		if ($($this).val().length < 6) return false;
 
-					$.each(result, function(index, customer) {
-						html = html + patternAutocomplete(customer.phone, customer.name);
-					});
+		if (timeout1) clearTimeout(timeout1);
+		timeout1 = setTimeout(function(){
+			$.ajax({
+				url      : 'orders/autocomplete/phone',
+				type     : 'get',
+				dataType : 'json',
+				data     : {
+					phoneInput : $($this).val()
+				},
+				success  : function (result) {
+					if (result) {
+						$('#donmoi .autocomplete').remove();
+						
+						var html = '';
 
-					function atc(html) {
-						$($this).parent()
-						    .parent()
-						    .find('.autocomplete')
-						    .html(html);
-					}; atc(html);
+						$.each(result, function(index, customer) {
+							html = html + patternAutocomplete(customer.phone, customer.name);
+						});
 
-					$('#donmoi').on('click', '.atc-item', function () {
+						html = `<div class="autocomplete">${html}</div>`;
 
-						var phone_number = $(this).find('.atc-phone').text();
+						$(html).appendTo($($this).parent());
 
-						$(this).parent().parent().parent()
-							   .find('input[name=phone]')
-							   .val(phone_number).focus(function(){$(this).keyup()}).focus();
+						$('#donmoi').on('click', '.atc-item', function () {
 
-						$(this).parent().fadeOut(300, function(){atc('');});
+							var phone_number = $(this).find('.atc-phone').text();
 
-						return false;
-					});
+							$(this).parent().parent().parent()
+								   .find('input[name=phone]')
+								   .val(phone_number).keyup();
 
-					$(document).click(function (event) {	
-						atc('');
-						return false;
-					});
-				} 
-			},
-		};
-		
-		Ajax(datas);
+							helper.viewBackground( $(this).parent().parent().parent() );
+
+							$(this).parent().fadeOut(300, function(){
+								$('#donmoi .autocomplete').remove();
+							});
+
+							return false;
+						});
+
+					}
+				}
+			});
+		}, 1);
+
 		return false;
 	});
 })();

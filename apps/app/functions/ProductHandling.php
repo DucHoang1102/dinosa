@@ -2,7 +2,7 @@
 namespace App\functions;
 
 use DB;
-
+use App\functions\helpers\RandomId;
 /*
 |--------------------------------------------------------------------------
 | ProductHandling
@@ -27,17 +27,16 @@ class ProductHandling
     		'AAK3' => 250000,
     	];
 
-		if (preg_match($re, $subject, $matches)) {
-			return [
-				'name_category_product' => $matches[2],
-				'id_image_print'        => $matches[1],
-				'name_embryo_tshirt'    => $matches[3],
-				'name'                  => $matches[0],
-				'size'                  => $matches[4],
-				'price'                 => $prices[$matches[2].$matches[3]]
-			];
-		}
-		else return [];
+		preg_match($re, $subject, $matches);
+
+		return [
+			'name_category_product' => isset( $matches[2] ) ? $matches[2] : '',
+			'id_image_print'        => isset( $matches[1] ) ? $matches[1] : '',
+			'name_embryo_tshirt'    => isset( $matches[3] ) ? $matches[3] : '',
+			'name'                  => isset( $matches[0] ) ? $matches[0] : '',
+			'size'                  => isset( $matches[4] ) ? $matches[4] : '',
+			'price'                 => isset( $prices[ $matches[2].$matches[3] ] ) ? $prices[ $matches[2].$matches[3] ] : '',
+		];
 	}
 
 	// Lấy sản phẩm theo id_orders và id_product
@@ -61,7 +60,7 @@ class ProductHandling
 	}
 
 	// Lấy link ảnh sản phẩm theo id_image
-	public static function getUrlImage($id_image='0') {
+	public static function getUrlImage($id_image) {
         $url_image = DB::table('image_print')
                         ->select('src_f_a3')
                         ->where('id', $id_image)
@@ -74,15 +73,43 @@ class ProductHandling
     }
 
     // Tạo mới sản phẩm
-    public static function create()
+    public static function create($id_order, $product)
     {
-    	
+    	$id_product = RandomId::get("PO", 10);
+
+        $product = self::parser($product);
+        
+        $result = DB::table('products_of_orders')->insert([
+            'id'                    => $id_product,
+            'id_orders'             => $id_order,
+            'name_category_product' => $product[ 'name_category_product' ],
+            'id_image_print'        => $product[ 'id_image_print'        ],
+            'name_embryo_tshirt'    => $product[ 'name_embryo_tshirt'    ],
+            'name'                  => $product[ 'name'                  ],
+            'size'                  => $product[ 'size'                  ],
+            'price'                 => $product[ 'price'                 ],
+            'created_at'            => \Carbon\Carbon::now(),
+            'updated_at'            => \Carbon\Carbon::now()
+        ]);
+
+        if ( $result ) return $id_product;
+        else           return false;
     }
 
     // Xóa sản phẩm
-    public static function delete()
+    public static function delete($id_order, $id_product)
     {
+    	if ($id_order === 0 || $id_product === 0) return false;
+    	
+	    $result = DB::table('products_of_orders')
+					->select('id')
+					->where([
+					   [ 'products_of_orders.id_orders', $id_order ],
+					   [ 'products_of_orders.id', $id_product ]
+					])
+					->delete();
 
+		return $result;
     }
 }
 

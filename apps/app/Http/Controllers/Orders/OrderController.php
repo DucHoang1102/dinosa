@@ -15,7 +15,7 @@ class OrderController extends BaseController
     	return view('orders.base');
     }
 
-    function getMove ($status='0', $id='000', $no_update = false) {
+    function getMove ($status, $id, $no_update = false) {
 
         OrdersHandling::move($status, $id, $no_update = false);
 
@@ -23,14 +23,20 @@ class OrderController extends BaseController
         exit();
     }
 
-    function getDeletePermanently($id_customer='000', $id_order='000')
+    // Xóa vĩnh viễn đơn hàng
+    function getDeletePermanently($id_order=0 )
     {
-        if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
-            return redirect(action('Orders\OrderController@index'));
-            exit();
+        // Xóa toàn bộ - dọn dẹp thùng rác
+        if ($id_order == 'all')
+        {
+            OrdersHandling::deletePermanentlyAll();
         }
 
-        OrdersHandling::deletePermanently($id_customer, $id_order);
+        else {
+            if ( OrdersHandling::is_order_of_thungrac($id_order) ) {
+                OrdersHandling::deletePermanently( $id_order );
+            }
+        }
 
         return redirect(action('Orders\OrderController@index'));
         exit();
