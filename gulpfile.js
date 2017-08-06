@@ -20,7 +20,7 @@
 // 2. dist || product -> Code chuẩn đã minify, tối ưu hóa. dir project này
 // triển khai trực tiếp trên server.
 
-// Require thư viện
+// Require thư viện thư viện 
 var gulp        = require('gulp'),
 	sass        = require('gulp-sass'),
 	browserSync = require('browser-sync'),
