@@ -70,28 +70,7 @@ class OrdersHandling
         return $result;
     }
 
-<<<<<<< HEAD
-	public static function getProducts($id_orders, $id_product=0) 
-	{
-		$products = DB::table('products_of_orders')
-    		->where([
-                ['id_orders', $id_orders],
-                ['products_of_orders.id', $id_product]
-            ])
-    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print')
-            ->orderBy('products_of_orders.created_at', 'asc')
-    		->get();
-
-        foreach ($products as $product) {
-            $product->url_image = self::getUrlImage($product->id_image_print);
-        }
-
-    	return $products;
-	}
-
-=======
     // Đến tổng số order
->>>>>>> Developer
     public static function count($order_status=0, $or_order_status=0)
     {
         $count_orders = DB::table('orders')
@@ -101,15 +80,6 @@ class OrdersHandling
         return $count_orders->count;
     }
 
-<<<<<<< HEAD
-    public static function getUrlImage($id_image=0) {
-        $url_image = DB::table('image_print')
-                        ->select('src_f_a3')
-                        ->where('id', $id_image)
-                        ->first();
-        if (!empty($url_image)){
-            return $url_image;
-=======
     // Sử lý Total Money
     // Hàm OK
     public static function totalMoney ($id_order='000')
@@ -162,7 +132,6 @@ class OrdersHandling
                           ->where('orders.id', $id)
                           ->update($update);
             return $result;
->>>>>>> Developer
         }
         else return false;
     }

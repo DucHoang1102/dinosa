@@ -16,21 +16,38 @@ class AjaxController extends BaseController
 {
     // Thêm đơn hàng
     function postAddOrdersAjax (Request $request) {
-<<<<<<< HEAD
-        $_id_order    = isset($request->_id_order)    ? $request->_id_order    : "";
-        $_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
-        $colum        = isset($request->colum)        ? $request->colum        : "";
-        $value        = isset($request->value)        ? $request->value        : "";
-=======
         $_id_order    = isset($request->_id_order)    ? trim($request->_id_order)    : "";
         $_id_customer = isset($request->_id_customer) ? trim($request->_id_customer) : "";
         $colum        = isset($request->colum)        ? trim($request->colum)        : "";
         $value        = isset($request->value)        ? trim($request->value)        : "";
->>>>>>> Developer
 
         // Ràng buộc các colums
         $colum_customers = ['name', 'phone', 'address'];
         if (! in_array($colum, $colum_customers)) return [];
+
+        // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
+        if ($colum == 'phone') {
+
+            $id_customer_old = CustomerHandling::existsCustomer($value);
+
+            // Nếu tồn tại khách hàng
+            if (!empty($id_customer_old)) {
+
+                // Nếu không phải khách hàng hiện tại thì xóa khách hàng
+                // và thêm mới orders
+                if ($id_customer_old !== $_id_customer)
+                {
+                    CustomerHandling::delete($_id_customer);
+                    $_id_order = OrdersHandling::create($id_customer_old);
+                }
+
+                return [
+                    'customer_old' => CustomerHandling::getInfoCustomer($id_customer_old),
+                    '_id_order'    => $_id_order, 
+                    '_id_customer' => $id_customer_old
+                ];
+            }
+        }
 
         // Trường hợp thêm mới đơn hàng
         if (empty($_id_order)) {
@@ -72,13 +89,8 @@ class AjaxController extends BaseController
             if ( $_id_product ) {
                 return [
                     'id_product'  => $_id_product, 
-<<<<<<< HEAD
-                    'total_money' => TotalMoney::get($_id_order), 
-                    'url_image'    => OrdersHandling::getUrlImage($product->id_image_print)
-=======
                     'total_money' => OrdersHandling::totalMoney( $_id_order ), 
                     'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] )
->>>>>>> Developer
                 ]; 
             }
             return [];
@@ -110,8 +122,6 @@ class AjaxController extends BaseController
         $file_path       = $path . $file_name;
         $orders_daInXong = OrdersHandling::get(3);
 
-        if (count($orders_daInXong) < 1) return ["status" => 0];
-        
         // Tạo file excel đơn hàng
         $excel      = new Excel();
         $excel->setDatas($orders_daInXong)->saveFile($path, $file_name );
@@ -127,24 +137,5 @@ class AjaxController extends BaseController
         
         return ["status" => 0];
     }
-<<<<<<< HEAD
-
-    function getDeletePermanentlyAjax($id_customer, $id_order)
-    {
-        if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
-            return redirect(action('Orders\OrderController@index'));
-            exit();
-        }
-
-        $result = DB::table('orders')->where([
-            ['orders.id_customers', $id_customer],
-            ['orders.id'          , $id_order]
-        ])->delete();
-
-        return redirect(action('Orders\OrderController@index'));
-        exit();
-    }
-=======
     
->>>>>>> Developer
 }

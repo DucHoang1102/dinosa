@@ -23,12 +23,8 @@ class OrderController extends BaseController
         exit();
     }
 
-<<<<<<< HEAD
-    function getDeletePermanently($id_customer, $id_order)
-=======
     // Xóa vĩnh viễn đơn hàng
     function getDeletePermanently($id_order=0 )
->>>>>>> Developer
     {
         // Xóa toàn bộ - dọn dẹp thùng rác
         if ($id_order == 'all')

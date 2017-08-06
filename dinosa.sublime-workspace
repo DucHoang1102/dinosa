@@ -4,24 +4,6 @@
 		"selected_items":
 		[
 			[
-<<<<<<< HEAD
-				"fade",
-				"fadeIn\t.fadeIn()"
-			],
-			[
-				"phone",
-				"phone_number"
-			],
-			[
-				"pho",
-				"phone_number"
-			],
-			[
-				"hi",
-				"hide\t.hide()"
-			],
-			[
-=======
 				"hi",
 				"hide\t.hide()"
 			],
@@ -30,7 +12,6 @@
 				"fadeOut\t.fadeOut()"
 			],
 			[
->>>>>>> Buid_Check_Customer
 				"this",
 				"this_atc"
 			],
@@ -525,8 +506,6 @@
 			[
 				"empty",
 				"empty"
-<<<<<<< HEAD
-=======
 			],
 			[
 				"emp",
@@ -535,7 +514,6 @@
 			[
 				"user",
 				"users"
->>>>>>> Buid_Check_Customer
 			]
 		]
 	},
@@ -551,18 +529,6 @@
 			}
 		},
 		{
-<<<<<<< HEAD
-			"contents": "",
-			"file": "apps/resources/views/layouts/base.blade.php",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-=======
 			"file": "apps/app/Http/Controllers/Orders/OrderController.php",
 			"settings":
 			{
@@ -668,7 +634,6 @@
 				"buffer_size": 6658,
 				"line_ending": "Windows"
 			}
->>>>>>> Buid_Check_Customer
 		}
 	],
 	"build_system": "",
@@ -729,22 +694,6 @@
 	"file_history":
 	[
 		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
-<<<<<<< HEAD
-		"/D/laravelproject/dinosa/dist/js/main.js",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
-		"/D/laravelproject/dinosa/.git/index.lock",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/OrderController.php",
-		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
-		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
-		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
-		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/donmoi.blade.php",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/BaseController.php",
-		"/D/laravelproject/dinosa/apps/routes/web.php",
-		"/D/laravelproject/dinosa/apps/app/functions/CustomerHandling.php",
-		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
-		"/D/laravelproject/blog/node_modules/less/lib/source-map/source-map-0.1.31.js",
-		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/thungrac.blade.php",
-=======
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/donmoi.blade.php",
 		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/BaseController.php",
@@ -756,7 +705,6 @@
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/OrderController.php",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
 		"/D/laravelproject/dinosa/apps/routes/web.php",
->>>>>>> Buid_Check_Customer
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/PrintController.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/base.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/chuyenthanhcong.blade.php",
@@ -783,10 +731,7 @@
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/donmoi.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print-product.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/colums.blade.php",
-<<<<<<< HEAD
-=======
 		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
->>>>>>> Buid_Check_Customer
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/dangchuyen.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/chuyenthatbai.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/tab-content/chuyenthanhcong.blade.php",
@@ -873,13 +818,9 @@
 		"/D/laravelproject/test/index.php",
 		"/D/laravelproject/test/apps/bootstrap/autoload.php",
 		"/D/laravelproject/test/apps/bootstrap/app.php",
-<<<<<<< HEAD
-		"/D/laravelproject/dinosa/app/package.json"
-=======
 		"/D/laravelproject/dinosa/app/package.json",
 		"/D/laravelproject/dinosa/app/bootstrap/app.php",
 		"/D/laravelproject/dinosa/app/bootstrap/autoload.php"
->>>>>>> Buid_Check_Customer
 	],
 	"find":
 	{
@@ -898,10 +839,6 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-<<<<<<< HEAD
-			"keyup",
-=======
->>>>>>> Buid_Check_Customer
 			"console.log",
 			"event",
 			"handler",
@@ -1028,12 +965,8 @@
 			"loadding",
 			"content",
 			"abd",
-<<<<<<< HEAD
-			"đây"
-=======
 			"đây",
 			"__sdt"
->>>>>>> Buid_Check_Customer
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1052,11 +985,7 @@
 	"groups":
 	[
 		{
-<<<<<<< HEAD
-			"selected": 1,
-=======
 			"selected": 0,
->>>>>>> Buid_Check_Customer
 			"sheets":
 			[
 				{
@@ -1071,13 +1000,8 @@
 						"selection":
 						[
 							[
-<<<<<<< HEAD
-								398,
-								398
-=======
 								144,
 								144
->>>>>>> Buid_Check_Customer
 							]
 						],
 						"settings":
@@ -1092,22 +1016,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-<<<<<<< HEAD
-					"stack_index": 1,
-=======
 					"stack_index": 0,
->>>>>>> Buid_Check_Customer
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-<<<<<<< HEAD
-					"file": "apps/resources/views/layouts/base.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-=======
 					"file": "apps/app/Http/Controllers/Orders/OrderController.php",
 					"semi_transient": false,
 					"settings":
@@ -1356,39 +1269,26 @@
 					"settings":
 					{
 						"buffer_size": 2592,
->>>>>>> Buid_Check_Customer
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< HEAD
-								0,
-								0
-=======
 								771,
 								779
->>>>>>> Buid_Check_Customer
 							]
 						],
 						"settings":
 						{
-<<<<<<< HEAD
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax"
-=======
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
 							"translate_tabs_to_spaces": false
->>>>>>> Buid_Check_Customer
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-<<<<<<< HEAD
-					"stack_index": 0,
-=======
 					"stack_index": 2,
 					"type": "text"
 				},
@@ -1482,7 +1382,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 12,
->>>>>>> Buid_Check_Customer
 					"type": "text"
 				}
 			]
@@ -1541,13 +1440,6 @@
 		"selected_items":
 		[
 			[
-<<<<<<< HEAD
-				"main",
-				"dinosa\\dist\\js\\main.js"
-			],
-			[
-=======
->>>>>>> Buid_Check_Customer
 				"donmoi",
 				"dinosa\\apps\\resources\\views\\orders\\tab-content\\donmoi.blade.php"
 			],
@@ -1556,7 +1448,10 @@
 				"dinosa\\apps\\routes\\web.php"
 			],
 			[
-<<<<<<< HEAD
+				"main",
+				"dinosa\\dist\\js\\main.js"
+			],
+			[
 				"help",
 				"dinosa\\apps\\app\\functions\\helpers.php"
 			],
@@ -1582,25 +1477,6 @@
 			],
 			[
 				"daxac",
-=======
-				"main",
-				"dinosa\\dist\\js\\main.js"
-			],
-			[
-				"help",
-				"dinosa\\apps\\app\\functions\\helpers.php"
-			],
-			[
-				"hel",
-				"dinosa\\apps\\app\\functions\\helpers.php"
-			],
-			[
-				"thung",
-				"dinosa\\apps\\resources\\views\\orders\\tab-content\\thungrac.blade.php"
-			],
-			[
-				"xacnhan",
->>>>>>> Buid_Check_Customer
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
 			[
@@ -1608,21 +1484,6 @@
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
 			[
-<<<<<<< HEAD
-=======
-				"thungr",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\thungrac.blade.php"
-			],
-			[
-				"daxac",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
-			],
-			[
-				"daxacnha",
-				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
-			],
-			[
->>>>>>> Buid_Check_Customer
 				"xacnha",
 				"dinosa\\apps\\resources\\views\\bill\\tab-content\\daxacnhan.blade.php"
 			],
@@ -1931,11 +1792,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-<<<<<<< HEAD
-	"side_bar_width": 481.0,
-=======
 	"side_bar_width": 50.0,
->>>>>>> Buid_Check_Customer
 	"status_bar_visible": true,
 	"template_settings":
 	{

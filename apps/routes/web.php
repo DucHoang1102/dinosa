@@ -15,12 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-Route::group(['prefix'=>'orders'], function(){
-	// Index Default
-	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
-
-=======
 Route::get('test', function () {
 
 });
@@ -30,7 +24,6 @@ Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
 
->>>>>>> Developer
 	// Gửi mail
 	Route::get('send-mail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']);
 
@@ -43,19 +36,11 @@ Route::group(['prefix'=>'orders'], function(){
 	// Xóa sản phẩm
 	Route::post('delete-product', ['as' => 'deleteProductOrders', 'uses' => 'Orders\AjaxController@postDeleteProductsAjax']);
 
-<<<<<<< HEAD
-	// Xóa vĩnh viễn
-	Route::get('delete-permanently/{id_customer}/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanently']);
-
-	// Autocomplete: Phone
-	Route::post('autocomplete/{colum}', ['as' => 'autoCompleteOrders', 'uses' => 'Orders\AjaxController@postAutoCompleteAjax']);
-=======
 	// Xóa vĩnh viễn đơn hàng
 	Route::get('delete-permanently/{id_order}', ['as' => 'deletePermanentlyOrders', 'uses' => 'Orders\OrderController@getDeletePermanently']);
 
 	// Autocomplete: Phone
 	Route::get('autocomplete/phone', ['as' => 'autoCompletePhone', 'uses' => 'Orders\AutocompleteController@getPhone']);
->>>>>>> Developer
 
 	// Get Move
 	Route::get('move/status={status}+id={id}+no_update={no_update}', ['as' => 'moveOrders', 'uses' => 'Orders\OrderController@getMove']);
