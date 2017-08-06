@@ -17,8 +17,24 @@ class PrintController extends BaseController
         if($id_order == "all" && $id_product="all") return view('orders.prints.products');
 
         else{
-            $orders_daXacNhan = OrdersHandling::get(2, 0, $id_order, $id_product);
-            return view('orders.prints.products', compact('orders_daXacNhan'));
+             if($id_order == "all" && $id_product="all") return view('orders.prints.products');
+
+            else{
+                foreach ( OrdersHandling::getByStatus(2) as $order ) {
+                    if ( $order->id == $id_order ) {
+                        foreach ( $order->products as $product ) {
+                            if ( $product->id == $id_product ) {
+                                $order->products  = [$product];
+
+                                $orders_daXacNhan = [$order];
+
+                                return view('orders.prints.products', compact('orders_daXacNhan'));
+                            }
+                        }
+                    }
+                }
+                return view('orders.prints.products');
+            }
         }
     }
 }

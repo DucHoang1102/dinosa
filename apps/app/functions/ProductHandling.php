@@ -39,7 +39,7 @@ class ProductHandling
 		];
 	}
 
-	// Lấy sản phẩm theo id_orders và id_product
+	// Lấy sản phẩm theo id_orders 
 	public static function get($id_orders='0')
 	{
 		$products = DB::table('products_of_orders')

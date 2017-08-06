@@ -158,12 +158,6 @@ class OrdersHandling
         else         return false;
     }
 
-    // Delete orders
-    public static function delete()
-    {
-
-    }
-
     // Delete Permanently Orders -> Xóa vĩnh viễn
     public static function deletePermanently ($id_order) {
         if ( $id_order === 0 ) return false;
