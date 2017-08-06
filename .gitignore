@@ -14,3 +14,4 @@ yarn-error.log
 .gitignore
 dinosa.sublime-project
 dinosa.sublime-workspace
+apps/.env

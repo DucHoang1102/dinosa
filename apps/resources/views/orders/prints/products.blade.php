@@ -75,10 +75,7 @@
 
 		@media only print  {
 			.print-product .product img {
-				display: block !important;
-				overflow: hidden;
-				top: 0px !important;
-				left: 0px !important;
+				display: block;
 				width: 1489px !important;
 			}
 			.print-product .product .del, .print-product .product .description, hr, br {
@@ -126,6 +123,15 @@
 					$(this).remove();
 				});
 			});
+
+			// Fix lỗi 1 sản phẩm bị thừa 1 trang in
+			if ( $('.print-product .product').length == 1 ) {
+				$('.print-product .product').css({
+					position : 'absolute',
+					top      : '0px',
+					left     : '0px'
+				});
+			}
 
 		})(jQuery);
 	</script>

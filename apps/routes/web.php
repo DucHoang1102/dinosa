@@ -1,5 +1,5 @@
 <?php
-
+use App\functions\OrdersHandling;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,7 @@ Route::group(['prefix'=>'orders'], function(){
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
 
 	// Gửi mail
-	Route::get('send-mail', ['as' => 'sendMail', 'uses' => 'Orders\AjaxController@getSendMailAjax']);
+	Route::get('send-mail', ['as' => 'sendMail', 'uses' => 'Orders\AjaarController@getSendMailAjax']);
 
 	// Thêm orders
 	Route::post('add', ['as' => 'addOrders', 'uses' => 'Orders\AjaxController@postAddOrdersAjax']);
