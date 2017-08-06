@@ -4,6 +4,7 @@
 	<div class="table-tbody">
 		<table class="table table-hover">
 			<tbody>
+				@if (count($orders_thungRac) == 0){!! '<div style="font-style:italic;font-weight:bold;padding-left:10px">Dữ liệu trống</div>' !!}@endif
 				@foreach ($orders_thungRac as $stt => $order)
 				<tr>
 					<input type="hidden" name="_id_order" value="{{ $order->id }}"/>
@@ -25,7 +26,7 @@
 									<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
 								</button>
 							</a>
-							<a class="delete" href="orders/delete-permanently/{{ $order->id_customers }}/{{ $order->id }}">
+							<a class="delete" href="orders/delete-permanently/{{ $order->id }}">
 								<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa vĩnh viễn">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								</button>
@@ -37,4 +38,11 @@
 			</tbody>
 		</table>
 	</div>
-</div> <!--/.daxacnhan-->
+	<div class="funs-thungrac">
+		<a class="delete-all" href="orders/delete-permanently/all">
+			<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Dọn dẹp thùng rác">
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Dọn dẹp
+			</button>
+		</a>
+	</div>
+</div> <!--/.thungrac-->

@@ -15,41 +15,32 @@ class OrderController extends BaseController
     	return view('orders.base');
     }
 
-    function getMove ($status="", $id="", $no_update = false) {
+    function getMove ($status, $id, $no_update = false) {
 
-        if (!empty($status) and !empty($id))
-        {
-            if ($no_update == true) {
-                $update = [
-                    'id_orders_status' => $status
-                ];
-            } else {
-                $update = [
-                    'id_orders_status' => $status,
-                    'updated_at' => \Carbon\Carbon::now()
-                ];
-            }
-
-            DB::table('orders')
-            ->where('orders.id', $id)
-            ->update($update);
-        }
+        OrdersHandling::move($status, $id, $no_update = false);
 
         return redirect(action('Orders\OrderController@index'));
         exit();
     }
 
+<<<<<<< HEAD
     function getDeletePermanently($id_customer, $id_order)
+=======
+    // Xóa vĩnh viễn đơn hàng
+    function getDeletePermanently($id_order=0 )
+>>>>>>> Developer
     {
-        if ($id_customer === 0 || $id_order === 0 || $id_customer === false || $id_order === false) {
-            return redirect(action('Orders\OrderController@index'));
-            exit();
+        // Xóa toàn bộ - dọn dẹp thùng rác
+        if ($id_order == 'all')
+        {
+            OrdersHandling::deletePermanentlyAll();
         }
 
-        $result = DB::table('orders')->where([
-            ['orders.id_customers', $id_customer],
-            ['orders.id'          , $id_order]
-        ])->delete();
+        else {
+            if ( OrdersHandling::is_order_of_thungrac($id_order) ) {
+                OrdersHandling::deletePermanently( $id_order );
+            }
+        }
 
         return redirect(action('Orders\OrderController@index'));
         exit();

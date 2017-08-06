@@ -6,102 +6,79 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use DB;
-use App\functions\RandomId;
-use App\functions\ParserProduct;
-use App\functions\TotalMoney;
 use App\functions\OrdersHandling;
+use App\functions\CustomerHandling;
+use App\functions\ProductHandling;
 use App\functions\Excel;
 use App\functions\Email;
 
 class AjaxController extends BaseController
 {
-	// Thêm đơn hàng
+    // Thêm đơn hàng
     function postAddOrdersAjax (Request $request) {
+<<<<<<< HEAD
         $_id_order    = isset($request->_id_order)    ? $request->_id_order    : "";
         $_id_customer = isset($request->_id_customer) ? $request->_id_customer : "";
         $colum        = isset($request->colum)        ? $request->colum        : "";
         $value        = isset($request->value)        ? $request->value        : "";
+=======
+        $_id_order    = isset($request->_id_order)    ? trim($request->_id_order)    : "";
+        $_id_customer = isset($request->_id_customer) ? trim($request->_id_customer) : "";
+        $colum        = isset($request->colum)        ? trim($request->colum)        : "";
+        $value        = isset($request->value)        ? trim($request->value)        : "";
+>>>>>>> Developer
 
+        // Ràng buộc các colums
         $colum_customers = ['name', 'phone', 'address'];
-
         if (! in_array($colum, $colum_customers)) return [];
 
         // Trường hợp thêm mới đơn hàng
-        if (empty($_id_order) || empty($_id_customer)) {
-            // Colums Customers
-            $colum_customers = ['name', 'phone', 'address'];
+        if (empty($_id_order)) {
 
-            $id_customer = RandomId::get("CT", 10);
-            $id_order    = RandomId::get("DS", 10);
+            // Thêm khách hàng
+            $id_customer = CustomerHandling::create($colum, $value);
 
-            $check_1 = DB::table('customers')->insert([
-                'id'   => $id_customer,
-                $colum => $value,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
-            ]);
+            // Thêm order
+            $id_order    = OrdersHandling::create($id_customer);
 
-            // Colums Orders
-            $check_2 = DB::table('orders')->insert([
-                'id'                  => $id_order,
-                'id_post'             => "",
-                'id_customers'        => $id_customer,
-                'id_orders_status'    => 1,
-                'surcharge_money'     => 0,
-                'ship_customer_money' => 0,
-                'total_money'         => 0,
-                'created_at'          => \Carbon\Carbon::now(),
-                'updated_at'          => \Carbon\Carbon::now()
-            ]);
-            if ($check_1 == true and $check_2 == true) {
-                return ['_id_order'=>$id_order, '_id_customer'=>$id_customer];
+            if (!empty($id_customer) && !empty($id_order)) {
+                return [
+                    '_id_order'    => $id_order, 
+                    '_id_customer' => $id_customer
+                ];
             }
             else return [];
         }
        
-       // Trường hợp sửa đơn hàng
-       else 
-       {
-            DB::table('customers')
-                ->where('id', $_id_customer)
-                ->update([
-                    $colum => $value
-                ]);
+       // Trường hợp sửa đơn hàng bản chất là sửa khách hàng
+        else {
+            CustomerHandling::update($_id_customer, $colum, $value);
             return [];
-       }
+        }
     }
 
     // Thêm sản phẩm
     function postAddProductsAjax (Request $request)
     {
-        $_id_order   = isset($request->_id_order)   ? $request->_id_order   : "";
-        $_id_product = isset($request->_id_product) ? $request->_id_product : "";
-        $product     = isset($request->product)     ? $request->product     : "";
+        $_id_order   = isset($request->_id_order)   ? trim($request->_id_order)   : "";
+        $_id_product = isset($request->_id_product) ? trim($request->_id_product) : "";
+        $product     = isset($request->product)     ? trim($request->product)     : "";
 
-        $product = new ParserProduct($product);
+        if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
+            // Tạo mới sản phẩm, chỉ tạo được các đơn tại đơn mới
+            // nếu không người dùng có thể hack được
+            $_id_product = ProductHandling::create( $_id_order, $product );
 
-        if (empty($_id_product)) {
-            // Tạo mới sản phẩm
-            $_id_product = RandomId::get("PO", 10);
-
-            $check = DB::table('products_of_orders')->insert([
-                'id'                    => $_id_product,
-                'id_orders'             => $_id_order,
-                'name_category_product' => $product->name_category_product,
-                'id_image_print'        => $product->id_image_print,
-                'name_embryo_tshirt'    => $product->name_embryo_tshirt,
-                'name'                  => $product->name,
-                'size'                  => $product->size,
-                'price'                 => $product->price,
-                'created_at'            => \Carbon\Carbon::now(),
-                'updated_at'            => \Carbon\Carbon::now()
-            ]);
-
-            if ($check == true) {
+            if ( $_id_product ) {
                 return [
                     'id_product'  => $_id_product, 
+<<<<<<< HEAD
                     'total_money' => TotalMoney::get($_id_order), 
                     'url_image'    => OrdersHandling::getUrlImage($product->id_image_print)
+=======
+                    'total_money' => OrdersHandling::totalMoney( $_id_order ), 
+                    'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] )
+>>>>>>> Developer
                 ]; 
             }
             return [];
@@ -113,45 +90,17 @@ class AjaxController extends BaseController
     // Xóa sản phẩm
     function postDeleteProductsAjax (Request $request)
     {
-        $_id_order   = isset($request->_id_order)   ? $request->_id_order   : "";
-        $_id_product = isset($request->_id_product) ? $request->_id_product : "";
+        $_id_order   = isset($request->_id_order)   ? trim($request->_id_order)   : "";
+        $_id_product = isset($request->_id_product) ? trim($request->_id_product) : "";
 
-        if (!empty($_id_order) && !empty($_id_product)) {
+        if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
 
-            // Xóa xản phẩm
-            $check = DB::table('products_of_orders')
-                        ->select('price')
-                        ->where([
-                            ['products_of_orders.id_orders', $_id_order],
-                            ['products_of_orders.id', $_id_product]
-                        ])
-                        ->delete();
+           $result = ProductHandling::delete($_id_order, $_id_product);
 
-            if ($check == 1) return ['total_money' => TotalMoney::get($_id_order)];
+            if ( $result ) return [ 'total_money' => OrdersHandling::totalMoney( $_id_order ) ];
             else return [];
         }
-    }
-
-    function postAutoCompleteAjax (Request $request, $colum)
-    {
-    	if ($colum == 'phone') {
-    		$phoneInput = isset($request->phoneInput) ? $request->phoneInput : "";
-    		$phones = DB::table('customers')
-    					->select('phone', 'name')
-    					->where('phone', 'like', $phoneInput.'%')
-    					->offset(0)
-    					->limit(5)
-    					->get();
-    		return json_encode($phones);
-    	}
-
-    	else if ($colums == "product") {
-
-    	}
-
-   		else {
-   			
-   		}
+        else return [];
     }
 
     function getSendMailAjax (Request $request)
@@ -178,6 +127,7 @@ class AjaxController extends BaseController
         
         return ["status" => 0];
     }
+<<<<<<< HEAD
 
     function getDeletePermanentlyAjax($id_customer, $id_order)
     {
@@ -194,4 +144,7 @@ class AjaxController extends BaseController
         return redirect(action('Orders\OrderController@index'));
         exit();
     }
+=======
+    
+>>>>>>> Developer
 }

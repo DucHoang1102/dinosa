@@ -3,6 +3,7 @@
 
 var flagAjax = true;
 var timeout  = null;
+var timeout1 = null;
 var errors = {};
 
 var helper = { 
@@ -26,6 +27,35 @@ var helper = {
 		var string = string.toUpperCase().trim();
 		return re.test(string);
 	},
+	viewBackground: function($this='', show=true) {
+		if (show == false){
+			$('#donmoi .load-oldcustomer').hide();
+			return false;
+		}
+
+		function setSize($this) {
+			var width  = $($this).width();
+			var height = $($this).height();
+			var top    = $($this).position().top;
+			var left   = $($this).position().left;
+
+			$('#donmoi .load-oldcustomer').css({
+				width  : width,
+				height : height,
+				top    : top,
+				left   : left
+			});
+		}
+		$(window).resize(function(){
+			setSize($this);
+		});
+
+		setSize($this);
+
+		$('#donmoi .load-oldcustomer').show();
+
+		return false;
+		},
 };
 
 function patternHTML () {
@@ -34,7 +64,9 @@ function patternHTML () {
 			<input type="hidden" name="_id_customer" value=""/>
 			<td class="stt"></td>
 			<td class="hoten"><input type="text" name="name" value="" maxlength="35" autocomplete="off"></td>
-			<td class="phone"><input type="text" name="phone" value="" maxlength="11" autocomplete="off"></td>
+			<td class="phone">
+				<input type="text" name="phone" value="" maxlength="11" autocomplete="off">
+			</td>
 			<td class="diachi address"><input type="text" name="address" value="" maxlength="99" autocomplete="off"></td>
 			<td class="sanpham"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
 			<td class="tongtien moneys"><div class="label">0 <span class="glyphicon glyphicon-plus" aria-hidden="true"></div></td>
@@ -64,6 +96,14 @@ function patternProductSuccess(id="", name="", url_image="") {
 	return `<div class="product_success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
+function patternAutocomplete(phone="", name="") {
+	return `<span class="atc-item">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<span class="atc-phone">${phone}</span>
+				<span class="atc-name">(${name})</span>
+			</span>`;
+}
+
 /*
  *
  * CÁC NÚT CHỨC NĂNG FRONT END
@@ -76,11 +116,9 @@ function patternProductSuccess(id="", name="", url_image="") {
 	$('#donmoi .add-order').click(function () {
 		$(patternHTML()).appendTo('#donmoi tbody')
 						.find('.sanpham .glyphicon').click().parent().parent()
+						.find('input[name=name]').focus()
 					    .hide()
-					    .show(400, function () {
-					        $(this).find('input[name=name]')
-					    	    .focus();
-					    });
+					    .fadeIn(400);
 		helper.incrementsOK();
 		helper.scrollTop();
 		return false;
@@ -96,16 +134,6 @@ function patternProductSuccess(id="", name="", url_image="") {
 	});
 })();
 
-// Xóa đơn hàng - Đơn xóa sẽ thêm vào trường Thùng rác
-(function deleteOrdersNode () {
-	$('#donmoi').on('click', '.functions .cancel', function () {
-		$(this).parent().parent().hide('200', function() {
-			$(this).remove();
-			helper.incrementsOK();
-		});;
-		return false;
-	});
-})();
 
 // Move right chuyển tab 
 (function moveRight() {
@@ -117,10 +145,6 @@ function patternProductSuccess(id="", name="", url_image="") {
 					transition: "all 0.5s",
 					transform: `translateX(${lenght})`,
 				});
-		setTimeout(function(){
-			$($this).parent().parent().parent().remove()
-		},550);
-
 	});
 })();
 
@@ -134,10 +158,6 @@ function patternProductSuccess(id="", name="", url_image="") {
 					transition: "all 0.5s",
 					transform: `translateX(-${lenght})`,
 				});
-		setTimeout(function(){
-			$($this).parent().parent().parent().remove()
-		},550);
-
 	});
 })();
 
@@ -147,14 +167,21 @@ function patternProductSuccess(id="", name="", url_image="") {
 		var $this = this;
 		var height = $(window).height() + 10 + 'px';
 		var this_order = $($this).parent().parent().parent();
-		this_order
-			.css({
+		this_order.css({
 				transition: "all 0.6s",
 				transform: `translateY(-${height})`,
 			});
-		setTimeout(function(){
-			this_order.remove()
-		},650);
+	});
+})();
+
+// Xóa tất cả - Dọn dẹp thùng rác
+(function deleteAll() {
+	$('#thungrac .delete-all').click(function() {
+		$('#thungrac .table-tbody').css({
+			transition : 'all 0.6s',
+			transform  : `scale(0.001,0.001)`,
+		});
+
 	});
 })();
 
@@ -285,6 +312,13 @@ function Ajax (datas) {
 					$($this).parent().parent().find('.menu_funs .move-right').attr('href', 'orders/move/status=2+id=' + result._id_order + '+no_update=false');
 					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
+				if (result.customer_old) {
+					var c = result.customer_old;
+					$($this).parent().parent().find('input[name=name]').val(c.name);
+					$($this).parent().parent().find('input[name=phone]').val(c.phone);
+					$($this).parent().parent().find('input[name=address]').val(c.address);
+				}
+				helper.viewBackground('',false);
 			},
 			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
@@ -404,33 +438,59 @@ function Ajax (datas) {
 	});
 })();
 
-// Auto Complete
+// Auto Complete: 1 mình một ajax riêng vì tiến trình này phải xử lý song song
 (function autoCompleteAjax () {
 	$('#donmoi tbody').on('keyup', 'input[name=phone]', function (){
 		var $this = this;
-		var datas = {
-			url     : 'orders/autocomplete/phone',
-			type    : 'post',
-			data    : {
-				phoneInput : $($this).val()
-			},
-			success : function (result) {
-				var result = $.parseJSON(result);
-				var items = [];
-				$.each(result, function(index, result) {
-					if (result.name){
-						items[index] = result.phone + '(' + result.name + ')';
+
+		if ($($this).val().length < 6) return false;
+
+		if (timeout1) clearTimeout(timeout1);
+		timeout1 = setTimeout(function(){
+			$.ajax({
+				url      : 'orders/autocomplete/phone',
+				type     : 'get',
+				dataType : 'json',
+				data     : {
+					phoneInput : $($this).val()
+				},
+				success  : function (result) {
+					if (result) {
+						$('#donmoi .autocomplete').remove();
+						
+						var html = '';
+
+						$.each(result, function(index, customer) {
+							html = html + patternAutocomplete(customer.phone, customer.name);
+						});
+
+						html = `<div class="autocomplete">${html}</div>`;
+
+						$(html).appendTo($($this).parent());
+
+						$('#donmoi').on('click', '.atc-item', function () {
+
+							var phone_number = $(this).find('.atc-phone').text();
+
+							$(this).parent().parent().parent()
+								   .find('input[name=phone]')
+								   .val(phone_number).keyup();
+
+							helper.viewBackground( $(this).parent().parent().parent() );
+
+							$(this).parent().fadeOut(300, function(){
+								$('#donmoi .autocomplete').remove();
+							});
+
+							return false;
+						});
+
 					}
-				});
-				$($this).autocomplete({
-					source: items
-				});
-			},//error: function (xhr, status, errorThrown) {
-		        //The message added to Response object in Controller can be retrieved as following.
-		    //    $('html').html(xhr.responseText);
-		    //}
-		};
-		Ajax(datas);
+				}
+			});
+		}, 1);
+
+		return false;
 	});
 })();
 
@@ -454,7 +514,6 @@ function Ajax (datas) {
 			success  : function(result) {
 				if (result.hasOwnProperty('status')) {
 					if (result.status == 1) {
-						console.log(result);
 						$($this).find('button')
 								.css({
 									background: "#009fcc",

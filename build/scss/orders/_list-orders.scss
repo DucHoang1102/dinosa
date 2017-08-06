@@ -81,7 +81,28 @@ $color-backgorund: #fcfcfc;
 					&:hover{
 						color: #1111ff;}}
 			}};
-		&.functions {
+		&.phone {
+			position: relative;
+			.autocomplete .atc-item {
+				display: block;
+				padding: 5px 3px 5px 7px;
+				border-radius: 5px;
+				border-bottom: 1px solid #fcfcfc;
+				background: #0a0a0a;
+				color: #fcfcfc;
+			}
+			.autocomplete .atc-item:hover {
+				background: #515151;
+			} 
+			.autocomplete {
+				z-index: 10;
+				cursor: pointer;
+				position: absolute;
+				font-size: 0.85em;
+				top: 35px;
+				left: 20px;
+				width: 300px;
+			}
 		}
 		&.sanpham {
 			color: $color-produce;
@@ -151,10 +172,22 @@ body {overflow:hidden;} // Xẽ xóa sau
 @include scrollbar();
 
 .list-bills {
-	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
-		@include width_head($stt:3%, $hoten:17%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
-		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
-		@include thead_tr_th();
+	#donmoi {
+		.load-oldcustomer {
+			position: absolute;
+			display: none;
+			background: rgba(255,255,255,0.9);
+			text-align: center;
+			vertical-align: middle;
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
 		input {
 			border-top: none;
 			border-left: none;
@@ -185,6 +218,11 @@ body {overflow:hidden;} // Xẽ xóa sau
 				opacity: 1;}
 		}
 	}
+	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		@include width_head($stt:3%, $hoten:17%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
+		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
+		@include thead_tr_th();
+	}
 	
 	#daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
 		tbody tr td {
@@ -206,6 +244,13 @@ body {overflow:hidden;} // Xẽ xóa sau
 	}
 	#dainxong {
 		.funs-dainxong {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+		}
+	}
+	#thungrac {
+		.funs-thungrac {
 			position: absolute;
 			bottom: 10px;
 			left: 10px;

@@ -4,6 +4,7 @@
 	<div class="table-tbody">
 		<table class="table table-hover">
 			<tbody>
+				@if (count($orders_daInXong) == 0){!! '<div style="font-style:italic;font-weight:bold;padding-left:10px">Dữ liệu trống</div>' !!}@endif
 				@foreach ($orders_daInXong as $stt => $order)
 				<tr>
 					<input type="hidden" name="_id_order" value="{{ $order->id }}"/>
