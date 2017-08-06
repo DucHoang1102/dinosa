@@ -1,4 +1,4 @@
-/node_modules
+#/node_modules
 /upload/d-p-1234/
 /upload/mail-orders/
 /apps/storage/*.key
@@ -10,5 +10,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-dinosa.sublime-project
-dinosa.sublime-workspace
+#dinosa.sublime-project
+#dinosa.sublime-workspace
