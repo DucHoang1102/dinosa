@@ -68,14 +68,15 @@ $color-backgorund: #fcfcfc;
 		&.moneys {
 			.label {
 				display: block;
-				border-radius: 8px;
-				font-size: 1em;
+				font-size: 1.1em;
+				border-radius: 0px;
 				text-align: center;
-				padding: 5px 8px;
-				color: #ffffff;
-				background: #d66d6d;
+				padding: 3px 5px;
+				color: #CC0001;
+				border-bottom: 2px solid #CC0001;
 				.glyphicon {
 					font-size: 0.9em;
+					margin-left: 3px;
 					color: #d3b1b1;
 					cursor: pointer;
 					&:hover{
@@ -114,15 +115,15 @@ $color-backgorund: #fcfcfc;
 				cursor: pointer;
 				&:hover{
 					color: #1111ff;}}
-			.product_success {
+			.product-success {
 				position: relative;
 				margin-bottom: 2px;
 				cursor: pointer;
 				color: #f2f2f2;
 				font-size: 0.9em;
-				background: #8989ff;
+				background: #8989ff; 
 				border-radius: 5px;
-				padding: 2px;
+				padding: 2px 2px 2px 4px;
 				.glyphicon {
 					margin: 0 3px;
 					&:hover {
@@ -141,6 +142,9 @@ $color-backgorund: #fcfcfc;
 						color: #bfbfbf;
 					}
 				}
+			}
+			.bg-1 {
+				//background: #C9302C !important;
 			}
 		}
 	}

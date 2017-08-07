@@ -46,7 +46,7 @@ class ProductHandling
 			    		->where([
 			                ['id_orders', $id_orders]
 			            ])
-			    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print')
+			    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print', 'products_of_orders.status')
 			            ->orderBy('products_of_orders.created_at', 'asc')
 			    		->get();
 

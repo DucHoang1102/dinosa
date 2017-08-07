@@ -93,7 +93,7 @@ function patternProduct () {
 
 function patternProductSuccess(id="", name="", url_image="") {
 	var name = name.toUpperCase();
-	return `<div class="product_success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
+	return `<div class="product-success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
 function patternAutocomplete(phone="", name="") {
@@ -187,7 +187,7 @@ function patternAutocomplete(phone="", name="") {
 
 // Bấm ảnh sản phẩm view ảnh
 (function viewImageProduct() {
-	$('.table-tbody').on('mousedown', '.sanpham .product_success', function (event) {
+	$('.table-tbody').on('mousedown', '.sanpham .product-success', function (event) {
 		if (!($(event.target).attr('class') == "glyphicon glyphicon-remove")){
 
 			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
@@ -214,7 +214,7 @@ function patternAutocomplete(phone="", name="") {
 
 // Bấm nút in một sản phẩm
 (function printProduct() {
-	$('.table-tbody').on('mousedown', '.sanpham .product_success .glyphicon-print', function(){
+	$('.table-tbody').on('mousedown', '.sanpham .product-success .glyphicon-print', function(){
 		var id_order   = $(this).parent().parent().parent().find('input[name=_id_order]').val();
 		var id_product = $(this).parent().attr('id');
 

@@ -113,14 +113,15 @@ body {
   padding-left: 1.1em; }
   .list-bills #donmoi tbody tr td.moneys .label, .list-bills #daxacnhan tbody tr td.moneys .label, .list-bills #dainxong tbody tr td.moneys .label, .list-bills #dangchuyen tbody tr td.moneys .label, .list-bills #chuyenthanhcong tbody tr td.moneys .label, .list-bills #chuyenthatbai tbody tr td.moneys .label, .list-bills #thungrac tbody tr td.moneys .label {
     display: block;
-    border-radius: 8px;
-    font-size: 1em;
+    font-size: 1.1em;
+    border-radius: 0px;
     text-align: center;
-    padding: 5px 8px;
-    color: #ffffff;
-    background: #d66d6d; }
+    padding: 3px 5px;
+    color: #CC0001;
+    border-bottom: 2px solid #CC0001; }
     .list-bills #donmoi tbody tr td.moneys .label .glyphicon, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon, .list-bills #dainxong tbody tr td.moneys .label .glyphicon, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon, .list-bills #thungrac tbody tr td.moneys .label .glyphicon {
       font-size: 0.9em;
+      margin-left: 3px;
       color: #d3b1b1;
       cursor: pointer; }
       .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover, .list-bills #dainxong tbody tr td.moneys .label .glyphicon:hover, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon:hover, .list-bills #thungrac tbody tr td.moneys .label .glyphicon:hover {
@@ -154,7 +155,7 @@ body {
       cursor: pointer; }
       .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #dainxong tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #dangchuyen tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #thungrac tbody tr td.sanpham .glyphicon-ok-circle:hover {
         color: #1111ff; }
-    .list-bills #donmoi tbody tr td.sanpham .product_success, .list-bills #daxacnhan tbody tr td.sanpham .product_success, .list-bills #dainxong tbody tr td.sanpham .product_success, .list-bills #dangchuyen tbody tr td.sanpham .product_success, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success, .list-bills #thungrac tbody tr td.sanpham .product_success {
+    .list-bills #donmoi tbody tr td.sanpham .product-success, .list-bills #daxacnhan tbody tr td.sanpham .product-success, .list-bills #dainxong tbody tr td.sanpham .product-success, .list-bills #dangchuyen tbody tr td.sanpham .product-success, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success, .list-bills #thungrac tbody tr td.sanpham .product-success {
       position: relative;
       margin-bottom: 2px;
       cursor: pointer;
@@ -162,21 +163,23 @@ body {
       font-size: 0.9em;
       background: #8989ff;
       border-radius: 5px;
-      padding: 2px; }
-      .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon, .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon, .list-bills #dainxong tbody tr td.sanpham .product_success .glyphicon, .list-bills #dangchuyen tbody tr td.sanpham .product_success .glyphicon, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success .glyphicon, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success .glyphicon, .list-bills #thungrac tbody tr td.sanpham .product_success .glyphicon {
+      padding: 2px 2px 2px 4px; }
+      .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon {
         margin: 0 3px; }
-        .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #dainxong tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #dangchuyen tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success .glyphicon:hover, .list-bills #thungrac tbody tr td.sanpham .product_success .glyphicon:hover {
+        .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon:hover {
           color: #000000; }
-      .list-bills #donmoi tbody tr td.sanpham .product_success:hover, .list-bills #daxacnhan tbody tr td.sanpham .product_success:hover, .list-bills #dainxong tbody tr td.sanpham .product_success:hover, .list-bills #dangchuyen tbody tr td.sanpham .product_success:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success:hover, .list-bills #thungrac tbody tr td.sanpham .product_success:hover {
+      .list-bills #donmoi tbody tr td.sanpham .product-success:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success:hover, .list-bills #dainxong tbody tr td.sanpham .product-success:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success:hover, .list-bills #thungrac tbody tr td.sanpham .product-success:hover {
         background: #3a3aff; }
-      .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #dainxong tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #dangchuyen tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success .glyphicon-remove, .list-bills #thungrac tbody tr td.sanpham .product_success .glyphicon-remove {
+      .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon-remove, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon-remove {
         position: absolute;
         right: 3px;
         top: 50%;
         transform: translateY(-50%);
         font-size: 1em; }
-        .list-bills #donmoi tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #daxacnhan tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #dainxong tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #dangchuyen tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product_success .glyphicon-remove:hover, .list-bills #thungrac tbody tr td.sanpham .product_success .glyphicon-remove:hover {
+        .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon-remove:hover {
           color: #bfbfbf; }
+    .list-bills #donmoi tbody tr td.sanpham .bg-1, .list-bills #daxacnhan tbody tr td.sanpham .bg-1, .list-bills #dainxong tbody tr td.sanpham .bg-1, .list-bills #dangchuyen tbody tr td.sanpham .bg-1, .list-bills #chuyenthanhcong tbody tr td.sanpham .bg-1, .list-bills #chuyenthatbai tbody tr td.sanpham .bg-1, .list-bills #thungrac tbody tr td.sanpham .bg-1 {
+      background: #C9302C !important; }
 
 .list-bills #donmoi thead tr th, .list-bills #daxacnhan thead tr th, .list-bills #dainxong thead tr th, .list-bills #dangchuyen thead tr th, .list-bills #chuyenthanhcong thead tr th, .list-bills #chuyenthatbai thead tr th, .list-bills #thungrac thead tr th {
   color: #003f7f;
