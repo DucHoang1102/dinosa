@@ -15,7 +15,7 @@
 					<td class="diachi address">{{ $order->address }}</td>
 					<td class="sanpham">
 					@foreach ($order->products as $product)
-						<div class="product_success" id="{{ $product->id }}" url-image="{{ $product->url_image->src_f_a3 }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ $product->name }} </div>
+						<div class="product-success" id="{{ $product->id }}" url-image="{{ $product->url_image->src_f_a3 }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ $product->name }} </div>
 					@endforeach
 					</td>
 					<td class="tongtien moneys"><div class="label">{{ $order->total_money }}</div></td>

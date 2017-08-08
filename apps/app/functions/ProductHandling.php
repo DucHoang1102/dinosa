@@ -72,6 +72,18 @@ class ProductHandling
         else return '';
     }
 
+    // Chuyển status(trạng thái) của sản phẩm
+    // 1: Hàng có mặt tại shop
+    // 0: Hàng không ở shop (Mới chưa in, hàng đã chuyển đi,...)
+    public static function changeStatus($id_order, $status) {
+        if ($id_order === 0) return false;
+
+        $result = DB::table('products_of_orders')
+        			  ->where('id_orders', $id_order)
+        			  ->update(['status' => $status]);
+    	return $result;
+    }
+
     // Tạo mới sản phẩm
     public static function create($id_order, $product)
     {
