@@ -60,13 +60,19 @@ class AjaxController extends BaseController
         if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
             // Tạo mới sản phẩm, chỉ tạo được các đơn tại đơn mới
             // nếu không người dùng có thể hack được
-            $_id_product = ProductHandling::create( $_id_order, $product );
+            $products    = ProductHandling::parser($product);
+
+            $inventory   = ProductHandling::checkInventory($products['name']);
+
+            if ($inventory) $_id_product = ProductHandling::create( $_id_order, $products, '1' );
+            else            $_id_product = ProductHandling::create( $_id_order, $products );
 
             if ( $_id_product ) {
                 return [
                     'id_product'  => $_id_product, 
                     'total_money' => OrdersHandling::totalMoney( $_id_order ), 
-                    'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] )
+                    'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] ),
+                    'inventory'   => $inventory
                 ]; 
             }
             return [];
@@ -112,6 +118,34 @@ class AjaxController extends BaseController
         if ($result) return ["status" => 1, 'time_current'=> date('d-m-Y H:i:s'), 'file' => $file_name];
         
         return ["status" => 0];
+    }
+
+    // Thay đổi trạng thái sản phẩm
+    function getChangeStatus(Request $request)
+    {
+        $status     = isset($request->_status)     ? $request->_status     : '0';
+        $id_order   = isset($request->_id_order)   ? $request->_id_order   : '';
+        $id_product = isset($request->_id_product) ? $request->_id_product : '';
+
+        if ( !empty($id_order) || !empty($id_product) )
+        {
+            switch ($status) {
+                case '0':
+                    $status = '1';
+                    break;
+                case '1': 
+                    $status = '0';
+                    break;
+                default:
+                    $status = '0';
+                    break;
+            }
+
+            ProductHandling::changeStatus($id_order, $id_product, $status);
+
+            return ['status' => $status];
+        }
+        else return [];
     }
     
 }

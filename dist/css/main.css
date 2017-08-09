@@ -1,18 +1,3 @@
-.menu_funs {
-  width: 100%; }
-  .menu_funs button {
-    position: relative;
-    display: inline-block;
-    top: 0px;
-    margin: 2px;
-    padding: 4px 7px;
-    transition: all 0.2s;
-    text-align: center; }
-    .menu_funs button:hover {
-      top: -5px; }
-  .menu_funs .glyphicon {
-    font-size: 1.2em; }
-
 body {
   overflow: hidden; }
 
@@ -179,7 +164,9 @@ body {
         .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon-remove:hover, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon-remove:hover {
           color: #bfbfbf; }
     .list-bills #donmoi tbody tr td.sanpham .bg-1, .list-bills #daxacnhan tbody tr td.sanpham .bg-1, .list-bills #dainxong tbody tr td.sanpham .bg-1, .list-bills #dangchuyen tbody tr td.sanpham .bg-1, .list-bills #chuyenthanhcong tbody tr td.sanpham .bg-1, .list-bills #chuyenthatbai tbody tr td.sanpham .bg-1, .list-bills #thungrac tbody tr td.sanpham .bg-1 {
-      background: #C9302C !important; }
+      background: #f2605e !important; }
+      .list-bills #donmoi tbody tr td.sanpham .bg-1:hover, .list-bills #daxacnhan tbody tr td.sanpham .bg-1:hover, .list-bills #dainxong tbody tr td.sanpham .bg-1:hover, .list-bills #dangchuyen tbody tr td.sanpham .bg-1:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .bg-1:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .bg-1:hover, .list-bills #thungrac tbody tr td.sanpham .bg-1:hover {
+        background: #C9302C !important; }
 
 .list-bills #donmoi thead tr th, .list-bills #daxacnhan thead tr th, .list-bills #dainxong thead tr th, .list-bills #dangchuyen thead tr th, .list-bills #chuyenthanhcong thead tr th, .list-bills #chuyenthatbai thead tr th, .list-bills #thungrac thead tr th {
   color: #003f7f;

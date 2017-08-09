@@ -1,5 +1,4 @@
 <?php
-use App\functions\OrdersHandling;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +15,6 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-
 });
 
 
@@ -44,6 +42,9 @@ Route::group(['prefix'=>'orders'], function(){
 
 	// Get Move
 	Route::get('move/status={status}+id={id}+no_update={no_update}', ['as' => 'moveOrders', 'uses' => 'Orders\OrderController@getMove']);
+
+	// Change Status product
+	Route::get('change-status', ['as' => 'changeStatus', 'uses' => 'Orders\AjaxController@getChangeStatus']);
 
 	// Prints
 	Route::group(['prefix'=>'print'], function(){

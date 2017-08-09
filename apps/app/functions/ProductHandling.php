@@ -72,24 +72,68 @@ class ProductHandling
         else return '';
     }
 
+    // Check sản phẩm tồn kho
+    public static function checkInventory($name_product)
+    { 
+        // Lấy id đơn hàng có các sản phẩm yêu cầu và hiện tại  
+        // đang ở shop. Sau đó check đơn hàng đó xem có phải
+        // thuộc hàng tồn trả về không
+        $products = DB::table('products_of_orders')
+                        ->select('id', 'id_orders')
+                        ->where([
+                            ['name', $name_product],
+                            ['status', 1]
+                        ])
+                        ->get();
+
+        foreach ( $products as $product ) {
+            $order = DB::table('orders')
+                         ->select('id')
+                         ->where([
+                               ['id', $product->id_orders],
+                               ['id_orders_status', 8]
+                           ])
+                         ->first();
+            
+            if ( $order ) {
+                // Chuyển trạng thái đơn tồn trong kho
+                $result = self::changeStatus($order->id, $product->id, 0);
+
+                if ( $result ) {
+                    return $product->id;
+                }
+            }
+        }
+    }
+
     // Chuyển status(trạng thái) của sản phẩm
     // 1: Hàng có mặt tại shop
     // 0: Hàng không ở shop (Mới chưa in, hàng đã chuyển đi,...)
-    public static function changeStatus($id_order, $status) {
-        if ($id_order === 0) return false;
+    public static function changeStatus($id_order, $id_product='all', $status) {
+        if ( $id_order === 0 ) return false;
+
+        if ($id_product == 'all') {
+            $where = [
+                ['id_orders', $id_order]
+            ];
+        }
+        else {
+            $where = [
+                ['id_orders', $id_order],
+                ['id',  $id_product],
+            ];
+        }
 
         $result = DB::table('products_of_orders')
-        			  ->where('id_orders', $id_order)
+        			  ->where($where)
         			  ->update(['status' => $status]);
     	return $result;
     }
 
     // Tạo mới sản phẩm
-    public static function create($id_order, $product)
+    public static function create($id_order, $product, $status='0')
     {
     	$id_product = RandomId::get("PO", 10);
-
-        $product = self::parser($product);
         
         $result = DB::table('products_of_orders')->insert([
             'id'                    => $id_product,
@@ -100,6 +144,7 @@ class ProductHandling
             'name'                  => $product[ 'name'                  ],
             'size'                  => $product[ 'size'                  ],
             'price'                 => $product[ 'price'                 ],
+            'status'                => $status,
             'created_at'            => \Carbon\Carbon::now(),
             'updated_at'            => \Carbon\Carbon::now()
         ]);

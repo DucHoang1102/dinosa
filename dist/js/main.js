@@ -4,7 +4,6 @@
 var flagAjax = true;
 var timeout  = null;
 var timeout1 = null;
-var errors = {};
 
 var helper = { 
 	getToday  : function () {
@@ -91,9 +90,9 @@ function patternProduct () {
 	return '<input type="text" id="" name="product" value="" placeholder="" autocomplete="off">';
 }
 
-function patternProductSuccess(id="", name="", url_image="") {
+function patternProductSuccess(id="", name="", url_image="", status="0") {
 	var name = name.toUpperCase();
-	return `<div class="product-success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
+	return `<div class="product-success bg-${status}" status="${status}" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
 function patternAutocomplete(phone="", name="") {
@@ -190,16 +189,36 @@ function patternAutocomplete(phone="", name="") {
 	$('.table-tbody').on('mousedown', '.sanpham .product-success', function (event) {
 		if (!($(event.target).attr('class') == "glyphicon glyphicon-remove")){
 
+			// Tắt chức năng này tại chuột phải và chuột giữa
+			if ( event.which == 3 || event.which == 2 ) return false;
+			
 			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
+			var status    = $(this).attr('status');
+			var label     = "";
+			if (status == 1) {
+				label = "Sản phẩm đã tồn tại";
+			}
 
-			$(`<div class="img_product"><img src="${url_image}" width="300"></div>`)
+			$(`<div class="img_product"><span class="label">${label}</span><img src="${url_image}" width="300"></div>`)
 				.appendTo('body')
 				.css({
 					position : "absolute",
+					overfolow: "hidden",
 					top      : "50%",
 					left     : "50%",
 					transform: "translate(-50%, -50%)",
 					border   : "3px solid #ba1010",
+				})
+				.children('.label')
+				.css({
+					position       : "absolute",
+					color          : "#ffffff",
+					width          : "100%",
+					"border-radius": "0px",
+					padding        : "30px 0px",
+					"font-size"    : "2em",
+					top            : "40%",
+					background     : "rgba(229, 0, 0, 0.7)"
 				});
 
 			return false;
@@ -266,13 +285,19 @@ function patternAutocomplete(phone="", name="") {
   $('[data-toggle="tooltip"]').tooltip()
 })();
 
+// Cảnh báo khi đơn đã trả hàng chuyển trở về chư trả hàng
+(function daTraHang(){
+	$('#chuyenthatbai .datrahang').click(function () {
+		alert('CẢNH BÁO: LƯU Ý KHI CHUYỂN TRỞ VỀ CHƯA TRẢ HÀNG');
+	});
+})();
 
 /*
  *
  * AJAX
  * 
  *
- * Thêm, sửa đơn hàng | Thêm, sửa, xóa sản phẩm | Autocomplete
+ * Thêm, sửa đơn hàng | Thêm, sửa, xóa sản phẩm | Autocomplete | Thay đổi trạng thái sản phẩm
  *
  **/
 
@@ -363,12 +388,18 @@ function Ajax (datas) {
 			},
 			success : function (result) {
 				if (result.hasOwnProperty('id_product') && result.hasOwnProperty('total_money')) {
-
 					$($this).parent().parent().find('.moneys .label')
 							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
 
+					if (result.inventory) {
+						alert('THÔNG BÁO: SẢN PHẨM ĐÃ CÓ. KHÔNG IN MỚI');
+						var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3, 1);
+						$('body').find('div[id='+result.inventory+']').removeClass('bg-1').addClass('bg-0');
+					}
+					else var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3, 0); 
+					
 					$('.sanpham').find($this)
-								 .after(patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3))
+								 .after(pattern)
 								 .remove(); // Remove đã xóa $(this) nên phải ghi tổng tiền ở phía trên
 				}
 			},
@@ -391,13 +422,14 @@ function Ajax (datas) {
 			return false;
 		}
 
+		// Chưa có orders thì chưa cho phép gửi ajax sản phẩm
 		if (! $($this).parent().parent().find('input[name=_id_order]').val()) return false;
 
 		if (timeout) clearTimeout(timeout);
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 500);
+		}, 50);
 
 		return false;
 	});
@@ -421,7 +453,9 @@ function Ajax (datas) {
 					$($this).parent().parent().parent()
 							.find('.moneys .label')
 							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
-					$($this).parent().remove();
+					$($this).parent().fadeOut('100', function() {
+						$(this).remove();
+					});
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -430,9 +464,7 @@ function Ajax (datas) {
 		    }
 		};
 
-		$($this).parent().hide('300', function() {
-			Ajax(datas);
-		});
+		Ajax(datas);
 
 		return false;
 	});
@@ -477,11 +509,11 @@ function Ajax (datas) {
 								   .val(phone_number).keyup();
 
 							helper.viewBackground( $(this).parent().parent().parent() );
-
-							$(this).parent().fadeOut(300, function(){
-								$('#donmoi .autocomplete').remove();
+						});
+						$(window).click(function(){
+							$('#donmoi .autocomplete').fadeOut(300, function() {
+								$(this).remove();
 							});
-
 							return false;
 						});
 
@@ -537,5 +569,35 @@ function Ajax (datas) {
 		return false;
 	});
 })();
+
+// Click chuột phải vào sản phẩm tại inxong, 
+// thay đổi trạng thái sản phẩm.
+(function changeStatusProduct() {
+	$('#donmoi, #daxacnhan, #dainxong, #chuyenthatbai').on('contextmenu', '.product-success', function(){
+		var $this = this;
+		var datas = {
+			url      : 'orders/change-status',
+			type     : 'get',
+			data     : {
+				_status     : $($this).attr('status'),
+				_id_order   : $($this).parent().parent().find('input[name=_id_order]').val(),
+				_id_product : $($this).attr('id'),
+			},
+			dataType : 'json',
+			success  : function(result) {
+				if (result.status) {
+					$($this).removeClass('bg-' + $($this).attr('status'))
+							.attr('status', result.status)
+							.addClass('bg-' + result.status);
+				}
+			}
+		};
+
+		Ajax(datas)
+
+		return false;
+	});
+})();
+
 
 })(jQuery);

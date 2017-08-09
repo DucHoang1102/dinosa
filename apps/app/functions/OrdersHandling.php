@@ -139,11 +139,11 @@ class OrdersHandling
                 // Lưu ý #status đơn hàng và $status sản phẩm khác nhau
                 if ($status == 4 || $status ==7)
                 {
-                    ProductHandling::changeStatus($id, '0');
+                    ProductHandling::changeStatus($id, 'all', '0');
                 }
                 elseif ($status == 8)
                 {
-                    ProductHandling::changeStatus($id, '1');
+                    ProductHandling::changeStatus($id, 'all', '1');
                 }
                 return $result;
             }

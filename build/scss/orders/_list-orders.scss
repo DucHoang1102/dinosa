@@ -144,7 +144,10 @@ $color-backgorund: #fcfcfc;
 				}
 			}
 			.bg-1 {
-				//background: #C9302C !important;
+				background: #f2605e !important;
+				&:hover {
+					background:#C9302C !important;
+				}
 			}
 		}
 	}

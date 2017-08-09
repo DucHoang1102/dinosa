@@ -25,14 +25,14 @@
 						<div class="menu_funs">
 							@if ($order->id_orders_status == 7)
 								<a href="orders/move/status=8+id={{ $order->id }}+no_update=true"> 
-									<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Trở lại">
+									<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Chưa trả hàng">
 										<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
 										Chưa trả hàng
 									</button>
 								</a>
 							@elseif ($order->id_orders_status == 8)
-								<a href="orders/move/status=7+id={{ $order->id }}+no_update=true""> 
-									<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Trở lại">
+								<a class="datrahang" href="orders/move/status=7+id={{ $order->id }}+no_update=true""> 
+									<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Đã trả hàng">
 										<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 										Đã trả hàng
 									</button>

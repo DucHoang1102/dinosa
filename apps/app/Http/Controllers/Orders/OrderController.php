@@ -17,7 +17,7 @@ class OrderController extends BaseController
 
     function getMove ($status, $id, $no_update = false) {
 
-        OrdersHandling::move($status, $id, $no_update = false);
+        OrdersHandling::move($status, $id, $no_update);
 
         return redirect(action('Orders\OrderController@index'));
         exit();

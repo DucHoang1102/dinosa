@@ -89,6 +89,9 @@
 		<div class="print-product">
 			@foreach ($orders_daXacNhan as $order)
 				@foreach ($order->products as $product)
+					@if ($product->status == 1)
+						@continue;
+					@endif
 					<div class="product">
 						<img src="/{{ $product->url_image->src_f_a3 }}">
 						<span class="description">
