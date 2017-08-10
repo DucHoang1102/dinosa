@@ -120,6 +120,12 @@ function patternAutocomplete(phone="", name="") {
 					    .fadeIn(400);
 		helper.incrementsOK();
 		helper.scrollTop();
+
+		// Xóa chữ: Dữ liệu trống
+		if ( $('#donmoi .data-empty').html() ) {
+			$('#donmoi .data-empty').remove();
+			console.log('ok');
+		}
 		return false;
 
 	});
