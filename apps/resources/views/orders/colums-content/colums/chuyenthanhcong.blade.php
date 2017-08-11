@@ -9,4 +9,4 @@
 	$button9          = 'style=display:inline-block';
 @endphp
 
-@extends('orders.tab-content.base.base')
+@extends('orders.colums-content.table.base')

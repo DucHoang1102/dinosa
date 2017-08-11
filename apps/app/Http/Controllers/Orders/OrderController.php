@@ -12,7 +12,7 @@ use App\functions\OrdersHandling;
 class OrderController extends BaseController
 {
     function index () {
-    	return view('orders.base');
+    	return view('orders.index');
     }
 
     function getMove ($status, $id, $no_update = false) {

@@ -72,7 +72,7 @@ function patternHTML () {
 			<td class='xacnhan functions'>
 				<div class="menu_funs">
 					<a class="move-right" href="">
-						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xác nhận">
+						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Chuyển tiếp">
 							<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 						</button>
 					</a>
@@ -126,6 +126,10 @@ function patternAutocomplete(phone="", name="") {
 			$('#donmoi .data-empty').remove();
 			console.log('ok');
 		}
+
+		// Kích hoạt title black background
+		$('[data-toggle="tooltip"]').tooltip();
+		
 		return false;
 
 	});
@@ -139,15 +143,14 @@ function patternAutocomplete(phone="", name="") {
 	});
 })();
 
-
 // Move right chuyển tab 
 (function moveRight() {
 	$('body').on('click', '.menu_funs .move-right', function(){
 		var $this = this;
-		var lenght = $(window).width() + 50 + 'px';
+		var lenght = $(window).width() + 'px';
 		$($this).parent().parent().parent()
 				.css({
-					transition: "all 0.5s",
+					transition: "all 0.3s",
 					transform: `translateX(${lenght})`,
 				});
 	});
@@ -157,10 +160,10 @@ function patternAutocomplete(phone="", name="") {
 (function moveLeft() {
 	$('body').on('click', '.menu_funs .move-left', function(){
 		var $this = this;
-		var lenght = $(window).width() + 50 + 'px';
+		var lenght = $(window).width() + 'px';
 		$($this).parent().parent().parent() 
 				.css({
-					transition: "all 0.5s",
+					transition: "all 0.3s",
 					transform: `translateX(-${lenght})`,
 				});
 	});
@@ -288,7 +291,7 @@ function patternAutocomplete(phone="", name="") {
 
 // Title các nút chức năng
 (function () {
-  $('[data-toggle="tooltip"]').tooltip()
+	$('[data-toggle="tooltip"]').tooltip();
 })();
 
 // Cảnh báo khi đơn đã trả hàng chuyển trở về chư trả hàng

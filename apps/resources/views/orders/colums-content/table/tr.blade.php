@@ -33,6 +33,6 @@
 	</td>
 	<td class="tongtien moneys"><div class="label">{{ $order->total_money }} <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></td>
 	<td class='xacnhan functions'>
-		@include('orders.tab-content.funs.menu-funs-general')
+		@include('orders.colums-content.funs.menu-funs-general')
 	</td>
 </tr>
