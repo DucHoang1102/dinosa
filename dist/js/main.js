@@ -22,7 +22,7 @@ var helper = {
 		tbody.scrollTop(scrollTop);
 	},
 	validateProduct: function (string) {
-		var re = /^(A|D)([0-9]*)([A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)(\s*)\((S|M|L|XL|XXL)\)$/;
+		var re = /^(A|D)([0-9]*)([A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3|BL1)(\s*)\((S|M|L|XL|XXL)\)$/;
 		var string = string.toUpperCase().trim();
 		return re.test(string);
 	},
@@ -347,6 +347,7 @@ function Ajax (datas) {
 					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
 				if (result.customer_old) {
+					console.log(result.customer_old);
 					var c = result.customer_old;
 					$($this).parent().parent().find('input[name=name]').val(c.name);
 					$($this).parent().parent().find('input[name=phone]').val(c.phone);

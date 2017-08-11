@@ -17,14 +17,14 @@ class ProductHandling
 	public static function parser($subject)
 	{
 		$subject = strtoupper(trim($subject));
-		$re      = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)\((S|M|L|XL|XXL)\)$/';
+		$re      = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3|BL1)\((S|M|L|XL|XXL)\)$/';
 		$prices  = [
     		'ACT1' => 150000, 'ACT2' => 150000,
     		'ADT1' => 160000, 'ADT2' => 160000,
     		'DCT1' => 125000, 'DCT2' => 125000,
     		'DDT1' => 125000, 'DDT2' => 125000,
     		'AAK1' => 250000, 'AAK2' => 250000,
-    		'AAK3' => 250000,
+    		'AAK3' => 250000, 'ABL1' => 150000,
     	];
 
 		preg_match($re, $subject, $matches);
