@@ -16,20 +16,22 @@ class ProductsOfOrders extends Migration
     public function up()
     {
         Schema::create('products_of_orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_orders')->unsigned();
+            $table->string('id', 20)->unique();
+            $table->string('id_orders');
             $table->string('name_category_product');
-            $table->string('name_image_print');
+            $table->string('id_image_print');
             $table->string('name_embryo_tshirt');
+            $table->string('size',5);
+            $table->string('name');
+            $table->integer('price')->default(0);
+            $table->integer('status')->default(0);
+            $table->timestamps();
+
             $table->foreign('id_orders')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('name_category_product')->references('name')->on('category_product')->onDelete('cascade');
-            $table->foreign('name_image_print')->references('name')->on('image_print')->onDelete('cascade');
+            $table->foreign('id_image_print')->references('id')->on('image_print')->onDelete('cascade');
             $table->foreign('name_embryo_tshirt')->references('name')->on('embryo_tshirt')->onDelete('cascade');
-            $table->string('name');
-            $table->string('size');
-            $table->string('money', 10);
-            $table->string('status', 1);
-            $table->timestamps();
+            $table->primary('id');
         });
     }
 

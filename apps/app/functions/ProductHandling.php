@@ -62,7 +62,7 @@ class ProductHandling
 	// Lấy link ảnh sản phẩm theo id_image
 	public static function getUrlImage($id_image) {
         $url_image = DB::table('image_print')
-                        ->select('src_f_a3')
+                        ->select('url')
                         ->where('id', $id_image)
                         ->first();
 

@@ -15,14 +15,11 @@ class ImagePrint extends Migration
     public function up()
     {
         Schema::create('image_print', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('src');
-            $table->string('description');
-            $table->string('name_category_product');
-            $table->bigInteger('price');
-            $table->foreign('name_category_product')->references('name')->on('category_product')->onDelete('cascade');
+            $table->string('id', 12)->unique();
+            $table->string('url',100)->unique();
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

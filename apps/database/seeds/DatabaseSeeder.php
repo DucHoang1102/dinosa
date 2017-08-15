@@ -11,13 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	//$this->call(CategoryProductSeeder::class); //1
-        //$this->call(OrdersStatusSeeder::class);    //2
-        //$this->call(EmbryoTshirtSeeder::class);    //3
-        //$this->call(ImagePrintSeeder::class);      //4
+    	$this->call(CategoryProductSeeder::class); //1
+        $this->call(OrdersStatusSeeder::class);    //2
+        $this->call(EmbryoTshirtSeeder::class);    //3
+        $this->call(ImagePrintSeeder::class);      //4
         //$this->call(CustomersSeeder::class);       //5
         //$this->call(OrdersSeeder::class);          //6
-        $this->call(ProductsofOrdersSeeder::class);  //7
+        //$this->call(ProductsofOrdersSeeder::class);  //7
     }
 }
 
@@ -27,19 +27,20 @@ class EmbryoTshirtSeeder extends Seeder
 	public function run()
 	{
 		$datas = [
-			['name' => 'CT1', 'description' => 'Áo thun ngắn tay trắng', 'price' => '25000'],
-			['name' => 'CT2', 'description' => 'Áo thun ngắn tay đen',   'price' => '25000'],
-			['name' => 'DT1', 'description' => 'Áo thun dài tay trắng',  'price' => '30000'],
-			['name' => 'DT2', 'description' => 'Áo thun dài tay đen',    'price' => '30000'],
-			['name' => 'AK2', 'description' => 'Áo khoác xám có mũ',     'price' => '85000'],
-			['name' => 'AK3', 'description' => 'Áo khoác trắng tay đen', 'price' => '85000'],
+			['name' => 'CT1', 'description' => 'Áo thun ngắn tay trắng'],
+			['name' => 'CT2', 'description' => 'Áo thun ngắn tay đen'],
+			['name' => 'DT1', 'description' => 'Áo thun dài tay trắng'],
+			['name' => 'DT2', 'description' => 'Áo thun dài tay đen'],
+			['name' => 'AK1', 'description' => 'Áo khoác trắng có mũ'],
+			['name' => 'AK2', 'description' => 'Áo khoác xám có mũ'],
+			['name' => 'AK3', 'description' => 'Áo khoác bóng rổ (trắng tay đen)'],
+			['name' => 'BL', 'description'  => 'Balo dây rút'],
 		];
 
 		foreach ($datas as $data) {
 			DB::table('embryo_tshirt')->insert([
 				'name'        => $data['name'],
 				'description' => $data['description'],
-				'price'       => $data['price'],
 				"created_at"  => \Carbon\Carbon::now(),
 	            "updated_at"  => \Carbon\Carbon::now(),
 			]);
@@ -53,21 +54,20 @@ class OrdersStatusSeeder extends Seeder
 	public function run()
 	{
 		$datas = [
-			['name' => 'Đơn mới', 'description' => ''],
-			['name' => 'Đã xác nhận', 'description' => ''],
-			['name' => 'Đã in xong', 'description' => ''],
-			['name' => 'Đang chuyển', 'description' => ''],
-			['name' => 'Chuyển thành công chưa thanh toán', 'description' => ''],
-			['name' => 'Chuyển thành công đã thanh toán', 'description' => ''],
-			['name' => 'Chuyển thất bại chưa trả hàng', 'description' => ''],
-			['name' => 'Chuyển thất bại đã trả hàng', 'description' => ''],
-			['name' => 'Thùng rác', 'description' => ''],
+			['name' => 'Đơn mới'],
+			['name' => 'Đã xác nhận'],
+			['name' => 'Đã in xong'],
+			['name' => 'Đang chuyển'],
+			['name' => 'Chuyển thành công chưa thanh toán'],
+			['name' => 'Chuyển thành công đã thanh toán'],
+			['name' => 'Chuyển thất bại chưa trả hàng'],
+			['name' => 'Chuyển thất bại đã trả hàng'],
+			['name' => 'Thùng rác'],
 		];
 
 		foreach ($datas as $data) {
 			DB::table('orders_status')->insert([
 				'name'        => $data['name'],
-				'description' => $data['description'],
 				"created_at"  => \Carbon\Carbon::now(),
 	            "updated_at"  => \Carbon\Carbon::now(),
 			]);
@@ -81,15 +81,14 @@ class CategoryProductSeeder extends Seeder
 	public function run()
 	{
 		$datas = [
-			['name' => 'D', 'description' => 'Áo đôi', 'price' => '0000'],
-			['name' => 'A', 'description' => 'Áo game',   'price' => '0000'],
+			['name' => 'D', 'description' => 'Áo đôi'],
+			['name' => 'A', 'description' => 'Áo game'],
 		];
 
 		foreach ($datas as $data) {
 			DB::table('category_product')->insert([
 				'name'        => $data['name'],
 				'description' => $data['description'],
-				'price'       => $data['price'], 
 				"created_at"  => \Carbon\Carbon::now(),
 	            "updated_at"  => \Carbon\Carbon::now(),
 			]);
@@ -102,30 +101,20 @@ class ImagePrintSeeder extends Seeder
 {
 	public function run()
 	{
+		$c_product = ['A', 'D'];
 		$images = range(1,251);
-
-		foreach ($images as $image) {
-			DB::table('image_print')->insert([
-				'name'                  => 'A'.$image,
-				'src'                   => '',
-				'description'           => '',
-				'name_category_product' => 'A',
-				'price'                 => '0', 
-				"created_at"            => \Carbon\Carbon::now(),
-	            "updated_at"            => \Carbon\Carbon::now(),
-			]);
-		};
-
-		foreach ($images as $image) {
-			DB::table('image_print')->insert([
-				'name'                  => 'D'.$image,
-				'src'                   => '',
-				'description'           => '',
-				'name_category_product' => 'D',
-				'price'                 => '0', 
-				"created_at"            => \Carbon\Carbon::now(),
-	            "updated_at"            => \Carbon\Carbon::now(),
-			]);
+		$images_sub = ['', 'A', 'B', 'C', 'D', 'E', 'F'];
+		foreach ($c_product as $p) {
+			foreach ($images as $i) {
+				foreach ($images_sub as $i_s) {
+					DB::table('image_print')->insert([
+						'id'         => $p.$i.$i_s,
+						'url'        => '/upload/d-p-1234/f-a3/' . $p.$i.$i_s . '.png',
+						"created_at" => \Carbon\Carbon::now(),
+			            "updated_at" => \Carbon\Carbon::now(),
+					]);
+				};
+			};
 		};
 	}
 }

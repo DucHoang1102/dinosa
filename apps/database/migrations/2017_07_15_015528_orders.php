@@ -17,14 +17,18 @@ class Orders extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id', 20)->unique();
             $table->string('id_post')->unique();
-            $table->integer('id_customers')->unsigned();
+            $table->string('id_customers');
             $table->integer('id_orders_status')->unsigned();
-            $table->string('money', 10);
+            $table->integer('surcharge_money')->default(0);
+            $table->integer('ship_customer_money')->default(0);
+            $table->integer('total_money')->default(0);
+            $table->timestamps();
+
             $table->foreign('id_customers')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('id_orders_status')->references('id')->on('orders_status')->onDelete('cascade');
-            $table->timestamps();
+            $table->primary('id');
         });
     }
 

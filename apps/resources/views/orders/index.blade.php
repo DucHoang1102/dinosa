@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'Demo dinosa')
+@section('title', 'Dinosa manage')
 
 <!-- Content Chính ở đây-->
 @section('content')

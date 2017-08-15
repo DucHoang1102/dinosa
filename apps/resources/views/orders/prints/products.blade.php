@@ -76,7 +76,7 @@
 		@media only print  {
 			.print-product .product img {
 				display: block;
-				width: 1489px !important;
+				width: 100% !important;
 			}
 			.print-product .product .del, .print-product .product .description, hr, br {
 				display: none;
