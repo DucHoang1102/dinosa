@@ -2,7 +2,7 @@
 /upload/d-p-1234/
 /upload/mail-orders/
 /apps/storage/*.key
-/apps/vendor
+/apps/vendor/
 /apps/.idea
 /apps/.env
 /.vagrant
@@ -12,10 +12,6 @@ npm-debug.log
 yarn-error.log
 dinosa.sublime-project
 dinosa.sublime-workspace
-<<<<<<< HEAD
 gulpfile.js
 package.json
-=======
-apps/.env
->>>>>>> Developer
 chucnang
