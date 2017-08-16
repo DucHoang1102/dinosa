@@ -17,6 +17,7 @@ return array(
     'App\\Http\\Controllers\\Orders\\OrderController' => $baseDir . '/app/Http/Controllers/Orders/OrderController.php',
     'App\\Http\\Controllers\\Orders\\PrintController' => $baseDir . '/app/Http/Controllers/Orders/PrintController.php',
     'App\\Http\\Controllers\\orders\\AjaxController' => $baseDir . '/app/Http/Controllers/Orders/AjaxController.php',
+    'App\\Http\\Controllers\\orders\\AutocompleteController' => $baseDir . '/app/Http/Controllers/Orders/AutocompleteController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',

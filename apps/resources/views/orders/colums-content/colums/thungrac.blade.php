@@ -5,6 +5,7 @@
 	$fun              = 9;
 	$input            = false;
 	$icon_add_product = false;
+	$product_icon     = 'glyphicon-ban-circle';
 	$button4          = 'style=display:inline-block';
 	$button5          = 'style=display:inline-block';
 	$funs_thungrac    = 'style=display:inline-block';

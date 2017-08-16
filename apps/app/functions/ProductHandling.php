@@ -67,7 +67,7 @@ class ProductHandling
                         ->first();
 
         if (!empty($url_image)){
-            return $url_image;
+            return $url_image->url;
         }
         else return '';
     }

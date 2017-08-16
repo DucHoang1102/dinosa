@@ -19,7 +19,7 @@ class Customers extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->string('id', 20)->unique();
             $table->string('name')->nullable();
-            $table->string('phone')->nullable()->unique();
+            $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
 

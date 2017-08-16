@@ -4,6 +4,7 @@
 	$orders           = $orders_donMoi;
 	$input            = true;
 	$icon_add_product = true;
+	$product_icon     = 'glyphicon-remove';
 	$fun              = 1;
 	$table_hover      = '';
 	$button2          = 'style=display:inline-block';

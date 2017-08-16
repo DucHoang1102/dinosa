@@ -29,12 +29,12 @@ class OrderController extends BaseController
         // Xóa toàn bộ - dọn dẹp thùng rác
         if ($id_order == 'all')
         {
-            OrdersHandling::deletePermanentlyAll();
+            OrdersHandling::deleteAll();
         }
 
         else {
             if ( OrdersHandling::is_order_of_thungrac($id_order) ) {
-                OrdersHandling::deletePermanently( $id_order );
+                OrdersHandling::delete( $id_order );
             }
         }
 

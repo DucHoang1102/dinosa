@@ -5,6 +5,7 @@
 	$fun              = 4;
 	$input            = false;
 	$icon_add_product = false;
+	$product_icon     = 'glyphicon-ok';
 	$button8          = 'style=display:inline-block';
 	$button9          = 'style=display:inline-block';
 @endphp

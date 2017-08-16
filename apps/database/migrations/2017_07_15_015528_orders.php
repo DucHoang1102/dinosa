@@ -18,7 +18,7 @@ class Orders extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->string('id', 20)->unique();
-            $table->string('id_post')->unique();
+            $table->string('id_post');
             $table->string('id_customers');
             $table->integer('id_orders_status')->unsigned();
             $table->integer('surcharge_money')->default(0);

@@ -174,7 +174,7 @@ class OrdersHandling
     }
 
     // Delete Permanently Orders -> Xóa vĩnh viễn
-    public static function deletePermanently ($id_order) {
+    public static function delete ($id_order) {
         if ( $id_order === 0 ) return false;
 
         $result = DB::table('orders')->where(
@@ -184,7 +184,7 @@ class OrdersHandling
         return $result;
     }
 
-    public static function deletePermanentlyAll () {
+    public static function deleteAll () {
         $result = DB::table('orders')->where([
             [ 'id_orders_status', 9 ]
         ])->delete(); 

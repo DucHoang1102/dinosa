@@ -25,7 +25,7 @@
 	</td>
 	<td class="sanpham">
 	@foreach ($order->products as $product)
-		<div class="product-success bg-{{ $product->status }}" status={{ $product->status }} id="{{ $product->id }}" url-image="{{ $product->url_image->src_f_a3 }}">{{ $product->name }}<span class="glyphicon glyphicon-remove"></span></div>
+		<div class="product-success bg-{{ $product->status }}" status={{ $product->status }} id="{{ $product->id }}" url-image="{{ $product->url_image }}">{{ $product->name }}<span class="glyphicon {{ $product_icon }}" aria-hidden="true"></span></div>
 	@endforeach
 	@if ($icon_add_product)
 		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>

@@ -288,6 +288,7 @@ class ComposerStaticInit7a7e92ef7f7f30403a694a5a2805e193
         'App\\Http\\Controllers\\Orders\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Orders/OrderController.php',
         'App\\Http\\Controllers\\Orders\\PrintController' => __DIR__ . '/../..' . '/app/Http/Controllers/Orders/PrintController.php',
         'App\\Http\\Controllers\\orders\\AjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/Orders/AjaxController.php',
+        'App\\Http\\Controllers\\orders\\AutocompleteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Orders/AutocompleteController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',

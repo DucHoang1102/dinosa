@@ -124,7 +124,6 @@ function patternAutocomplete(phone="", name="") {
 		// Xóa chữ: Dữ liệu trống
 		if ( $('#donmoi .data-empty').html() ) {
 			$('#donmoi .data-empty').remove();
-			console.log('ok');
 		}
 
 		// Kích hoạt title black background
@@ -200,6 +199,9 @@ function patternAutocomplete(phone="", name="") {
 
 			// Tắt chức năng này tại chuột phải và chuột giữa
 			if ( event.which == 3 || event.which == 2 ) return false;
+
+			// Tắt chức năng này khi mousedown vào nút in một sp
+			if ($(event.target).attr('class') == 'glyphicon glyphicon-print') return false;
 			
 			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
 			var status    = $(this).attr('status');
@@ -229,7 +231,6 @@ function patternAutocomplete(phone="", name="") {
 					top            : "40%",
 					background     : "rgba(229, 0, 0, 0.7)"
 				});
-
 			return false;
 		}
 	});
@@ -242,7 +243,7 @@ function patternAutocomplete(phone="", name="") {
 
 // Bấm nút in một sản phẩm
 (function printProduct() {
-	$('.table-tbody').on('mousedown', '.sanpham .product-success .glyphicon-print', function(){
+	$('#daxacnhan').on('click', '.sanpham .product-success .glyphicon-print', function(){
 		var id_order   = $(this).parent().parent().parent().find('input[name=_id_order]').val();
 		var id_product = $(this).parent().attr('id');
 
@@ -335,8 +336,9 @@ function Ajax (datas) {
 			data    : {
 				_id_order    : $($this).parent().parent().find('input[name=_id_order]').val(),
 				_id_customer : $($this).parent().parent().find('input[name=_id_customer]').val(),
-				colum        : $($this).attr('name'),
-				value        : $($this).val(),
+				name         : $($this).parent().parent().find('input[name=name]').val(),
+				phone        : $($this).parent().parent().find('input[name=phone]').val(),
+				address      : $($this).parent().parent().find('input[name=address]').val(),
 			},
 			success : function (result) {
 				if (result._id_order && result._id_customer) {
@@ -347,18 +349,19 @@ function Ajax (datas) {
 					$($this).parent().parent().find('.menu_funs .delete').attr('href', 'orders/move/status=9+id=' + result._id_order + '+no_update=false');
 				}
 				if (result.customer_old) {
-					console.log(result.customer_old);
 					var c = result.customer_old;
-					$($this).parent().parent().find('input[name=name]').val(c.name);
-					$($this).parent().parent().find('input[name=phone]').val(c.phone);
-					$($this).parent().parent().find('input[name=address]').val(c.address);
+					var name    = $($this).parent().parent().find('input[name=name]').val(c.name);
+					var phone   = $($this).parent().parent().find('input[name=phone]').val(c.phone);
+					var address = $($this).parent().parent().find('input[name=address]').val(c.address);
+					if (name != '' && phone != '' && address != '' ) {
+						helper.viewBackground('',false);
+					}
 				}
-				helper.viewBackground('',false);
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //    $('html').html(xhr.responseText);
+		    //}
 		};
 
 		// Có function xử lý product riêng, không xử lý tại đây
@@ -370,11 +373,13 @@ function Ajax (datas) {
 		// Validate dấu cách
 		if ($($this).val().trim() == "") return false;
 
-		if (timeout) clearTimeout(timeout);
+		if (timeout) {
+			clearTimeout(timeout);;
+		}
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 500);
+		}, 1100);
 
 		return false;
 	});
@@ -403,20 +408,20 @@ function Ajax (datas) {
 
 					if (result.inventory) {
 						alert('THÔNG BÁO: SẢN PHẨM ĐÃ CÓ. KHÔNG IN MỚI');
-						var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3, 1);
+						var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image, 1);
 						$('body').find('div[id='+result.inventory+']').removeClass('bg-1').addClass('bg-0');
 					}
-					else var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3, 0); 
+					else var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image, 0); 
 					
 					$('.sanpham').find($this)
 								 .after(pattern)
 								 .remove(); // Remove đã xóa $(this) nên phải ghi tổng tiền ở phía trên
 				}
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //   $('html').html(xhr.responseText);
+		    //}
 		};
 
 		var check = helper.validateProduct($($this).val())
@@ -468,10 +473,10 @@ function Ajax (datas) {
 					});
 				}
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //    $('html').html(xhr.responseText);
+		    //}
 		};
 
 		Ajax(datas);

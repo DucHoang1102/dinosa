@@ -18,42 +18,32 @@ class AjaxController extends BaseController
     function postAddOrdersAjax (Request $request) {
         $_id_order    = isset($request->_id_order)    ? trim($request->_id_order)    : "";
         $_id_customer = isset($request->_id_customer) ? trim($request->_id_customer) : "";
-        $colum        = isset($request->colum)        ? trim($request->colum)        : "";
-        $value        = isset($request->value)        ? trim($request->value)        : "";
-
-        // Ràng buộc các colums
-        $colum_customers = ['name', 'phone', 'address'];
-        if (! in_array($colum, $colum_customers)) return [];
+        $name         = isset($request->name)         ? trim($request->name)         : "";
+        $phone        = isset($request->phone)        ? trim($request->phone)        : "";
+        $address      = isset($request->address)      ? trim($request->address)      : "";
 
         // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
-        if ($colum == 'phone') {
+        $id_customer_old = CustomerHandling::existsCustomer($phone);
 
-            $id_customer_old = CustomerHandling::existsCustomer($value);
+        // Nếu là khách hàng cũ
+        if (strlen($phone) >= 10 && !empty($id_customer_old) && $_id_customer !== $id_customer_old) {
 
-            // Nếu tồn tại khách hàng
-            if (!empty($id_customer_old)) {
+            // Xóa orders hiện tại và tạo orders mới bằng khách hàng cũ
+            OrdersHandling::delete($_id_order);
+            $id_order = OrdersHandling::create($id_customer_old);
 
-                // Nếu không phải khách hàng hiện tại thì xóa khách hàng
-                // và thêm mới orders
-                if ($id_customer_old !== $_id_customer)
-                {
-                    CustomerHandling::delete($_id_customer);
-                    $_id_order = OrdersHandling::create($id_customer_old);
-                }
-
-                return [
-                    'customer_old' => CustomerHandling::getInfoCustomer($id_customer_old),
-                    '_id_order'    => $_id_order, 
-                    '_id_customer' => $id_customer_old
-                ];
-            }
+            return [
+                'customer_old' => CustomerHandling::getInfoCustomer($id_customer_old),
+                '_id_order'    => $id_order, 
+                '_id_customer' => $id_customer_old
+            ];
         }
 
         // Trường hợp thêm mới đơn hàng
         if (empty($_id_order)) {
 
             // Thêm khách hàng
-            $id_customer = CustomerHandling::create($colum, $value);
+            $id_customer = CustomerHandling::create($name, $phone, $address);
 
             // Thêm order
             $id_order    = OrdersHandling::create($id_customer);
@@ -69,7 +59,7 @@ class AjaxController extends BaseController
        
        // Trường hợp sửa đơn hàng bản chất là sửa khách hàng
         else {
-            CustomerHandling::update($_id_customer, $colum, $value);
+            CustomerHandling::update($_id_customer, $name, $phone, $address);
             return [];
         }
     }

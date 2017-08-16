@@ -93,7 +93,7 @@
 						@continue;
 					@endif
 					<div class="product">
-						<img src="/{{ $product->url_image->src_f_a3 }}">
+						<img src="{{ $product->url_image }}">
 						<span class="description">
 							<b>Tên KH:</b> 
 							<span class="info"> {{ $order->name }}</span>
