@@ -17,12 +17,13 @@ class Customers extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('phone')->unique();
-            $table->string('address');
-            $table->string('noted', 1000);
+            $table->string('id', 20)->unique();
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

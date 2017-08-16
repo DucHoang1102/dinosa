@@ -15,11 +15,11 @@ class CategoryProduct extends Migration
     public function up()
     {
         Schema::create('category_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('description');
-            $table->bigInteger('price')->default(0);
+            $table->string('name', 5)->unique();
+            $table->string('description', 100);
             $table->timestamps();
+
+            $table->primary('name');
         });
     }
 

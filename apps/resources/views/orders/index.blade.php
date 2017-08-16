@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'Demo dinosa')
+@section('title', 'Dinosa manage')
 
 <!-- Content Chính ở đây-->
 @section('content')
@@ -66,25 +66,25 @@
 	<div class="tab-content">
 
 		<!-- Tab Đơn Mới  -->
-		@include('orders.tab-content.donmoi')
+		@include('orders.colums-content.colums.donmoi')
 		
 		<!-- Tab Đã xác nhận -->
-		@include('orders.tab-content.daxacnhan')
+		@include('orders.colums-content.colums.daxacnhan')
 
 		<!-- Tab Đã in xong -->
-		@include('orders.tab-content.dainxong')
+		@include('orders.colums-content.colums.dainxong')
 
 		<!-- Tab Đamg chuyển -->
-		@include('orders.tab-content.dangchuyen')
+		@include('orders.colums-content.colums.dangchuyen')
 
 		<!-- Tab Chuyển thành công -->
-		@include('orders.tab-content.chuyenthanhcong')
+		@include('orders.colums-content.colums.chuyenthanhcong')
 
 		<!-- Tab Chuyển thất bại -->
-		@include('orders.tab-content.chuyenthatbai')
+		@include('orders.colums-content.colums.chuyenthatbai')
 
 		<!-- Tab Thùng rác -->
-		@include('orders.tab-content.thungrac')
+		@include('orders.colums-content.colums.thungrac')
 
 	</div> <!-- /.tab-content -->
 </div> <!-- /.list-bills -->

@@ -116,6 +116,7 @@ class OrdersHandling
     {
         if (!empty($status) and !empty($id))
         {
+            // Thiết lập status order tương ứng
             if ($no_update == true) {
                 $update = [
                     'id_orders_status' => $status
@@ -127,11 +128,25 @@ class OrdersHandling
                     'updated_at' => \Carbon\Carbon::now()
                 ];
             }
-
             $result = DB::table('orders')
                           ->where('orders.id', $id)
                           ->update($update);
-            return $result;
+
+            if ($result) {
+                // Đổi status sản phẩm
+                // 1: Hàng có mặt tại shop
+                // 0: Hàng không ở shop (Mới chưa in, hàng đã chuyển đi,...)
+                // Lưu ý #status đơn hàng và $status sản phẩm khác nhau
+                if ($status == 4 || $status ==7)
+                {
+                    ProductHandling::changeStatus($id, 'all', '0');
+                }
+                elseif ($status == 8)
+                {
+                    ProductHandling::changeStatus($id, 'all', '1');
+                }
+                return $result;
+            }
         }
         else return false;
     }
@@ -159,7 +174,7 @@ class OrdersHandling
     }
 
     // Delete Permanently Orders -> Xóa vĩnh viễn
-    public static function deletePermanently ($id_order) {
+    public static function delete ($id_order) {
         if ( $id_order === 0 ) return false;
 
         $result = DB::table('orders')->where(
@@ -169,7 +184,7 @@ class OrdersHandling
         return $result;
     }
 
-    public static function deletePermanentlyAll () {
+    public static function deleteAll () {
         $result = DB::table('orders')->where([
             [ 'id_orders_status', 9 ]
         ])->delete(); 

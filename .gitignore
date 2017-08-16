@@ -12,6 +12,10 @@ npm-debug.log
 yarn-error.log
 dinosa.sublime-project
 dinosa.sublime-workspace
+<<<<<<< HEAD
 gulpfile.js
 package.json
+=======
+apps/.env
+>>>>>>> Developer
 chucnang

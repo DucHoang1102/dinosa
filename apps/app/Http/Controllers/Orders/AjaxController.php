@@ -18,12 +18,26 @@ class AjaxController extends BaseController
     function postAddOrdersAjax (Request $request) {
         $_id_order    = isset($request->_id_order)    ? trim($request->_id_order)    : "";
         $_id_customer = isset($request->_id_customer) ? trim($request->_id_customer) : "";
-        $colum        = isset($request->colum)        ? trim($request->colum)        : "";
-        $value        = isset($request->value)        ? trim($request->value)        : "";
+        $name         = isset($request->name)         ? trim($request->name)         : "";
+        $phone        = isset($request->phone)        ? trim($request->phone)        : "";
+        $address      = isset($request->address)      ? trim($request->address)      : "";
 
-        // Ràng buộc các colums
-        $colum_customers = ['name', 'phone', 'address'];
-        if (! in_array($colum, $colum_customers)) return [];
+        // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
+        $id_customer_old = CustomerHandling::existsCustomer($phone);
+
+        // Nếu là khách hàng cũ
+        if (strlen($phone) >= 10 && !empty($id_customer_old) && $_id_customer !== $id_customer_old) {
+
+            // Xóa orders hiện tại và tạo orders mới bằng khách hàng cũ
+            OrdersHandling::delete($_id_order);
+            $id_order = OrdersHandling::create($id_customer_old);
+
+            return [
+                'customer_old' => CustomerHandling::getInfoCustomer($id_customer_old),
+                '_id_order'    => $id_order, 
+                '_id_customer' => $id_customer_old
+            ];
+        }
 
         // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
         if ($colum == 'phone') {
@@ -53,7 +67,7 @@ class AjaxController extends BaseController
         if (empty($_id_order)) {
 
             // Thêm khách hàng
-            $id_customer = CustomerHandling::create($colum, $value);
+            $id_customer = CustomerHandling::create($name, $phone, $address);
 
             // Thêm order
             $id_order    = OrdersHandling::create($id_customer);
@@ -69,7 +83,7 @@ class AjaxController extends BaseController
        
        // Trường hợp sửa đơn hàng bản chất là sửa khách hàng
         else {
-            CustomerHandling::update($_id_customer, $colum, $value);
+            CustomerHandling::update($_id_customer, $name, $phone, $address);
             return [];
         }
     }
@@ -84,13 +98,19 @@ class AjaxController extends BaseController
         if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
             // Tạo mới sản phẩm, chỉ tạo được các đơn tại đơn mới
             // nếu không người dùng có thể hack được
-            $_id_product = ProductHandling::create( $_id_order, $product );
+            $products    = ProductHandling::parser($product);
+
+            $inventory   = ProductHandling::checkInventory($products['name']);
+
+            if ($inventory) $_id_product = ProductHandling::create( $_id_order, $products, '1' );
+            else            $_id_product = ProductHandling::create( $_id_order, $products );
 
             if ( $_id_product ) {
                 return [
                     'id_product'  => $_id_product, 
                     'total_money' => OrdersHandling::totalMoney( $_id_order ), 
-                    'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] )
+                    'url_image'   => ProductHandling::getUrlImage( ProductHandling::parser($product)['id_image_print'] ),
+                    'inventory'   => $inventory
                 ]; 
             }
             return [];
@@ -136,6 +156,34 @@ class AjaxController extends BaseController
         if ($result) return ["status" => 1, 'time_current'=> date('d-m-Y H:i:s'), 'file' => $file_name];
         
         return ["status" => 0];
+    }
+
+    // Thay đổi trạng thái sản phẩm
+    function getChangeStatus(Request $request)
+    {
+        $status     = isset($request->_status)     ? $request->_status     : '0';
+        $id_order   = isset($request->_id_order)   ? $request->_id_order   : '';
+        $id_product = isset($request->_id_product) ? $request->_id_product : '';
+
+        if ( !empty($id_order) || !empty($id_product) )
+        {
+            switch ($status) {
+                case '0':
+                    $status = '1';
+                    break;
+                case '1': 
+                    $status = '0';
+                    break;
+                default:
+                    $status = '0';
+                    break;
+            }
+
+            ProductHandling::changeStatus($id_order, $id_product, $status);
+
+            return ['status' => $status];
+        }
+        else return [];
     }
     
 }

@@ -41,12 +41,14 @@ class CustomerHandling
 	}
 
 	// Thêm khách hàng
-	public static function create($colum='0', $value='') 
+	public static function create($name='', $phone='', $address='') 
 	{
 		$id_customer = RandomId::get("CT", 10);
         $result      = DB::table('customers')->insert([
             'id'         => $id_customer,
-            $colum       => $value,
+            'name'       => $name,
+            'phone'      => $phone,
+            'address'    => $address,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -56,19 +58,22 @@ class CustomerHandling
 	}
 
 	// Update thông tin khách hàng
-	public static function update($id_customer='000', $colum='0', $value='')
+	public static function update($id_customer, $name='', $phone='', $address='')
 	{
 		$result =DB::table('customers')
                     ->where('id', $id_customer)
                     ->update([
-                        $colum => $value
+                        'name'       => $name,
+                        'phone'      => $phone,
+                        'address'    => $address,
+                        'updated_at' => \Carbon\Carbon::now()
                     ]);
 
         return $result;
 	}
 
 	// Xóa khách hàng
-	public static function delete($id_customer='000')
+	public static function delete($id_customer)
 	{
 		$result = DB::table('customers')
 			          ->where('customers.id', $id_customer)

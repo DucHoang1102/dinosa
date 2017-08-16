@@ -4,7 +4,6 @@
 var flagAjax = true;
 var timeout  = null;
 var timeout1 = null;
-var errors = {};
 
 var helper = { 
 	getToday  : function () {
@@ -23,7 +22,7 @@ var helper = {
 		tbody.scrollTop(scrollTop);
 	},
 	validateProduct: function (string) {
-		var re = /^(A|D)([0-9]*)([A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)(\s*)\((S|M|L|XL|XXL)\)$/;
+		var re = /^(A|D)([0-9]*)([A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3|BL1)(\s*)\((S|M|L|XL|XXL)\)$/;
 		var string = string.toUpperCase().trim();
 		return re.test(string);
 	},
@@ -73,7 +72,7 @@ function patternHTML () {
 			<td class='xacnhan functions'>
 				<div class="menu_funs">
 					<a class="move-right" href="">
-						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xác nhận">
+						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Chuyển tiếp">
 							<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 						</button>
 					</a>
@@ -91,9 +90,9 @@ function patternProduct () {
 	return '<input type="text" id="" name="product" value="" placeholder="" autocomplete="off">';
 }
 
-function patternProductSuccess(id="", name="", url_image="") {
+function patternProductSuccess(id="", name="", url_image="", status="0") {
 	var name = name.toUpperCase();
-	return `<div class="product_success" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
+	return `<div class="product-success bg-${status}" status="${status}" id="${id}" url-image="${url_image}">${name}<span class="glyphicon glyphicon-remove"></span></div>`;
 }
 
 function patternAutocomplete(phone="", name="") {
@@ -121,6 +120,15 @@ function patternAutocomplete(phone="", name="") {
 					    .fadeIn(400);
 		helper.incrementsOK();
 		helper.scrollTop();
+
+		// Xóa chữ: Dữ liệu trống
+		if ( $('#donmoi .data-empty').html() ) {
+			$('#donmoi .data-empty').remove();
+		}
+
+		// Kích hoạt title black background
+		$('[data-toggle="tooltip"]').tooltip();
+		
 		return false;
 
 	});
@@ -134,15 +142,14 @@ function patternAutocomplete(phone="", name="") {
 	});
 })();
 
-
 // Move right chuyển tab 
 (function moveRight() {
 	$('body').on('click', '.menu_funs .move-right', function(){
 		var $this = this;
-		var lenght = $(window).width() + 50 + 'px';
+		var lenght = $(window).width() + 'px';
 		$($this).parent().parent().parent()
 				.css({
-					transition: "all 0.5s",
+					transition: "all 0.3s",
 					transform: `translateX(${lenght})`,
 				});
 	});
@@ -152,10 +159,10 @@ function patternAutocomplete(phone="", name="") {
 (function moveLeft() {
 	$('body').on('click', '.menu_funs .move-left', function(){
 		var $this = this;
-		var lenght = $(window).width() + 50 + 'px';
+		var lenght = $(window).width() + 'px';
 		$($this).parent().parent().parent() 
 				.css({
-					transition: "all 0.5s",
+					transition: "all 0.3s",
 					transform: `translateX(-${lenght})`,
 				});
 	});
@@ -187,21 +194,43 @@ function patternAutocomplete(phone="", name="") {
 
 // Bấm ảnh sản phẩm view ảnh
 (function viewImageProduct() {
-	$('.table-tbody').on('mousedown', '.sanpham .product_success', function (event) {
+	$('.table-tbody').on('mousedown', '.sanpham .product-success', function (event) {
 		if (!($(event.target).attr('class') == "glyphicon glyphicon-remove")){
 
-			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
+			// Tắt chức năng này tại chuột phải và chuột giữa
+			if ( event.which == 3 || event.which == 2 ) return false;
 
-			$(`<div class="img_product"><img src="${url_image}" width="300"></div>`)
+			// Tắt chức năng này khi mousedown vào nút in một sp
+			if ($(event.target).attr('class') == 'glyphicon glyphicon-print') return false;
+			
+			var url_image = $(this).attr('url-image') ? $(this).attr('url-image') : '';
+			var status    = $(this).attr('status');
+			var label     = "";
+			if (status == 1) {
+				label = "Sản phẩm đã tồn tại";
+			}
+
+			$(`<div class="img_product"><span class="label">${label}</span><img src="${url_image}" width="300"></div>`)
 				.appendTo('body')
 				.css({
 					position : "absolute",
+					overfolow: "hidden",
 					top      : "50%",
 					left     : "50%",
 					transform: "translate(-50%, -50%)",
 					border   : "3px solid #ba1010",
+				})
+				.children('.label')
+				.css({
+					position       : "absolute",
+					color          : "#ffffff",
+					width          : "100%",
+					"border-radius": "0px",
+					padding        : "30px 0px",
+					"font-size"    : "2em",
+					top            : "40%",
+					background     : "rgba(229, 0, 0, 0.7)"
 				});
-
 			return false;
 		}
 	});
@@ -214,7 +243,7 @@ function patternAutocomplete(phone="", name="") {
 
 // Bấm nút in một sản phẩm
 (function printProduct() {
-	$('.table-tbody').on('mousedown', '.sanpham .product_success .glyphicon-print', function(){
+	$('#daxacnhan').on('click', '.sanpham .product-success .glyphicon-print', function(){
 		var id_order   = $(this).parent().parent().parent().find('input[name=_id_order]').val();
 		var id_product = $(this).parent().attr('id');
 
@@ -263,16 +292,22 @@ function patternAutocomplete(phone="", name="") {
 
 // Title các nút chức năng
 (function () {
-  $('[data-toggle="tooltip"]').tooltip()
+	$('[data-toggle="tooltip"]').tooltip();
 })();
 
+// Cảnh báo khi đơn đã trả hàng chuyển trở về chư trả hàng
+(function daTraHang(){
+	$('#chuyenthatbai .datrahang').click(function () {
+		alert('CẢNH BÁO: LƯU Ý KHI CHUYỂN TRỞ VỀ CHƯA TRẢ HÀNG');
+	});
+})();
 
 /*
  *
  * AJAX
  * 
  *
- * Thêm, sửa đơn hàng | Thêm, sửa, xóa sản phẩm | Autocomplete
+ * Thêm, sửa đơn hàng | Thêm, sửa, xóa sản phẩm | Autocomplete | Thay đổi trạng thái sản phẩm
  *
  **/
 
@@ -301,8 +336,9 @@ function Ajax (datas) {
 			data    : {
 				_id_order    : $($this).parent().parent().find('input[name=_id_order]').val(),
 				_id_customer : $($this).parent().parent().find('input[name=_id_customer]').val(),
-				colum        : $($this).attr('name'),
-				value        : $($this).val(),
+				name         : $($this).parent().parent().find('input[name=name]').val(),
+				phone        : $($this).parent().parent().find('input[name=phone]').val(),
+				address      : $($this).parent().parent().find('input[name=address]').val(),
 			},
 			success : function (result) {
 				if (result._id_order && result._id_customer) {
@@ -314,16 +350,18 @@ function Ajax (datas) {
 				}
 				if (result.customer_old) {
 					var c = result.customer_old;
-					$($this).parent().parent().find('input[name=name]').val(c.name);
-					$($this).parent().parent().find('input[name=phone]').val(c.phone);
-					$($this).parent().parent().find('input[name=address]').val(c.address);
+					var name    = $($this).parent().parent().find('input[name=name]').val(c.name);
+					var phone   = $($this).parent().parent().find('input[name=phone]').val(c.phone);
+					var address = $($this).parent().parent().find('input[name=address]').val(c.address);
+					if (name != '' && phone != '' && address != '' ) {
+						helper.viewBackground('',false);
+					}
 				}
-				helper.viewBackground('',false);
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //    $('html').html(xhr.responseText);
+		    //}
 		};
 
 		// Có function xử lý product riêng, không xử lý tại đây
@@ -335,11 +373,13 @@ function Ajax (datas) {
 		// Validate dấu cách
 		if ($($this).val().trim() == "") return false;
 
-		if (timeout) clearTimeout(timeout);
+		if (timeout) {
+			clearTimeout(timeout);;
+		}
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 500);
+		}, 1100);
 
 		return false;
 	});
@@ -363,19 +403,25 @@ function Ajax (datas) {
 			},
 			success : function (result) {
 				if (result.hasOwnProperty('id_product') && result.hasOwnProperty('total_money')) {
-
 					$($this).parent().parent().find('.moneys .label')
 							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
 
+					if (result.inventory) {
+						alert('THÔNG BÁO: SẢN PHẨM ĐÃ CÓ. KHÔNG IN MỚI');
+						var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image, 1);
+						$('body').find('div[id='+result.inventory+']').removeClass('bg-1').addClass('bg-0');
+					}
+					else var pattern = patternProductSuccess(result.id_product, datas.data.product, result.url_image, 0); 
+					
 					$('.sanpham').find($this)
-								 .after(patternProductSuccess(result.id_product, datas.data.product, result.url_image.src_f_a3))
+								 .after(pattern)
 								 .remove(); // Remove đã xóa $(this) nên phải ghi tổng tiền ở phía trên
 				}
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //   $('html').html(xhr.responseText);
+		    //}
 		};
 
 		var check = helper.validateProduct($($this).val())
@@ -391,13 +437,14 @@ function Ajax (datas) {
 			return false;
 		}
 
+		// Chưa có orders thì chưa cho phép gửi ajax sản phẩm
 		if (! $($this).parent().parent().find('input[name=_id_order]').val()) return false;
 
 		if (timeout) clearTimeout(timeout);
 
 		timeout = setTimeout(function() {
 			Ajax(datas);
-		}, 500);
+		}, 50);
 
 		return false;
 	});
@@ -421,18 +468,18 @@ function Ajax (datas) {
 					$($this).parent().parent().parent()
 							.find('.moneys .label')
 							.html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
-					$($this).parent().remove();
+					$($this).parent().fadeOut('100', function() {
+						$(this).remove();
+					});
 				}
 			},
-			error: function (xhr, status, errorThrown) {
+			//error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		        $('html').html(xhr.responseText);
-		    }
+		    //    $('html').html(xhr.responseText);
+		    //}
 		};
 
-		$($this).parent().hide('300', function() {
-			Ajax(datas);
-		});
+		Ajax(datas);
 
 		return false;
 	});
@@ -477,11 +524,11 @@ function Ajax (datas) {
 								   .val(phone_number).keyup();
 
 							helper.viewBackground( $(this).parent().parent().parent() );
-
-							$(this).parent().fadeOut(300, function(){
-								$('#donmoi .autocomplete').remove();
+						});
+						$(window).click(function(){
+							$('#donmoi .autocomplete').fadeOut(300, function() {
+								$(this).remove();
 							});
-
 							return false;
 						});
 
@@ -537,5 +584,35 @@ function Ajax (datas) {
 		return false;
 	});
 })();
+
+// Click chuột phải vào sản phẩm tại inxong, 
+// thay đổi trạng thái sản phẩm.
+(function changeStatusProduct() {
+	$('#donmoi, #daxacnhan, #dainxong, #chuyenthatbai').on('contextmenu', '.product-success', function(){
+		var $this = this;
+		var datas = {
+			url      : 'orders/change-status',
+			type     : 'get',
+			data     : {
+				_status     : $($this).attr('status'),
+				_id_order   : $($this).parent().parent().find('input[name=_id_order]').val(),
+				_id_product : $($this).attr('id'),
+			},
+			dataType : 'json',
+			success  : function(result) {
+				if (result.status) {
+					$($this).removeClass('bg-' + $($this).attr('status'))
+							.attr('status', result.status)
+							.addClass('bg-' + result.status);
+				}
+			}
+		};
+
+		Ajax(datas)
+
+		return false;
+	});
+})();
+
 
 })(jQuery);

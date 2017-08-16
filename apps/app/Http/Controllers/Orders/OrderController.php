@@ -12,12 +12,12 @@ use App\functions\OrdersHandling;
 class OrderController extends BaseController
 {
     function index () {
-    	return view('orders.base');
+    	return view('orders.index');
     }
 
     function getMove ($status, $id, $no_update = false) {
 
-        OrdersHandling::move($status, $id, $no_update = false);
+        OrdersHandling::move($status, $id, $no_update);
 
         return redirect(action('Orders\OrderController@index'));
         exit();
@@ -29,12 +29,12 @@ class OrderController extends BaseController
         // Xóa toàn bộ - dọn dẹp thùng rác
         if ($id_order == 'all')
         {
-            OrdersHandling::deletePermanentlyAll();
+            OrdersHandling::deleteAll();
         }
 
         else {
             if ( OrdersHandling::is_order_of_thungrac($id_order) ) {
-                OrdersHandling::deletePermanently( $id_order );
+                OrdersHandling::delete( $id_order );
             }
         }
 

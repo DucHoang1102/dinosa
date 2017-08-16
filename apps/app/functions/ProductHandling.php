@@ -17,14 +17,14 @@ class ProductHandling
 	public static function parser($subject)
 	{
 		$subject = strtoupper(trim($subject));
-		$re      = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3)\((S|M|L|XL|XXL)\)$/';
+		$re      = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3|BL1)\((S|M|L|XL|XXL)\)$/';
 		$prices  = [
     		'ACT1' => 150000, 'ACT2' => 150000,
     		'ADT1' => 160000, 'ADT2' => 160000,
     		'DCT1' => 125000, 'DCT2' => 125000,
     		'DDT1' => 125000, 'DDT2' => 125000,
     		'AAK1' => 250000, 'AAK2' => 250000,
-    		'AAK3' => 250000,
+    		'AAK3' => 250000, 'ABL1' => 150000,
     	];
 
 		preg_match($re, $subject, $matches);
@@ -46,7 +46,7 @@ class ProductHandling
 			    		->where([
 			                ['id_orders', $id_orders]
 			            ])
-			    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print')
+			    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print', 'products_of_orders.status')
 			            ->orderBy('products_of_orders.created_at', 'asc')
 			    		->get();
 
@@ -62,22 +62,78 @@ class ProductHandling
 	// Lấy link ảnh sản phẩm theo id_image
 	public static function getUrlImage($id_image) {
         $url_image = DB::table('image_print')
-                        ->select('src_f_a3')
+                        ->select('url')
                         ->where('id', $id_image)
                         ->first();
 
         if (!empty($url_image)){
-            return $url_image;
+            return $url_image->url;
         }
         else return '';
     }
 
+    // Check sản phẩm tồn kho
+    public static function checkInventory($name_product)
+    { 
+        // Lấy id đơn hàng có các sản phẩm yêu cầu và hiện tại  
+        // đang ở shop. Sau đó check đơn hàng đó xem có phải
+        // thuộc hàng tồn trả về không
+        $products = DB::table('products_of_orders')
+                        ->select('id', 'id_orders')
+                        ->where([
+                            ['name', $name_product],
+                            ['status', 1]
+                        ])
+                        ->get();
+
+        foreach ( $products as $product ) {
+            $order = DB::table('orders')
+                         ->select('id')
+                         ->where([
+                               ['id', $product->id_orders],
+                               ['id_orders_status', 8]
+                           ])
+                         ->first();
+            
+            if ( $order ) {
+                // Chuyển trạng thái đơn tồn trong kho
+                $result = self::changeStatus($order->id, $product->id, 0);
+
+                if ( $result ) {
+                    return $product->id;
+                }
+            }
+        }
+    }
+
+    // Chuyển status(trạng thái) của sản phẩm
+    // 1: Hàng có mặt tại shop
+    // 0: Hàng không ở shop (Mới chưa in, hàng đã chuyển đi,...)
+    public static function changeStatus($id_order, $id_product='all', $status) {
+        if ( $id_order === 0 ) return false;
+
+        if ($id_product == 'all') {
+            $where = [
+                ['id_orders', $id_order]
+            ];
+        }
+        else {
+            $where = [
+                ['id_orders', $id_order],
+                ['id',  $id_product],
+            ];
+        }
+
+        $result = DB::table('products_of_orders')
+        			  ->where($where)
+        			  ->update(['status' => $status]);
+    	return $result;
+    }
+
     // Tạo mới sản phẩm
-    public static function create($id_order, $product)
+    public static function create($id_order, $product, $status='0')
     {
     	$id_product = RandomId::get("PO", 10);
-
-        $product = self::parser($product);
         
         $result = DB::table('products_of_orders')->insert([
             'id'                    => $id_product,
@@ -88,6 +144,7 @@ class ProductHandling
             'name'                  => $product[ 'name'                  ],
             'size'                  => $product[ 'size'                  ],
             'price'                 => $product[ 'price'                 ],
+            'status'                => $status,
             'created_at'            => \Carbon\Carbon::now(),
             'updated_at'            => \Carbon\Carbon::now()
         ]);

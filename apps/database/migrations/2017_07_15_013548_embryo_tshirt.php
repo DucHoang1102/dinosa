@@ -15,11 +15,11 @@ class EmbryoTshirt extends Migration
     public function up()
     {
         Schema::create('embryo_tshirt', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('description');
-            $table->bigInteger('price');
+            $table->string('name', 5)->unique();
+            $table->string('description', 100);
             $table->timestamps();
+
+            $table->primary('name');
         });
     }
 

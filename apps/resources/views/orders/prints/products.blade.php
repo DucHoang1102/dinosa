@@ -76,7 +76,7 @@
 		@media only print  {
 			.print-product .product img {
 				display: block;
-				width: 1489px !important;
+				width: 100% !important;
 			}
 			.print-product .product .del, .print-product .product .description, hr, br {
 				display: none;
@@ -89,8 +89,11 @@
 		<div class="print-product">
 			@foreach ($orders_daXacNhan as $order)
 				@foreach ($order->products as $product)
+					@if ($product->status == 1)
+						@continue;
+					@endif
 					<div class="product">
-						<img src="/{{ $product->url_image->src_f_a3 }}">
+						<img src="{{ $product->url_image }}">
 						<span class="description">
 							<b>Tên KH:</b> 
 							<span class="info"> {{ $order->name }}</span>
