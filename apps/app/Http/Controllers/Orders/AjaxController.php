@@ -39,30 +39,6 @@ class AjaxController extends BaseController
             ];
         }
 
-        // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
-        if ($colum == 'phone') {
-
-            $id_customer_old = CustomerHandling::existsCustomer($value);
-
-            // Nếu tồn tại khách hàng
-            if (!empty($id_customer_old)) {
-
-                // Nếu không phải khách hàng hiện tại thì xóa khách hàng
-                // và thêm mới orders
-                if ($id_customer_old !== $_id_customer)
-                {
-                    CustomerHandling::delete($_id_customer);
-                    $_id_order = OrdersHandling::create($id_customer_old);
-                }
-
-                return [
-                    'customer_old' => CustomerHandling::getInfoCustomer($id_customer_old),
-                    '_id_order'    => $_id_order, 
-                    '_id_customer' => $id_customer_old
-                ];
-            }
-        }
-
         // Trường hợp thêm mới đơn hàng
         if (empty($_id_order)) {
 
