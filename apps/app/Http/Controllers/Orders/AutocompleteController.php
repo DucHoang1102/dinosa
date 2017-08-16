@@ -18,12 +18,15 @@ class AutocompleteController extends Controller
 
         $phones = DB::table('customers')
                     ->select('phone', 'name')
-                    ->where('phone', 'like', $phoneInput.'%')
+                    ->where([
+                        ['phone', 'like', $phoneInput.'%'],
+                        [DB::raw('LENGTH(phone)'), '>=', '10'],
+                        ['name', '<>', '']
+                    ])
                     ->offset(0)
                     ->limit(5)
                     ->get();
 
-        if (CustomerHandling::existsCustomer($phoneInput)) return [];
-        else return $phones;
+        return $phones;
     }
 }

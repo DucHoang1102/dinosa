@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return view('re');
+	return var_dump(DB::raw('LENGTH(phone)'));
 });
 
 

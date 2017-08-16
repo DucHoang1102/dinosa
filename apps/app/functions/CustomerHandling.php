@@ -15,7 +15,7 @@ use App\functions\helpers\RandomId;
 class CustomerHandling
 {
 	// Check Khách hàng bằng phone
-	public static function existsCustomer($phone='000')
+	public static function existsCustomer($phone)
 	{
 		$id = DB::table('customers')
 			      ->select('customers.id')
@@ -70,6 +70,12 @@ class CustomerHandling
                     ]);
 
         return $result;
+	}
+
+	// Dọn dẹp khách hàng
+	public static function clear()
+	{
+
 	}
 
 	// Xóa khách hàng

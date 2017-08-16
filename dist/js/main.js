@@ -358,10 +358,10 @@ function Ajax (datas) {
 					}
 				}
 			},
-			//error: function (xhr, status, errorThrown) {
+			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		    //    $('html').html(xhr.responseText);
-		    //}
+		        $('html').html(xhr.responseText);
+		    }
 		};
 
 		// Có function xử lý product riêng, không xử lý tại đây
@@ -418,10 +418,10 @@ function Ajax (datas) {
 								 .remove(); // Remove đã xóa $(this) nên phải ghi tổng tiền ở phía trên
 				}
 			},
-			//error: function (xhr, status, errorThrown) {
+			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		    //   $('html').html(xhr.responseText);
-		    //}
+		       $('html').html(xhr.responseText);
+		    }
 		};
 
 		var check = helper.validateProduct($($this).val())
@@ -473,10 +473,10 @@ function Ajax (datas) {
 					});
 				}
 			},
-			//error: function (xhr, status, errorThrown) {
+			error: function (xhr, status, errorThrown) {
 		        //The message added to Response object in Controller can be retrieved as following.
-		    //    $('html').html(xhr.responseText);
-		    //}
+		        $('html').html(xhr.responseText);
+		    }
 		};
 
 		Ajax(datas);
@@ -533,7 +533,11 @@ function Ajax (datas) {
 						});
 
 					}
-				}
+				},
+				error: function (xhr, status, errorThrown) {
+			        //The message added to Response object in Controller can be retrieved as following.
+			        $('html').html(xhr.responseText);
+			    }
 			});
 		}, 1);
 
