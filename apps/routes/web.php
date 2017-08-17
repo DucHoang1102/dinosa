@@ -1,6 +1,4 @@
 <?php
-
-use App\functions\CustomerHandling;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return var_dump(CustomerHandling::clear());
+	return '';
 });
 
 
