@@ -72,20 +72,41 @@ class CustomerHandling
         return $result;
 	}
 
+	// Kiểm tra xem có orders không
+    public static function haveOrders($id_customer, $id_orders_status=[])
+    {
+        $check = DB::table('orders')
+                    ->select('id_customers')
+                    ->where('id_customers', $id_customer)
+                    ->WhereIn('id_orders_status', $id_orders_status)
+                    ->first();
+        return $check;
+    }
+
 	// Dọn dẹp khách hàng
 	public static function clear()
 	{
+		$customers = DB::table('customers')
+						->select('id')
+						->where('name', '')
+						->orWhere('phone', '')
+						->orWhere('address', '')
+						->get();
 
+		foreach ($customers as $customer) {
+			$check = self::haveOrders($customer->id, [1,2,3,4,5,6,7,8,9]);
+
+			if (empty($check)) self::delete($customer->id);
+		}
 	}
 
-	// Xóa khách hàng
+	// Xóa khách hàng kèm theo thông số status orders
 	public static function delete($id_customer)
 	{
 		$result = DB::table('customers')
 			          ->where('customers.id', $id_customer)
 			          ->delete();
-
-		return $result;
+		return $result;	
 	}
 
 }

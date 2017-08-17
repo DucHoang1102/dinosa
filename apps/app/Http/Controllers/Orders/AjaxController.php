@@ -28,8 +28,15 @@ class AjaxController extends BaseController
         // Nếu là khách hàng cũ
         if (strlen($phone) >= 10 && !empty($id_customer_old) && $_id_customer !== $id_customer_old) {
 
-            // Xóa orders hiện tại và tạo orders mới bằng khách hàng cũ
+            // Kiểm tra xem Khách hàng có các orders status không phải đơn mới không
+            $check = CustomerHandling::haveOrders($_id_customer, [2,3,4,5,6,7,8, 9]);
+
+            // Xóa customer nếu nó không chứa orders quan trọng
+            if (empty($check)) CustomerHandling::delete($_id_customer);
+
+            // Xóa order, tạo orders mới
             OrdersHandling::delete($_id_order);
+            
             $id_order = OrdersHandling::create($id_customer_old);
 
             return [

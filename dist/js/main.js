@@ -353,9 +353,7 @@ function Ajax (datas) {
 					var name    = $($this).parent().parent().find('input[name=name]').val(c.name);
 					var phone   = $($this).parent().parent().find('input[name=phone]').val(c.phone);
 					var address = $($this).parent().parent().find('input[name=address]').val(c.address);
-					if (name != '' && phone != '' && address != '' ) {
-						helper.viewBackground('',false);
-					}
+					helper.viewBackground('',false);
 				}
 			},
 			error: function (xhr, status, errorThrown) {
@@ -490,6 +488,7 @@ function Ajax (datas) {
 	$('#donmoi tbody').on('keyup', 'input[name=phone]', function (){
 		var $this = this;
 
+		// Dưới 6 chữ số không gửi ajax autocomplete
 		if ($($this).val().length < 6) return false;
 
 		if (timeout1) clearTimeout(timeout1);
@@ -525,8 +524,9 @@ function Ajax (datas) {
 
 							helper.viewBackground( $(this).parent().parent().parent() );
 						});
+
 						$(window).click(function(){
-							$('#donmoi .autocomplete').fadeOut(300, function() {
+							$('#donmoi .autocomplete').fadeOut(100, function() {
 								$(this).remove();
 							});
 							return false;

@@ -26,7 +26,8 @@ class AutocompleteController extends Controller
                     ->offset(0)
                     ->limit(5)
                     ->get();
-
+                    
+        if (CustomerHandling::existsCustomer($phoneInput)) return [];
         return $phones;
     }
 }
