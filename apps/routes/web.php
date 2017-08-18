@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return '';
+	return view('orders.colums-content.table.detail');
 });
 
 

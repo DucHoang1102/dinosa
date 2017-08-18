@@ -1,7 +1,7 @@
 <tr>
 	<input type="hidden" name="_id_order" value="{{ $order->id }}"/>
 	<input type="hidden" name="_id_customer" value="{{ $order->id_customers }}"/>
-	<td class="stt">{{ $stt + 1 }}.</td>
+	<td class="stt">{{ $stt + 1 }}.<span class="glyphicon glyphicon-info-sign eye-node" aria-hidden="true"></span></td>
 	<td class="hoten">
 		@if ($input == true)
 		<input type="text" name="name" value="{{ $order->name }}" maxlength="35" autocomplete="off">

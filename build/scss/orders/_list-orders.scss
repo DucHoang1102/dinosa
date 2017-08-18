@@ -66,6 +66,19 @@ $color-backgorund: #fcfcfc;
 		border: $border;
 		font-size: $font-size-body;
 		padding-left: $align-body;
+		&.stt {
+			position: relative;
+			.eye-node {
+				position: absolute;
+				display: none;
+				top: 10px;
+				color: #b1c5d6;
+				font-size: 1.1em;
+				&:hover {
+					color: #337ab7;
+				}
+			}
+		}
 		&.moneys {
 			.label {
 				display: block;
@@ -167,6 +180,11 @@ $color-backgorund: #fcfcfc;
 			}
 		}
 	}
+	tbody tr {
+		&:hover span.eye-node{
+			display: inline-block;
+		}
+	}
 }
 
 @mixin thead_tr_th()
@@ -240,7 +258,7 @@ $color-backgorund: #fcfcfc;
 		}
 	}
 	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
-		@include width_head($stt:3%, $hoten:17%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
+		@include width_head($stt:4%, $hoten:16%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 	}

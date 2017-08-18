@@ -302,6 +302,42 @@ function patternAutocomplete(phone="", name="") {
 	});
 })();
 
+// Nút hiển thị chi tiết hình ảnh khi hover vào tr 
+(function () {
+	var eye_node    = $('.table-tbody tbody span.eye-node');
+
+	eye_node.hover(
+				function(event){
+					var id_order = $(this).parent().parent().find('input[name=_id_order]').val();
+					var top    = event.pageY;
+					var left   = event.pageX;
+					$('.detail-'+id_order)
+					  .css({
+					  	'top'    : top-10,
+					  	'left'   : left-10
+					  })
+					  .show(50);
+				}
+			)
+			.click(function () {
+				alert(123);
+				return false;
+			});
+
+	$('.detail').hover(
+		function(){
+			$(this).show(150);
+			return false;
+		},
+		function(){
+			$(this).hide(150);
+			return false;
+		}
+	);
+
+})();
+
+
 /*
  *
  * AJAX
