@@ -54,7 +54,25 @@ var helper = {
 		$('#donmoi .load-oldcustomer').show();
 
 		return false;
-		},
+	},
+	ConvertMoney: function(number) {
+		if (isNaN(number)) return '';
+		var result = "";
+		var div    = 0;
+		var number = number.toString().replace(',','').split("").reverse().join('');
+        var count  = number.length;
+
+        for (let i=0; i < count ; i++) {
+            if (div == 3) {
+                result = ',' + result;
+                div = 0;
+            }
+            result = number[i] + result;
+
+            div+=1;
+        }
+        return result;
+	},
 };
 
 function patternHTML () {
@@ -101,6 +119,18 @@ function patternAutocomplete(phone="", name="") {
 				<span class="atc-phone">${phone}</span>
 				<span class="atc-name">(${name})</span>
 			</span>`;
+}
+
+function patternPlusMoney(total_money, ship_money, phuphi_money) {
+	var ship_money   = helper.ConvertMoney(ship_money);
+	var phuphi_money = helper.ConvertMoney(phuphi_money);
+	if (ship_money == 0)   ship_money = '';
+	if (phuphi_money == 0) phuphi_money = '';
+	return `<div class="plus-money"><span>Ship:</span><input type="text" name="ship" value="${ship_money}"/>
+			<span>Phụ phí:</span><input type="text" name="phuphi" value="${phuphi_money}"/>
+			<span class='total_money'>${total_money}</span>
+			<button type="button" class="btn btn-primary ok">OK</button>
+			<button type="button" class="btn btn-danger cancel">Cancel</button></div>`;
 }
 
 /*
@@ -337,6 +367,126 @@ function patternAutocomplete(phone="", name="") {
 
 })();
 
+// Tiền ship và phụ phi
+(function plusMoney() {
+	$('#donmoi').on('click', '.tongtien .glyphicon-plus', function(){
+		$(this).hide();
+		$(this).parents('tr').find('.sanpham .glyphicon-ok-circle').hide();
+
+		var ship_money   = $(this).parents('.tongtien').find('#ship_money').text();
+		var phuphi_money = $(this).parents('.tongtien').find('#phuphi_money').text();
+		var total_money  = $(this).parents('.tongtien').find('.label').hide().text();
+		var pattern      = patternPlusMoney(total_money, ship_money, phuphi_money);
+
+		$(pattern).prependTo($(this).parent().parent())
+				  .hide()
+				  .show(100)
+	});
+
+	$('#donmoi .tongtien').on('keyup', 'input[name=ship], input[name=phuphi]', function() {
+		var total_money    = parseInt($(this).parents('.tongtien').find('.label').text().replace(',',''));
+		var ship_money     = parseInt($(this).parents('.tongtien').find('#ship_money').text());
+		var phuphi_money   = parseInt($(this).parents('.tongtien').find('#phuphi_money').text());
+		var products_money = total_money - (ship_money + phuphi_money);
+
+		var i_ship_money   = parseInt($(this).parent().find('input[name=ship]').val().replace(',', ''));
+		var i_phuphi_money = parseInt($(this).parent().find('input[name=phuphi]').val().replace(',', ''));
+
+		// Hiển dị dạng tiền tệ trong ô nhập
+		$(this).parent().find('input[name=ship]').val(helper.ConvertMoney(i_ship_money));
+		$(this).parent().find('input[name=phuphi]').val(helper.ConvertMoney(i_phuphi_money));
+
+		// Validate
+		if (isNaN(i_ship_money))   i_ship_money   = 0;
+		if (isNaN(i_phuphi_money)) i_phuphi_money = 0;
+
+		// Cộng tổng tiền
+		var i_total_money = products_money + (i_ship_money + i_phuphi_money);
+		$(this).parent().find('.total_money').text(helper.ConvertMoney(i_total_money));
+	});
+
+	// Nút cancel
+	$('#donmoi').on('click', '.tongtien .cancel', function() {
+		$(this).parents('tr').find('.sanpham .glyphicon-ok-circle').show
+		();
+		$(this).parent().parent().find('.label')
+								 .show(100)
+								 .find('.glyphicon-plus')
+								 .show(100);
+
+		$(this).parent().hide(100, function() {
+			$(this).remove();
+		});
+	});
+
+	// Nút Ok cộng phụ phí, ship
+	$('#donmoi').on('click', '.tongtien .ok', function() {
+		var $this = $(this);
+		var datas = {
+			url     : 'orders/plus-money',
+			type    : 'post',
+			dataType: 'json',
+			data    : {
+				_id_order : $this.parents('tr').find('input[name=_id_order]').val(),
+				_ship     : $this.parent().find('input[name=ship]').val().replace(',', ''),
+				_phuphi   : $this.parent().find('input[name=phuphi]').val().replace(',', ''),
+			},
+			success : function (result) {
+				if (result.total_money) {
+					$this.parents('.tongtien')
+						 .find('.label')
+						 .html(result.total_money + ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
+					
+					$this.parents('.tongtien')
+						 .find('#ship_money')
+						 .text(result.ship_money);
+					
+					$this.parents('.tongtien')
+						 .find('#phuphi_money')
+						 .text(result.phuphi_money);
+						 
+					$this.parent().find('.cancel').click();
+				}
+				else {
+					$this.parent().find('.cancel').click();
+				}
+			},
+			error: function (xhr, status, errorThrown) {
+		        //The message added to Response object in Controller can be retrieved as following.
+		       $('html').html(xhr.responseText);
+		    }
+		};
+
+		// Validate
+		if (isNaN(datas.data._ship) || isNaN(datas.data._phuphi)) {
+			alert("BẠN HÃY NHẬP SỐ!");
+
+			if (isNaN(datas.data._ship)) {
+				// Làm thế này để focus vào cuối kí tự
+				var val = datas.data._ship;
+				$($this).parent().find('input[name=ship]').val(val).focus().val(val);
+			}
+			else if (isNaN(datas.data._phuphi)) {
+				var val = datas.data._phuphi;
+				$($this).parent().find('input[name=phuphi]').val('').focus().val(val);
+			}
+
+			return false;
+		}
+		// Dữ liệu trống
+		if (datas.data._ship === "" && datas.data._phuphi === "") {
+			$($this).parent().find('input[name=ship]').focus();
+			return false;
+		}
+		// Số âm
+		if (datas.data._ship < 0 || datas.data._phuphi < 0) {
+			alert("Vui lòng không nhập số âm!");
+			return false;
+		}
+
+		Ajax(datas);
+	});
+})();
 
 /*
  *
@@ -363,7 +513,7 @@ function Ajax (datas) {
 
 // Thêm đơn hàng vào cơ sở dữ liệu
 (function addOrdersAjax () {
-	$('#donmoi tbody').on('keyup', 'input', function () {
+	$('#donmoi tbody').on('keyup', 'input[name=name],input[name=phone],input[name=address]', function () {
 		var $this = this;
 		var datas = {
 			url     : 'orders/add',

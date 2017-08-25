@@ -47,6 +47,9 @@ Route::group(['prefix'=>'orders'], function(){
 	// Change Status product
 	Route::get('change-status', ['as' => 'changeStatus', 'uses' => 'Orders\AjaxController@getChangeStatus']);
 
+	// Cộng ship và phụ phí cho đơn hàng
+	Route::post('plus-money', ['as' => 'plusMoney', 'uses' => 'Orders\AjaxController@postPlusMoney']);
+
 	// Prints
 	Route::group(['prefix'=>'print'], function(){
 		Route::get('orders', ['as' => 'printOrders', 'uses' => 'Orders\PrintController@getPrintOrders']);

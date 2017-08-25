@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"Con",
+				"ConvertMoney"
+			],
+			[
+				"prod",
+				"products_money"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"pro",
+				"products_money"
+			],
+			[
+				"patt",
+				"patternPlusMoney"
+			],
+			[
+				"or",
+				"orders"
+			],
+			[
+				"o",
+				"orders"
+			],
+			[
+				"shp",
+				"ship_money"
+			],
+			[
+				"phu",
+				"phuphi_money"
+			],
+			[
+				"ship",
+				"ship_money"
+			],
+			[
+				"old",
+				"old_money"
+			],
+			[
+				"par",
+				"parseInt"
+			],
+			[
 				"is",
 				"isset\tDefines an isset statement"
 			],
@@ -28,10 +76,6 @@
 				"inventory"
 			],
 			[
-				"pro",
-				"products"
-			],
-			[
 				"i",
 				"inventory"
 			],
@@ -46,10 +90,6 @@
 			[
 				"product",
 				"products"
-			],
-			[
-				"prod",
-				"product"
 			],
 			[
 				"id_o",
@@ -90,10 +130,6 @@
 			[
 				"padding",
 				"padding"
-			],
-			[
-				"or",
-				"order"
 			],
 			[
 				"produ",
@@ -264,10 +300,6 @@
 				"url_image"
 			],
 			[
-				"par",
-				"parseJSON"
-			],
-			[
 				"ur",
 				"url_image"
 			],
@@ -372,10 +404,6 @@
 				"products"
 			],
 			[
-				"patt",
-				"patternProduct"
-			],
-			[
 				"_id_",
 				"_id_order"
 			],
@@ -468,10 +496,6 @@
 				"focus\t.focus()"
 			],
 			[
-				"parse",
-				"parseJSON"
-			],
-			[
 				"phon",
 				"phoneAutoComplete"
 			],
@@ -484,55 +508,22 @@
 				"orders"
 			],
 			[
-				"o",
-				"order"
-			],
-			[
 				"print",
 				"print_r"
 			],
 			[
 				"new",
 				"newProduceHtml"
-			],
-			[
-				"cur",
-				"cursor"
-			],
-			[
-				"marig",
-				"margin-right"
-			],
-			[
-				"tab",
-				"tbl:a\ttable-layout:auto"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"fon",
-				"font-size"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "chucnang",
+			"file": "chucnang.txt",
 			"settings":
 			{
-				"buffer_size": 2392,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "apps/resources/views/orders/tab-content/base/tr.blade.php",
-			"settings":
-			{
-				"buffer_size": 1432,
+				"buffer_size": 2587,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,9 +532,27 @@
 			"file": "dist/js/main.js",
 			"settings":
 			{
-				"buffer_size": 17116,
+				"buffer_size": 23126,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apps/app/Http/Controllers/Orders/AjaxController.php",
+			"settings":
+			{
+				"buffer_size": 6283,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "apps/app/functions/OrdersHandling.php",
+			"settings":
+			{
+				"buffer_size": 7634,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -567,7 +576,7 @@
 				"LiveReload: Enable/disable plug-ins"
 			]
 		],
-		"width": 400.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -590,22 +599,37 @@
 	[
 		"/D/laravelproject/dinosa",
 		"/D/laravelproject/dinosa/apps",
-		"/D/laravelproject/dinosa/apps/app",
-		"/D/laravelproject/dinosa/apps/resources",
-		"/D/laravelproject/dinosa/apps/resources/views",
-		"/D/laravelproject/dinosa/build",
-		"/D/laravelproject/dinosa/build/scss",
-		"/D/laravelproject/dinosa/build/scss/orders"
+		"/D/laravelproject/dinosa/build"
 	],
 	"file_history":
 	[
+		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_015528_orders.php",
+		"/D/laravelproject/dinosa/apps/routes/web.php",
+		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
+		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
+		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
+		"/D/laravelproject/dinosa/dist/js/main.js",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/table/detail.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/table/tr.blade.php",
+		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
+		"/C/Program Files (x86)/CodeBlocks/MinGW/lib/libaclui.a",
+		"/C/Program Files (x86)/CodeBlocks/MinGW/lib/crtmt.o",
+		"/D/laravelproject/dinosa/apps/app/functions/CustomerHandling.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/admin/ArticleController.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/admin/CategoryController.php",
+		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/Controller.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/home/BaseController.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/home/HomeController.php",
+		"/D/laravelproject/test/apps/app/Http/Controllers/admin/AdminController.php",
+		"/D/laravelproject/test/apps/app/Http/Requests/CategoryRequest.php",
+		"/D/laravelproject/test/apps/app/Http/Requests/ArticleRequest.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/colums/donmoi.blade.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/base/tr.blade.php",
 		"/D/laravelproject/dinosa/chucnang",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/base/base.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/base/table.blade.php",
-		"/D/laravelproject/dinosa/dist/js/main.js",
-		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/funs/menu-funs-general.blade.php",
-		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/base/tr.blade.php",
 		"/D/laravelproject/dinosa/node_modules/ordered-read-streams/test/main.js",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/thungrac.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/donmoi.blade.php",
@@ -625,12 +649,8 @@
 		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts/colums.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/funs/funs-thungrac.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/tab-content/funs/funs-xacnhan.blade.php",
-		"/D/laravelproject/dinosa/apps/routes/web.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/base.blade.php",
-		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
-		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/OrderController.php",
-		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
 		"/D/laravelproject/dinosa/.gitignore",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/prints/products.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts/tr.blade.php",
@@ -669,8 +689,6 @@
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AutocompleteController.php",
 		"/D/laravelproject/dinosa/apps/resources/views/layouts/base.blade.php",
 		"/D/laravelproject/dinosa/.git/index.lock",
-		"/D/laravelproject/dinosa/apps/app/functions/helpers.php",
-		"/D/laravelproject/dinosa/apps/app/functions/CustomerHandling.php",
 		"/D/laravelproject/blog/node_modules/less/lib/source-map/source-map-0.1.31.js",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/layouts/menufuns.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/bill/print/orders.blade.php",
@@ -709,28 +727,14 @@
 		"/D/laravelproject/dinosa/apps/database/seeds/DatabaseSeeder.php",
 		"/D/laravelproject/dinosa/build/scss/bill/_list-bills.scss",
 		"/D/laravelproject/dinosa/build/scss/bill/_tab-bills.scss",
-		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_015528_orders.php",
 		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_085256_products_of_orders.php",
 		"/D/laravelproject/dinosa/apps/database/migrations/New folder/2017_07_15_005920_orders_status.php",
 		"/D/laravelproject/dinosa/apps/app/functions/orders.php",
-		"/D/laravelproject/test/apps/app/Http/Controllers/home/BaseController.php",
-		"/D/laravelproject/test/apps/app/Http/Controllers/admin/AdminController.php",
-		"/D/laravelproject/test/apps/app/Http/Controllers/admin/UserController.php",
-		"/D/laravelproject/test/apps/app/Http/Controllers/home/HomeController.php",
-		"/D/laravelproject/test/apps/app/Http/routes.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_085256_products_of_orders (2).php",
-		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_011718_category_product.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/sua/2017_07_15_014717_customers.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/sua/2017_07_15_013109_image_print.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/sua/2017_07_15_011718_category_product.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_014717_customers.php",
-		"/D/laravelproject/blog/routes/web.php",
-		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_013109_image_print.php",
-		"/D/laravelproject/blog/vendor/nesbot/carbon/src/Carbon/Carbon.php"
+		"/D/laravelproject/test/apps/app/Http/Controllers/admin/UserController.php"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -745,6 +749,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"console.log",
+			"products_money",
+			"patternPlusMoney",
+			".label",
+			"trim",
+			"console.log",
 			"title-togle",
 			"data",
 			"title",
@@ -866,13 +876,7 @@
 			".nav ",
 			".nav active",
 			".nav",
-			"js",
-			"container",
-			"Dash",
-			"config",
-			"error",
-			"config",
-			"section(javascript)"
+			"js"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -891,81 +895,53 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "chucnang",
+					"file": "chucnang.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2392,
+						"buffer_size": 2587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								961,
-								961
+								494,
+								494
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "apps/resources/views/orders/tab-content/base/tr.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1432,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								150,
-								71
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "dist/js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17116,
+						"buffer_size": 23126,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3949,
-								3949
+								11914,
+								11914
 							]
 						],
 						"settings":
@@ -975,10 +951,70 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2003.0,
+						"translation.y": 7863.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "apps/app/Http/Controllers/Orders/AjaxController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5934,
+								5934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3000.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "apps/app/functions/OrdersHandling.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7043,
+								7043
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3975.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1037,11 +1073,55 @@
 		"selected_items":
 		[
 			[
-				"main",
-				"dinosa\\dist\\js\\main.js"
+				"orders",
+				"dinosa\\apps\\app\\functions\\OrdersHandling.php"
+			],
+			[
+				"aja",
+				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\AjaxController.php"
 			],
 			[
 				"main.js",
+				"dinosa\\dist\\js\\main.js"
+			],
+			[
+				"product",
+				"dinosa\\apps\\app\\functions\\ProductHandling.php"
+			],
+			[
+				"detail.b",
+				"dinosa\\apps\\resources\\views\\orders\\colums-content\\table\\detail.blade.php"
+			],
+			[
+				"tr.blade",
+				"dinosa\\apps\\resources\\views\\orders\\colums-content\\table\\tr.blade.php"
+			],
+			[
+				"orderhand",
+				"dinosa\\apps\\app\\functions\\OrdersHandling.php"
+			],
+			[
+				"customer",
+				"dinosa\\apps\\app\\functions\\CustomerHandling.php"
+			],
+			[
+				"orderhan",
+				"dinosa\\apps\\app\\functions\\OrdersHandling.php"
+			],
+			[
+				"web",
+				"dinosa\\apps\\routes\\web.php"
+			],
+			[
+				"ajaxcon",
+				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\AjaxController.php"
+			],
+			[
+				"donmoi",
+				"dinosa\\apps\\resources\\views\\orders\\colums-content\\colums\\donmoi.blade.php"
+			],
+			[
+				"main",
 				"dinosa\\dist\\js\\main.js"
 			],
 			[
@@ -1055,10 +1135,6 @@
 			[
 				"daxac",
 				"dinosa\\apps\\resources\\views\\orders\\tab-content\\daxacnhan.blade.php"
-			],
-			[
-				"donmoi",
-				"dinosa\\apps\\resources\\views\\orders\\tab-content\\donmoi.blade.php"
 			],
 			[
 				"thatbai",
@@ -1129,10 +1205,6 @@
 				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\AjaxController.php"
 			],
 			[
-				"web",
-				"dinosa\\apps\\routes\\web.php"
-			],
-			[
 				"prod",
 				"dinosa\\apps\\app\\functions\\ProductHandling.php"
 			],
@@ -1167,10 +1239,6 @@
 			[
 				"basecontr",
 				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\BaseController.php"
-			],
-			[
-				"orderhan",
-				"dinosa\\apps\\app\\functions\\OrdersHandling.php"
 			],
 			[
 				"ordercon",
@@ -1449,7 +1517,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 266.0,
+	"side_bar_width": 178.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

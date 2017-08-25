@@ -21,9 +21,9 @@ class Orders extends Migration
             $table->string('id_post');
             $table->string('id_customers');
             $table->integer('id_orders_status')->unsigned();
-            $table->integer('surcharge_money')->default(0);
-            $table->integer('ship_customer_money')->default(0);
-            $table->integer('total_money')->default(0);
+            $table->integer('surcharge_money')->unsigned()->default(0);
+            $table->integer('ship_customer_money')->unsigned()->default(0);
+            $table->integer('total_money')->unsigned()->default(0);
             $table->timestamps();
 
             $table->foreign('id_customers')->references('id')->on('customers')->onDelete('cascade');

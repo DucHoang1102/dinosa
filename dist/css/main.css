@@ -106,6 +106,18 @@
       cursor: pointer; }
       .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover, .list-bills #dainxong tbody tr td.moneys .label .glyphicon:hover, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon:hover, .list-bills #thungrac tbody tr td.moneys .label .glyphicon:hover {
         color: #1111ff; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money .total_money, .list-bills #daxacnhan tbody tr td.moneys .plus-money .total_money, .list-bills #dainxong tbody tr td.moneys .plus-money .total_money, .list-bills #dangchuyen tbody tr td.moneys .plus-money .total_money, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money .total_money, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money .total_money, .list-bills #thungrac tbody tr td.moneys .plus-money .total_money {
+    display: block;
+    width: 100%;
+    font-size: 1.1em;
+    color: #CC0001;
+    font-weight: bold;
+    margin: 5px 0px;
+    border-bottom: 1px solid #bcbcbc; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money button, .list-bills #daxacnhan tbody tr td.moneys .plus-money button, .list-bills #dainxong tbody tr td.moneys .plus-money button, .list-bills #dangchuyen tbody tr td.moneys .plus-money button, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money button, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money button, .list-bills #thungrac tbody tr td.moneys .plus-money button {
+    padding: 5px 7px; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money span, .list-bills #daxacnhan tbody tr td.moneys .plus-money span, .list-bills #dainxong tbody tr td.moneys .plus-money span, .list-bills #dangchuyen tbody tr td.moneys .plus-money span, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money span, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money span, .list-bills #thungrac tbody tr td.moneys .plus-money span {
+    font-weight: bold; }
   .list-bills #donmoi tbody tr td.phone, .list-bills #daxacnhan tbody tr td.phone, .list-bills #dainxong tbody tr td.phone, .list-bills #dangchuyen tbody tr td.phone, .list-bills #chuyenthanhcong tbody tr td.phone, .list-bills #chuyenthatbai tbody tr td.phone, .list-bills #thungrac tbody tr td.phone {
     position: relative; }
     .list-bills #donmoi tbody tr td.phone .autocomplete .atc-item, .list-bills #daxacnhan tbody tr td.phone .autocomplete .atc-item, .list-bills #dainxong tbody tr td.phone .autocomplete .atc-item, .list-bills #dangchuyen tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete .atc-item, .list-bills #thungrac tbody tr td.phone .autocomplete .atc-item {
@@ -248,7 +260,7 @@
   max-width: 1000px;
   padding: 10px;
   font-size: 1.2em;
-  background: rgba(224, 224, 224, 0.9);
+  background: rgba(200, 200, 200, 0.9);
   border-radius: 10px;
   z-index: 10; }
 

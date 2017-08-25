@@ -31,7 +31,11 @@
 		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
 	@endif
 	</td>
-	<td class="tongtien moneys"><div class="label">{{ $order->total_money }} <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></td>
+	<td class="tongtien moneys">
+		<div class="label">{{ $order->total_money }} <span class="{{ $plus_icon or '' }}" aria-hidden="true"></span></div>
+		<span id="ship_money" hidden>{{ $order->ship_customer_money }}</span>
+		<span id="phuphi_money" hidden>{{ $order->surcharge_money }}</span>
+	</td>
 	<td class='xacnhan functions'>
 		@include('orders.colums-content.funs.menu-funs-general')
 	</td>

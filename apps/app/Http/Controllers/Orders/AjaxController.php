@@ -16,11 +16,11 @@ class AjaxController extends BaseController
 {
     // Thêm đơn hàng
     function postAddOrdersAjax (Request $request) {
-        $_id_order    = isset($request->_id_order)    ? trim($request->_id_order)    : "";
-        $_id_customer = isset($request->_id_customer) ? trim($request->_id_customer) : "";
-        $name         = isset($request->name)         ? trim($request->name)         : "";
-        $phone        = isset($request->phone)        ? trim($request->phone)        : "";
-        $address      = isset($request->address)      ? trim($request->address)      : "";
+        $_id_order    = $request->_id_order;
+        $_id_customer = $request->_id_customer;
+        $name         = $request->name;
+        $phone        = $request->phone;
+        $address      = $request->address;
 
         // Kiểm tra khách hàng đã tồn tại chưa thông qua số điện thoại
         $id_customer_old = CustomerHandling::existsCustomer($phone);
@@ -74,9 +74,9 @@ class AjaxController extends BaseController
     // Thêm sản phẩm
     function postAddProductsAjax (Request $request)
     {
-        $_id_order   = isset($request->_id_order)   ? trim($request->_id_order)   : "";
-        $_id_product = isset($request->_id_product) ? trim($request->_id_product) : "";
-        $product     = isset($request->product)     ? trim($request->product)     : "";
+        $_id_order   = $request->_id_order;
+        $_id_product = $request->_id_product;
+        $product     = $request->product;
 
         if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
             // Tạo mới sản phẩm, chỉ tạo được các đơn tại đơn mới
@@ -105,8 +105,8 @@ class AjaxController extends BaseController
     // Xóa sản phẩm
     function postDeleteProductsAjax (Request $request)
     {
-        $_id_order   = isset($request->_id_order)   ? trim($request->_id_order)   : "";
-        $_id_product = isset($request->_id_product) ? trim($request->_id_product) : "";
+        $_id_order   = $request->_id_order;
+        $_id_product = $request->_id_product;
 
         if ( OrdersHandling::is_order_of_donmoi($_id_order) ) {
 
@@ -144,9 +144,9 @@ class AjaxController extends BaseController
     // Thay đổi trạng thái sản phẩm
     function getChangeStatus(Request $request)
     {
-        $status     = isset($request->_status)     ? $request->_status     : '0';
-        $id_order   = isset($request->_id_order)   ? $request->_id_order   : '';
-        $id_product = isset($request->_id_product) ? $request->_id_product : '';
+        $status     = $request->_status;
+        $id_order   = $request->_id_order;
+        $id_product = $request->_id_product;
 
         if ( !empty($id_order) || !empty($id_product) )
         {
@@ -168,5 +168,25 @@ class AjaxController extends BaseController
         }
         else return [];
     }
-    
+
+    // Cộng thêm tiền ship hoặc phụ phí nếu có
+    function postPlusMoney(Request $request)
+    {
+        // Validate số âm
+        if ($request->_ship < 0 || $request->_phuphi < 0) return [];
+        // Validate 2 trường đều trống
+        if ($request->_ship == null && $request->_phuphi == null) return [];
+
+        $id_order     = $request->_id_order;
+        $ship_money   = ($request->_ship   !== null) ? $request->_ship   : 0;
+        $phuphi_money = ($request->_phuphi !== null) ? $request->_phuphi : 0;
+
+        $orders = OrdersHandling::plusMoney($id_order, $ship_money, $phuphi_money);
+
+        return [
+            'ship_money'   => $orders['ship_money'],
+            'phuphi_money' => $orders['phuphi_money'],
+            'total_money'  => $orders['total_money']
+        ];
+    }
 }
