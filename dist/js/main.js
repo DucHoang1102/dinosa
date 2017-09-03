@@ -332,7 +332,7 @@ function patternPlusMoney(total_money, ship_money, phuphi_money) {
 	});
 })();
 
-// Nút hiển thị chi tiết hình ảnh khi hover vào tr 
+// Nút hiển thị chi tiết đơn hàng
 (function () {
 	var eye_node    = $('.table-tbody tbody span.eye-node');
 
@@ -365,6 +365,22 @@ function patternPlusMoney(total_money, ship_money, phuphi_money) {
 		}
 	);
 
+})();
+
+// Nút hiển thị trạng thái đơn hàng tại hãng vận chuyển
+// Trả lời câu hỏi hàng đang ở đâu
+(function orderWhere() {
+	$('.d-o-where').click(function(event) {
+		var id_post = $(this).parents(".detail").attr("id_post");
+		if (id_post == "" || id_post == undefined) {
+			alert("TRẠNG THÁI ĐƠN HÀNG HIỆN TẠI CHƯA CÓ!");
+		}
+		else {
+			var link_vnpost = "http://www.vnpost.vn/vi-vn/dinh-vi/buu-pham?key=" + id_post;
+			window.open(link_vnpost, "windowChild", 'width=1100, height=600')
+		}
+		return false;
+	});
 })();
 
 // Tiền ship và phụ phi

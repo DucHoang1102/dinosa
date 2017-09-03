@@ -1,6 +1,6 @@
 @php use App\functions\helpers\ConvertMoney; @endphp
 
-<div class="detail detail-{{ $order->id }}">
+<div class="detail detail-{{ $order->id }}" id_post="{{ $order->id_post }}">
 	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 
 	<div class="d d-customer">
@@ -27,6 +27,9 @@
 
 	<div class="d d-status">
 		<h3> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Trạng thái đơn hàng</h3>
+		<a href="#" class="d-o-where">
+			<button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Xem hàng đang ở đâu?</button>
+		</a>
 	</div>
 
 </div>
