@@ -1,10 +1,11 @@
 /node_modules
+/public/hot
+/public/storage
 /upload/d-p-1234/
 /upload/mail-orders/
-/apps/storage/*.key
-/apps/vendor/
-/apps/.idea
-/apps/.env
+/storage/*.key
+/vendor
+/.idea
 /.vagrant
 Homestead.json
 Homestead.yaml
@@ -12,11 +13,7 @@ npm-debug.log
 yarn-error.log
 dinosa.sublime-project
 dinosa.sublime-workspace
-<<<<<<< HEAD
-gulpfile.js
-package.json
-chucnang
-=======
 apps/.env
 chucnang.txt
->>>>>>> Developer
+nano.save.1
+nano.save.2
