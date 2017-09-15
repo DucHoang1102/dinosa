@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"id_",
+				"id_post"
+			],
+			[
 				"old",
 				"old_ship"
 			],
@@ -114,10 +118,6 @@
 			[
 				"re",
 				"request"
-			],
-			[
-				"id_",
-				"id_order"
 			],
 			[
 				"req",
@@ -523,18 +523,9 @@
 			"file": "chucnang.txt",
 			"settings":
 			{
-				"buffer_size": 2648,
+				"buffer_size": 2968,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/HP/AppData/Roaming/CodeBlocks/default.conf",
-			"settings":
-			{
-				"buffer_size": 126359,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -586,18 +577,20 @@
 	],
 	"file_history":
 	[
+		"/D/laravelproject/chat-app/app/User.php",
+		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/table/detail.blade.php",
+		"/D/laravelproject/dinosa/dist/js/main.js",
+		"/C/Users/HP/AppData/Roaming/CodeBlocks/default.conf",
 		"/D/laravelproject/dinosa/build/scss/orders/_detail-order.scss",
 		"/D/laravelproject/dinosa/apps/app/functions/OrdersHandling.php",
 		"/D/laravelproject/dinosa/build/scss/orders/_list-orders.scss",
 		"/D/laravelproject/dinosa/apps/app/Http/Controllers/Orders/AjaxController.php",
-		"/D/laravelproject/dinosa/dist/js/main.js",
 		"/C/Users/HP/Homestead/Homestead.yaml",
 		"/C/Users/HP/Desktop/dinosa-25-8-17.sql",
 		"/D/laravelproject/backup database tạm thời dinosa/dinosa.sql",
 		"/C/Users/HP/Homestead/homestead-7",
 		"/D/laravelproject/dinosa/apps/database/migrations/2017_07_15_015528_orders.php",
 		"/D/laravelproject/dinosa/apps/routes/web.php",
-		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/table/detail.blade.php",
 		"/D/laravelproject/dinosa/apps/resources/views/orders/colums-content/table/tr.blade.php",
 		"/D/laravelproject/dinosa/apps/app/functions/ProductHandling.php",
 		"/C/Program Files (x86)/CodeBlocks/MinGW/lib/libaclui.a",
@@ -711,13 +704,11 @@
 		"/D/laravelproject/dinosa/node_modules/caniuse-db/features-json/web-bluetooth.json",
 		"/D/laravelproject/dinosa/dist/css/main.css",
 		"/D/laravelproject/dinosa/apps/app/functions/AutoComplete.php",
-		"/D/laravelproject/dinosa/apps/database/seeds/DatabaseSeeder.php",
-		"/D/laravelproject/dinosa/build/scss/bill/_list-bills.scss",
-		"/D/laravelproject/dinosa/build/scss/bill/_tab-bills.scss"
+		"/D/laravelproject/dinosa/apps/database/seeds/DatabaseSeeder.php"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -732,6 +723,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"console",
+			"ajax",
 			"color_sets",
 			"color_sets\\",
 			"d-customer",
@@ -857,9 +850,7 @@
 			"cu",
 			"table",
 			"table-striped",
-			".table",
-			"li.active",
-			".nav"
+			".table"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -878,7 +869,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -887,15 +878,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2648,
+						"buffer_size": 2968,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1037,
-								1037
+								806,
+								806
 							]
 						],
 						"settings":
@@ -904,36 +895,7 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/HP/AppData/Roaming/CodeBlocks/default.conf",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 126359,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 72150.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -944,7 +906,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -985,7 +947,7 @@
 	"project": "dinosa.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -995,16 +957,20 @@
 		"selected_items":
 		[
 			[
+				"detai",
+				"dinosa\\apps\\resources\\views\\orders\\colums-content\\table\\detail.blade.php"
+			],
+			[
+				"main.js",
+				"dinosa\\dist\\js\\main.js"
+			],
+			[
 				"orders",
 				"dinosa\\apps\\app\\functions\\OrdersHandling.php"
 			],
 			[
 				"aja",
 				"dinosa\\apps\\app\\Http\\Controllers\\Orders\\AjaxController.php"
-			],
-			[
-				"main.js",
-				"dinosa\\dist\\js\\main.js"
 			],
 			[
 				"product",
@@ -1439,7 +1405,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 225.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
