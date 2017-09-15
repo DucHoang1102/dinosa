@@ -66,6 +66,19 @@ $color-backgorund: #fcfcfc;
 		border: $border;
 		font-size: $font-size-body;
 		padding-left: $align-body;
+		&.stt {
+			position: relative;
+			.eye-node {
+				position: absolute;
+				display: none;
+				top: 10px;
+				color: #b1c5d6;
+				font-size: 1.1em;
+				&:hover {
+					color: #337ab7;
+				}
+			}
+		}
 		&.moneys {
 			.label {
 				display: block;
@@ -82,6 +95,23 @@ $color-backgorund: #fcfcfc;
 					cursor: pointer;
 					&:hover{
 						color: #1111ff;}}
+			}
+			.plus-money {
+				.total_money {
+					display: block;
+					width: 100%;
+					font-size: 1.1em;
+					color: #CC0001;
+					font-weight: bold;
+					margin: 5px 0px;
+					border-bottom: 1px solid #bcbcbc;
+				}
+				button {
+					padding: 5px 7px;
+				}
+				span {
+					font-weight: bold;
+				}
 			}};
 		&.phone {
 			position: relative;
@@ -167,6 +197,11 @@ $color-backgorund: #fcfcfc;
 			}
 		}
 	}
+	tbody tr {
+		&:hover span.eye-node{
+			display: inline-block;
+		}
+	}
 }
 
 @mixin thead_tr_th()
@@ -216,7 +251,7 @@ $color-backgorund: #fcfcfc;
 			border-right: none;
 			border-bottom: 2px solid #eaeaea;
 			height: 100%;
-			background: $color-backgorund;
+			background-color: transparent;
 			&:focus, &:hover {
 				outline: none;
 				border-bottom: 2px solid #125FBB;
@@ -240,7 +275,7 @@ $color-backgorund: #fcfcfc;
 		}
 	}
 	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
-		@include width_head($stt:3%, $hoten:17%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
+		@include width_head($stt:4%, $hoten:16%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
 		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
 		@include thead_tr_th();
 	}

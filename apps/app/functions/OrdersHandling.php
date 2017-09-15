@@ -81,7 +81,6 @@ class OrdersHandling
     }
 
     // Sử lý Total Money
-    // Hàm OK
     public static function totalMoney ($id_order='000')
     {
         $total_money = 0;
@@ -205,6 +204,25 @@ class OrdersHandling
 
         if ( $result ) return true;
         else           return false;
+    }
+
+    // Cộng tiền ship và tiền phụ phí
+    public static function plusMoney($id_order, $ship_money, $phuphi_money)
+    {
+        $result = DB::table('orders')
+                      ->where('id', $id_order)
+                      ->update([
+                          'ship_customer_money' => $ship_money,
+                          'surcharge_money' => $phuphi_money
+                      ]);
+
+        if ($result) {
+            return [
+                'ship_money'   => $ship_money,
+                'phuphi_money' => $phuphi_money,
+                'total_money'  => self::totalMoney($id_order)
+            ];
+        }
     }
 
     // Kiểm tra orders thuộc thùng rác

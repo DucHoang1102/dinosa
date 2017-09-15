@@ -5,6 +5,7 @@
 	$input            = true;
 	$icon_add_product = true;
 	$product_icon     = 'glyphicon-remove';
+	$plus_icon        = 'glyphicon glyphicon-plus';
 	$fun              = 1;
 	$table_hover      = '';
 	$button2          = 'style=display:inline-block';

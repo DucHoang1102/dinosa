@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use View;
 use DB;
 use App\functions\OrdersHandling;
+use App\functions\CustomerHandling;
 
 class OrderController extends BaseController
 {
@@ -26,10 +27,11 @@ class OrderController extends BaseController
     // Xóa vĩnh viễn đơn hàng
     function getDeletePermanently($id_order=0 )
     {
-        // Xóa toàn bộ - dọn dẹp thùng rác
+        // Xóa toàn bộ - dọn dẹp khách hàng lỗi
         if ($id_order == 'all')
         {
             OrdersHandling::deleteAll();
+            CustomerHandling::clear();
         }
 
         else {

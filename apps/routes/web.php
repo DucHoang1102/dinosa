@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return view('re');
+	return view('orders.colums-content.table.detail');
 });
 
 
@@ -46,6 +46,9 @@ Route::group(['prefix'=>'orders'], function(){
 
 	// Change Status product
 	Route::get('change-status', ['as' => 'changeStatus', 'uses' => 'Orders\AjaxController@getChangeStatus']);
+
+	// Cộng ship và phụ phí cho đơn hàng
+	Route::post('plus-money', ['as' => 'plusMoney', 'uses' => 'Orders\AjaxController@postPlusMoney']);
 
 	// Prints
 	Route::group(['prefix'=>'print'], function(){
