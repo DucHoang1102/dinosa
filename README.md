@@ -1,4 +1,7 @@
 # dinosa
 Dự án dinosa
 - Phần mềm quản lý áo in Dinosa
-- Start project: Truy cập ssh -> cd vào: dinosa/apps -> gõ cmd: composer install
+- Start project: 
+  + Truy cập ssh -> cd vào: dinosa/apps -> gõ cmd: composer install
+  + Tạo generate key gõ cmd: php artisan key:generate
+  + Tạo và copy nội dung vào file .env từ file .env.example. Sửa trường DB_HOST và DB_DATABASE  
