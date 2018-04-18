@@ -11,14 +11,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomed');
 });
 
-Route::get('test', function () {
-	return view('orders.colums-content.table.detail');
+Route::get('/order', function () {
+	return "Nguyễn Đức Hoàng";
 });
-
-
+/*
 Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
@@ -55,4 +54,5 @@ Route::group(['prefix'=>'orders'], function(){
 		Route::get('orders', ['as' => 'printOrders', 'uses' => 'Orders\PrintController@getPrintOrders']);
 		Route::get('products/{id_order}/{id_product}', ['as' => 'printProducts', 'uses' => 'Orders\PrintController@getPrintProducts']);
 	});
-});
+}); 
+*/
