@@ -14,11 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-	return view('orders.colums-content.table.detail');
-});
-
-
 Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
