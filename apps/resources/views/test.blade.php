@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>@yield('title', 'Dinosa')</title>
-	<!-- Bootstrap 3.3.7 CSS -->
-	<link href="dist\plugins\bootstrap\css\bootstrap.min.css" rel="stylesheet" type="text/css">
-	<!-- Dinosa CSS -->
-	<link href="dist\css\main.css" rel="stylesheet" type="text/css">
-	<!-- Jquery-ui CSS -->
-	<link href="dist\plugins\jquery-ui\jquery-ui.min.css" rel="stylesheet" type="text/css">
-
-
+	<title>Test </title>
 </head>
 <body>
-	<form>  
-	<input type="search" name="url" required>
-	</form>
-	<!-- Jquery 3.2.1 -->
-	<script src="dist\plugins\jquery\jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- Jquery IU -->
-	<script src="dist\plugins\jquery-ui\jquery-ui.min.js" type="text/javascript"></script>
-	<!-- Bootstrap 3.3.7 JS -->
-	<script src="dist\plugins\bootstrap\js\bootstrap.min.js" type="text/javascript"></script>
-	<!-- Dinosa JS -->
-	<script src="dist\js\main.js" type="text/javascript"></script>
+@php
+	$var = ["CT1" => ["S" => 3, "M" => 0, "L" => 1], "CT2" => []];
+	var_dump($var["CT1"]["S"]);
+
+	$Size_S = $Size_M = $Size_L = $Size_XL = $Size_XXL = 0;
+	$result = [];
+
+	foreach ($orders_daXacNhan as $key => $order) {
+		foreach ($order->products as $key => $product) {
+
+			$embryo_tshirt = $product->name_embryo_tshirt;
+			$size = $product->size;
+
+			if (!array_key_exists($embryo_tshirt, $result)) { 
+				$result[$embryo_tshirt] = ["S" => 0, "M" => 0, "L" => 0, "XL" => 0, "XXL" => 0];
+				$result[$embryo_tshirt][$size] = $result[$embryo_tshirt][$size] + 1;
+			}
+			else {
+				$result[$embryo_tshirt][$size] = $result[$embryo_tshirt][$size] + 1;
+			}
+
+		}
+	}
+
+	var_dump($result);
+
+	
+@endphp
 </body>
 </html>

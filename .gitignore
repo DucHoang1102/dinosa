@@ -14,6 +14,12 @@ yarn-error.log
 dinosa.sublime-project
 dinosa.sublime-workspace
 apps/.env
+<<<<<<< HEAD
 chucnang.txt
 nano.save.1
 nano.save.2
+=======
+nano.save.1
+nano.save.2
+THIETKEDINOSA.txt
+>>>>>>> developer

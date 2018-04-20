@@ -33,7 +33,7 @@ class Email
 	{
 		// setDefault
 		if ($mFrom  == "") $mFrom  = "ndhdldt3@gmail.com";
-		if ($mPass  == "") $mPass  = "mduchoangaicaotrang9399l";
+		if ($mPass  == "") $mPass  = "passmailpostdinosa";
 		if ($nFrom  == "") $nFrom  = "Nguyễn Đức Hoàng";
 		if ($mReply == "") $mReply = $mFrom;
 		if ($nReply == "") $nReply = $nFrom;
@@ -47,14 +47,20 @@ class Email
 		return $this;
 	}
 
-	public function setInfoTo($mTo="", $nTo="")
+	public function setInfoTo()
 	{
-		// setDefault
-		if ($mTo == "") $mTo = "ndhdldt1@gmail.com"; //bcnguyencothach.bdhn@gmail.com
-		if ($nTo == "") $nTo = "Bưu cục VNPOST";
+		// Thiết lập người nhận mail post
+		$mTo_1 = "ndhdldt1@gmail.com";
+		$mTo_2 = "haibatrungbdtt1@gmail.com";
+		$mTo_3 = "buudienhaibatrung@gmail.com";
+
+		$nTo_self = "Bản sao VNPOST";
+		$nTo_vnpost = "Bưu cục VNPOST";
 		/*-----------------------------------*/
 
-		$this->mail->AddAddress($mTo, $nTo);
+		$this->mail->AddAddress($mTo_1, $nTo_self);
+		$this->mail->AddAddress($mTo_2, $nTo_vnpost);
+		$this->mail->AddAddress($mTo_3, $nTo_vnpost);
 
 		return $this;
 	}

@@ -287,7 +287,7 @@ function patternPlusMoney(total_money, ship_money, phuphi_money) {
 // Bấm nút in nhiều sản phẩm
 (function printProducts() {
 	$('.funs-xacnhan .print-product').click(function(){
-		window.open("orders/print/products/all/all", "windowChild", 'width=1100, height=600').print()
+		window.open("orders/print/products/all/all", "windowChild", 'width=1100, height=600').print();
 		return false;
 	});
 })();

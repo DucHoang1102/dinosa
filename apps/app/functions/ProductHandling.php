@@ -46,7 +46,14 @@ class ProductHandling
 			    		->where([
 			                ['id_orders', $id_orders]
 			            ])
-			    		->select('products_of_orders.id', 'products_of_orders.name', 'products_of_orders.price', 'products_of_orders.id_image_print', 'products_of_orders.status')
+			    		->select(
+                            'products_of_orders.id', 
+                            'products_of_orders.name', 
+                            'products_of_orders.price', 
+                            'products_of_orders.id_image_print', 
+                            'products_of_orders.status', 
+                            'products_of_orders.size',
+                            'products_of_orders.name_embryo_tshirt')
 			            ->orderBy('products_of_orders.created_at', 'asc')
 			    		->get();
 
