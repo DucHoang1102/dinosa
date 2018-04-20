@@ -87,6 +87,8 @@
 </head>
 <body>
 	<div class="print">
+		@include('orders.prints.countEmbryoTshirt')
+
 		<div class="row">
 			@foreach ($orders_daXacNhan as $key => $order)
 				<div class="col-xs-6">

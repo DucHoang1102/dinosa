@@ -14,6 +14,9 @@ Route::get('/', function () {
     return view('welcomed');
 });
 
+// Test xóa sau khi sử dụng xong: Router test, view test, controller test
+Route::get('/test', ['as' => 'testController', 'uses' => 'Test\TestController@index']);
+
 Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
