@@ -5,6 +5,7 @@
 /upload/mail-orders/
 /storage/*.key
 /vendor
+/apps/vendor
 /.idea
 /.vagrant
 Homestead.json
@@ -14,12 +15,10 @@ yarn-error.log
 dinosa.sublime-project
 dinosa.sublime-workspace
 apps/.env
-<<<<<<< HEAD
 chucnang.txt
 nano.save.1
 nano.save.2
-=======
-nano.save.1
-nano.save.2
+nano.save.3
+nano.save.4
 THIETKEDINOSA.txt
->>>>>>> developer
+
