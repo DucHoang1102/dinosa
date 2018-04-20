@@ -14,10 +14,6 @@ Route::get('/', function () {
     return view('welcomed');
 });
 
-Route::get('/order', function () {
-	return "Nguyễn Đức Hoàng";
-});
-/*
 Route::group(['prefix'=>'orders'], function(){
 	// Index Default
 	Route::get('', ['as' => 'indexOrders', 'uses' => 'Orders\OrderController@index']);
@@ -55,4 +51,3 @@ Route::group(['prefix'=>'orders'], function(){
 		Route::get('products/{id_order}/{id_product}', ['as' => 'printProducts', 'uses' => 'Orders\PrintController@getPrintProducts']);
 	});
 }); 
-*/

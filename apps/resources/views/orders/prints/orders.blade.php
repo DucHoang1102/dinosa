@@ -112,7 +112,7 @@
 							<span class="">FB : </span>   <span class=""><b>fb/aodoitinhyeu</b></span>
 						</div>
 						<div style="border:none">
-							<span class="">Chú ý :</span> <span class=""><b>Bưu tá vui lòng cho khách xem hàng và liên hệ với Shop trong trường hợp không giao được hàng. Sự phát triển của chúng tôi phụ thuộc phần lớn vào các làm việc của các bạn. Cảm ơn rất nhiều!!!</b></span>
+							<span class="">Chú ý :</span> <span class=""><b>Bưu tá vui lòng cho khách xem hàng và liên hệ với Shop trong trường hợp không giao được hàng. Sự phát triển của chúng tôi phụ thuộc phần lớn vào cách làm việc của các bạn. Cảm ơn rất nhiều!!!</b></span>
 						</div>
 						<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
 					</div><!--/.labels-->
