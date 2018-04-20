@@ -87,8 +87,10 @@
 </head>
 <body>
 	<div class="print">
+		@include('orders.prints.countEmbryoTshirt')
+
 		<div class="row">
-			@foreach ($orders_daInXong as $key => $order)
+			@foreach ($orders_daXacNhan as $key => $order)
 				<div class="col-xs-6">
 					<div class="labels">
 						<h3 style="border:none; margin-top:0px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Thông khách hàng</h3>
