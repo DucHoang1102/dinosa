@@ -97,7 +97,7 @@ class Excel
 					       ->setCellValue('C'.$i, $order->name) // Tên người nhận
 					       ->setCellValue('D'.$i, $order->address) // Điện chỉ người nhận
 					       ->setCellValue('E'.$i, $order->phone) // Điện thoại người nhận
-					       ->setCellValue('F'.$i, $order->total_money . ' vnđ') // Số tiền(COD)
+					       ->setCellValue('F'.$i, str_replace(",", "", $order->total_money)) // Số tiền(COD)
 					       ->setCellValue('G'.$i, 'Áo thun') // Nội dung hàng
 					       ->setCellValue('H'.$i, 'Không thu phí của khách'); // Ghi chú 
 

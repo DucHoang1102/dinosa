@@ -4,7 +4,6 @@
 /upload/d-p-1234/
 /upload/mail-orders/
 /storage/*.key
-/vendor
 /.idea
 /.vagrant
 Homestead.json
