@@ -1,0 +1,307 @@
+::-webkit-scrollbar {
+  width: 7px; }
+
+::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 2px solid #ccc;
+  border-radius: 8px; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #444444;
+  border-radius: 8px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+  border-radius: 8px; }
+
+.list-bills #donmoi .load-oldcustomer {
+  position: absolute;
+  display: none;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  vertical-align: middle; }
+  .list-bills #donmoi .load-oldcustomer img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    vertical-align: middle; }
+.list-bills #donmoi input {
+  border-top: none;
+  border-left: none;
+  width: 99%;
+  border-right: none;
+  border-bottom: 2px solid #eaeaea;
+  height: 100%;
+  background-color: transparent; }
+  .list-bills #donmoi input:focus, .list-bills #donmoi input:hover {
+    outline: none;
+    border-bottom: 2px solid #125FBB;
+    box-shadow: 0px 7px 10px -8px; }
+.list-bills #donmoi .load {
+  width: 30px; }
+.list-bills #donmoi .add-order {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  font-size: 2.3em;
+  cursor: pointer;
+  padding-bottom: 15px;
+  opacity: 0.5;
+  transition: all .2s; }
+  .list-bills #donmoi .add-order:hover {
+    font-size: 2.8em;
+    opacity: 1; }
+.list-bills #donmoi .stt, .list-bills #daxacnhan .stt, .list-bills #dainxong .stt, .list-bills #dangchuyen .stt, .list-bills #chuyenthanhcong .stt, .list-bills #chuyenthatbai .stt, .list-bills #thungrac .stt {
+  width: 4%;
+  padding-left: 10px; }
+.list-bills #donmoi .ngaynhan, .list-bills #daxacnhan .ngaynhan, .list-bills #dainxong .ngaynhan, .list-bills #dangchuyen .ngaynhan, .list-bills #chuyenthanhcong .ngaynhan, .list-bills #chuyenthatbai .ngaynhan, .list-bills #thungrac .ngaynhan {
+  width: 0%; }
+.list-bills #donmoi .hoten, .list-bills #daxacnhan .hoten, .list-bills #dainxong .hoten, .list-bills #dangchuyen .hoten, .list-bills #chuyenthanhcong .hoten, .list-bills #chuyenthatbai .hoten, .list-bills #thungrac .hoten {
+  width: 16%; }
+.list-bills #donmoi .phone, .list-bills #daxacnhan .phone, .list-bills #dainxong .phone, .list-bills #dangchuyen .phone, .list-bills #chuyenthanhcong .phone, .list-bills #chuyenthatbai .phone, .list-bills #thungrac .phone {
+  width: 12%; }
+.list-bills #donmoi .diachi, .list-bills #daxacnhan .diachi, .list-bills #dainxong .diachi, .list-bills #dangchuyen .diachi, .list-bills #chuyenthanhcong .diachi, .list-bills #chuyenthatbai .diachi, .list-bills #thungrac .diachi {
+  width: 34%; }
+.list-bills #donmoi .sanpham, .list-bills #daxacnhan .sanpham, .list-bills #dainxong .sanpham, .list-bills #dangchuyen .sanpham, .list-bills #chuyenthanhcong .sanpham, .list-bills #chuyenthatbai .sanpham, .list-bills #thungrac .sanpham {
+  width: 12%; }
+.list-bills #donmoi .tongtien, .list-bills #daxacnhan .tongtien, .list-bills #dainxong .tongtien, .list-bills #dangchuyen .tongtien, .list-bills #chuyenthanhcong .tongtien, .list-bills #chuyenthatbai .tongtien, .list-bills #thungrac .tongtien {
+  width: 10%; }
+.list-bills #donmoi .xacnhan, .list-bills #daxacnhan .xacnhan, .list-bills #dainxong .xacnhan, .list-bills #dangchuyen .xacnhan, .list-bills #chuyenthanhcong .xacnhan, .list-bills #chuyenthatbai .xacnhan, .list-bills #thungrac .xacnhan {
+  width: 12%; }
+.list-bills #donmoi .table-tbody, .list-bills #daxacnhan .table-tbody, .list-bills #dainxong .table-tbody, .list-bills #dangchuyen .table-tbody, .list-bills #chuyenthanhcong .table-tbody, .list-bills #chuyenthatbai .table-tbody, .list-bills #thungrac .table-tbody {
+  margin-top: -20px;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 18px;
+  background: #fcfcfc; }
+.list-bills #donmoi tbody tr td, .list-bills #daxacnhan tbody tr td, .list-bills #dainxong tbody tr td, .list-bills #dangchuyen tbody tr td, .list-bills #chuyenthanhcong tbody tr td, .list-bills #chuyenthatbai tbody tr td, .list-bills #thungrac tbody tr td {
+  border: none;
+  font-size: 1.25em;
+  padding-left: 1.1em; }
+  .list-bills #donmoi tbody tr td.stt, .list-bills #daxacnhan tbody tr td.stt, .list-bills #dainxong tbody tr td.stt, .list-bills #dangchuyen tbody tr td.stt, .list-bills #chuyenthanhcong tbody tr td.stt, .list-bills #chuyenthatbai tbody tr td.stt, .list-bills #thungrac tbody tr td.stt {
+    position: relative; }
+    .list-bills #donmoi tbody tr td.stt .eye-node, .list-bills #daxacnhan tbody tr td.stt .eye-node, .list-bills #dainxong tbody tr td.stt .eye-node, .list-bills #dangchuyen tbody tr td.stt .eye-node, .list-bills #chuyenthanhcong tbody tr td.stt .eye-node, .list-bills #chuyenthatbai tbody tr td.stt .eye-node, .list-bills #thungrac tbody tr td.stt .eye-node {
+      position: absolute;
+      display: none;
+      top: 10px;
+      color: #b1c5d6;
+      font-size: 1.1em; }
+      .list-bills #donmoi tbody tr td.stt .eye-node:hover, .list-bills #daxacnhan tbody tr td.stt .eye-node:hover, .list-bills #dainxong tbody tr td.stt .eye-node:hover, .list-bills #dangchuyen tbody tr td.stt .eye-node:hover, .list-bills #chuyenthanhcong tbody tr td.stt .eye-node:hover, .list-bills #chuyenthatbai tbody tr td.stt .eye-node:hover, .list-bills #thungrac tbody tr td.stt .eye-node:hover {
+        color: #337ab7; }
+  .list-bills #donmoi tbody tr td.moneys .label, .list-bills #daxacnhan tbody tr td.moneys .label, .list-bills #dainxong tbody tr td.moneys .label, .list-bills #dangchuyen tbody tr td.moneys .label, .list-bills #chuyenthanhcong tbody tr td.moneys .label, .list-bills #chuyenthatbai tbody tr td.moneys .label, .list-bills #thungrac tbody tr td.moneys .label {
+    display: block;
+    font-size: 1.1em;
+    border-radius: 0px;
+    text-align: center;
+    padding: 3px 5px;
+    color: #CC0001;
+    border-bottom: 2px solid #CC0001; }
+    .list-bills #donmoi tbody tr td.moneys .label .glyphicon, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon, .list-bills #dainxong tbody tr td.moneys .label .glyphicon, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon, .list-bills #thungrac tbody tr td.moneys .label .glyphicon {
+      font-size: 0.9em;
+      margin-left: 3px;
+      color: #d3b1b1;
+      cursor: pointer; }
+      .list-bills #donmoi tbody tr td.moneys .label .glyphicon:hover, .list-bills #daxacnhan tbody tr td.moneys .label .glyphicon:hover, .list-bills #dainxong tbody tr td.moneys .label .glyphicon:hover, .list-bills #dangchuyen tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.moneys .label .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.moneys .label .glyphicon:hover, .list-bills #thungrac tbody tr td.moneys .label .glyphicon:hover {
+        color: #1111ff; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money .total_money, .list-bills #daxacnhan tbody tr td.moneys .plus-money .total_money, .list-bills #dainxong tbody tr td.moneys .plus-money .total_money, .list-bills #dangchuyen tbody tr td.moneys .plus-money .total_money, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money .total_money, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money .total_money, .list-bills #thungrac tbody tr td.moneys .plus-money .total_money {
+    display: block;
+    width: 100%;
+    font-size: 1.1em;
+    color: #CC0001;
+    font-weight: bold;
+    margin: 5px 0px;
+    border-bottom: 1px solid #bcbcbc; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money button, .list-bills #daxacnhan tbody tr td.moneys .plus-money button, .list-bills #dainxong tbody tr td.moneys .plus-money button, .list-bills #dangchuyen tbody tr td.moneys .plus-money button, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money button, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money button, .list-bills #thungrac tbody tr td.moneys .plus-money button {
+    padding: 5px 7px; }
+  .list-bills #donmoi tbody tr td.moneys .plus-money span, .list-bills #daxacnhan tbody tr td.moneys .plus-money span, .list-bills #dainxong tbody tr td.moneys .plus-money span, .list-bills #dangchuyen tbody tr td.moneys .plus-money span, .list-bills #chuyenthanhcong tbody tr td.moneys .plus-money span, .list-bills #chuyenthatbai tbody tr td.moneys .plus-money span, .list-bills #thungrac tbody tr td.moneys .plus-money span {
+    font-weight: bold; }
+  .list-bills #donmoi tbody tr td.phone, .list-bills #daxacnhan tbody tr td.phone, .list-bills #dainxong tbody tr td.phone, .list-bills #dangchuyen tbody tr td.phone, .list-bills #chuyenthanhcong tbody tr td.phone, .list-bills #chuyenthatbai tbody tr td.phone, .list-bills #thungrac tbody tr td.phone {
+    position: relative; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete .atc-item, .list-bills #daxacnhan tbody tr td.phone .autocomplete .atc-item, .list-bills #dainxong tbody tr td.phone .autocomplete .atc-item, .list-bills #dangchuyen tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete .atc-item, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete .atc-item, .list-bills #thungrac tbody tr td.phone .autocomplete .atc-item {
+      display: block;
+      padding: 5px 3px 5px 7px;
+      border-radius: 5px;
+      border-bottom: 1px solid #fcfcfc;
+      background: #0a0a0a;
+      color: #fcfcfc; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #daxacnhan tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #dainxong tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #dangchuyen tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete .atc-item:hover, .list-bills #thungrac tbody tr td.phone .autocomplete .atc-item:hover {
+      background: #515151; }
+    .list-bills #donmoi tbody tr td.phone .autocomplete, .list-bills #daxacnhan tbody tr td.phone .autocomplete, .list-bills #dainxong tbody tr td.phone .autocomplete, .list-bills #dangchuyen tbody tr td.phone .autocomplete, .list-bills #chuyenthanhcong tbody tr td.phone .autocomplete, .list-bills #chuyenthatbai tbody tr td.phone .autocomplete, .list-bills #thungrac tbody tr td.phone .autocomplete {
+      z-index: 10;
+      cursor: pointer;
+      position: absolute;
+      font-size: 0.85em;
+      top: 35px;
+      left: 20px;
+      width: 300px; }
+  .list-bills #donmoi tbody tr td.sanpham, .list-bills #daxacnhan tbody tr td.sanpham, .list-bills #dainxong tbody tr td.sanpham, .list-bills #dangchuyen tbody tr td.sanpham, .list-bills #chuyenthanhcong tbody tr td.sanpham, .list-bills #chuyenthatbai tbody tr td.sanpham, .list-bills #thungrac tbody tr td.sanpham {
+    color: #0000a0; }
+    .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #dainxong tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #dangchuyen tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #chuyenthanhcong tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #chuyenthatbai tbody tr td.sanpham .glyphicon-ok-circle, .list-bills #thungrac tbody tr td.sanpham .glyphicon-ok-circle {
+      display: inline-block;
+      padding-top: 5px;
+      font-size: 1.5em;
+      color: #8989ff;
+      cursor: pointer; }
+      .list-bills #donmoi tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #daxacnhan tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #dainxong tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #dangchuyen tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .glyphicon-ok-circle:hover, .list-bills #thungrac tbody tr td.sanpham .glyphicon-ok-circle:hover {
+        color: #1111ff; }
+    .list-bills #donmoi tbody tr td.sanpham .product-success, .list-bills #daxacnhan tbody tr td.sanpham .product-success, .list-bills #dainxong tbody tr td.sanpham .product-success, .list-bills #dangchuyen tbody tr td.sanpham .product-success, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success, .list-bills #thungrac tbody tr td.sanpham .product-success {
+      position: relative;
+      margin-bottom: 2px;
+      cursor: pointer;
+      color: #f2f2f2;
+      font-size: 0.9em;
+      background: #8989ff;
+      border-radius: 5px;
+      padding: 2px 2px 2px 4px; }
+      .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon {
+        margin: 0 3px; }
+        .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon:hover {
+          color: #000000; }
+      .list-bills #donmoi tbody tr td.sanpham .product-success:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success:hover, .list-bills #dainxong tbody tr td.sanpham .product-success:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success:hover, .list-bills #thungrac tbody tr td.sanpham .product-success:hover {
+        background: #3a3aff; }
+      .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1em; }
+        .list-bills #donmoi tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #daxacnhan tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dainxong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #dangchuyen tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .product-success .glyphicon:hover, .list-bills #thungrac tbody tr td.sanpham .product-success .glyphicon:hover {
+          color: #bfbfbf; }
+    .list-bills #donmoi tbody tr td.sanpham .bg-1, .list-bills #daxacnhan tbody tr td.sanpham .bg-1, .list-bills #dainxong tbody tr td.sanpham .bg-1, .list-bills #dangchuyen tbody tr td.sanpham .bg-1, .list-bills #chuyenthanhcong tbody tr td.sanpham .bg-1, .list-bills #chuyenthatbai tbody tr td.sanpham .bg-1, .list-bills #thungrac tbody tr td.sanpham .bg-1 {
+      background: #f2605e !important; }
+      .list-bills #donmoi tbody tr td.sanpham .bg-1:hover, .list-bills #daxacnhan tbody tr td.sanpham .bg-1:hover, .list-bills #dainxong tbody tr td.sanpham .bg-1:hover, .list-bills #dangchuyen tbody tr td.sanpham .bg-1:hover, .list-bills #chuyenthanhcong tbody tr td.sanpham .bg-1:hover, .list-bills #chuyenthatbai tbody tr td.sanpham .bg-1:hover, .list-bills #thungrac tbody tr td.sanpham .bg-1:hover {
+        background: #C9302C !important; }
+  .list-bills #donmoi tbody tr td.functions .menu_funs, .list-bills #daxacnhan tbody tr td.functions .menu_funs, .list-bills #dainxong tbody tr td.functions .menu_funs, .list-bills #dangchuyen tbody tr td.functions .menu_funs, .list-bills #chuyenthanhcong tbody tr td.functions .menu_funs, .list-bills #chuyenthatbai tbody tr td.functions .menu_funs, .list-bills #thungrac tbody tr td.functions .menu_funs {
+    width: 100%; }
+    .list-bills #donmoi tbody tr td.functions .menu_funs button, .list-bills #daxacnhan tbody tr td.functions .menu_funs button, .list-bills #dainxong tbody tr td.functions .menu_funs button, .list-bills #dangchuyen tbody tr td.functions .menu_funs button, .list-bills #chuyenthanhcong tbody tr td.functions .menu_funs button, .list-bills #chuyenthatbai tbody tr td.functions .menu_funs button, .list-bills #thungrac tbody tr td.functions .menu_funs button {
+      position: relative;
+      display: inline-block;
+      top: 0px;
+      transition: all 0.2s;
+      text-align: center; }
+      .list-bills #donmoi tbody tr td.functions .menu_funs button:hover, .list-bills #daxacnhan tbody tr td.functions .menu_funs button:hover, .list-bills #dainxong tbody tr td.functions .menu_funs button:hover, .list-bills #dangchuyen tbody tr td.functions .menu_funs button:hover, .list-bills #chuyenthanhcong tbody tr td.functions .menu_funs button:hover, .list-bills #chuyenthatbai tbody tr td.functions .menu_funs button:hover, .list-bills #thungrac tbody tr td.functions .menu_funs button:hover {
+        top: -5px; }
+.list-bills #donmoi tbody tr:hover span.eye-node, .list-bills #daxacnhan tbody tr:hover span.eye-node, .list-bills #dainxong tbody tr:hover span.eye-node, .list-bills #dangchuyen tbody tr:hover span.eye-node, .list-bills #chuyenthanhcong tbody tr:hover span.eye-node, .list-bills #chuyenthatbai tbody tr:hover span.eye-node, .list-bills #thungrac tbody tr:hover span.eye-node {
+  display: inline-block; }
+.list-bills #donmoi thead tr th, .list-bills #daxacnhan thead tr th, .list-bills #dainxong thead tr th, .list-bills #dangchuyen thead tr th, .list-bills #chuyenthanhcong thead tr th, .list-bills #chuyenthatbai thead tr th, .list-bills #thungrac thead tr th {
+  color: #003f7f;
+  font-size: 1.2em; }
+  .list-bills #donmoi thead tr th span, .list-bills #daxacnhan thead tr th span, .list-bills #dainxong thead tr th span, .list-bills #dangchuyen thead tr th span, .list-bills #chuyenthanhcong thead tr th span, .list-bills #chuyenthatbai thead tr th span, .list-bills #thungrac thead tr th span {
+    margin-right: 4px; }
+    .list-bills #donmoi thead tr th span.glyphicon-info-sign, .list-bills #daxacnhan thead tr th span.glyphicon-info-sign, .list-bills #dainxong thead tr th span.glyphicon-info-sign, .list-bills #dangchuyen thead tr th span.glyphicon-info-sign, .list-bills #chuyenthanhcong thead tr th span.glyphicon-info-sign, .list-bills #chuyenthatbai thead tr th span.glyphicon-info-sign, .list-bills #thungrac thead tr th span.glyphicon-info-sign {
+      position: relative;
+      display: inline-block;
+      right: -90%;
+      font-size: 1.2em;
+      color: #4169E1; }
+      .list-bills #donmoi thead tr th span.glyphicon-info-sign:hover, .list-bills #daxacnhan thead tr th span.glyphicon-info-sign:hover, .list-bills #dainxong thead tr th span.glyphicon-info-sign:hover, .list-bills #dangchuyen thead tr th span.glyphicon-info-sign:hover, .list-bills #chuyenthanhcong thead tr th span.glyphicon-info-sign:hover, .list-bills #chuyenthatbai thead tr th span.glyphicon-info-sign:hover, .list-bills #thungrac thead tr th span.glyphicon-info-sign:hover {
+        color: #6988e5; }
+.list-bills #daxacnhan tbody tr td, .list-bills #dainxong tbody tr td, .list-bills #dangchuyen tbody tr td, .list-bills #chuyenthanhcong tbody tr td, .list-bills #chuyenthatbai tbody tr td, .list-bills #thungrac tbody tr td {
+  border-bottom: 1px solid #e0e0e0; }
+.list-bills #daxacnhan .funs-xacnhan {
+  position: absolute;
+  bottom: 10px;
+  left: 10px; }
+  .list-bills #daxacnhan .funs-xacnhan .glyphicon-print {
+    font-size: 1.5em; }
+.list-bills #dainxong .funs-dainxong {
+  position: absolute;
+  bottom: 10px;
+  left: 10px; }
+.list-bills #thungrac .funs-thungrac {
+  position: absolute;
+  bottom: 10px;
+  left: 10px; }
+.list-bills #dangchuyen .date, .list-bills #chuyenthanhcong .date, .list-bills #chuyenthatbai .date, .list-bills #thungrac .date {
+  font-weight: bold;
+  font-style: italic;
+  padding: 5px 10px;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  background: #efefef; }
+
+.tab-bills nav {
+  border-radius: 0px;
+  border: none; }
+.tab-bills .nav-tabs {
+  border: none;
+  margin-left: -15px; }
+  .tab-bills .nav-tabs li {
+    font-size: 1.1em; }
+    .tab-bills .nav-tabs li .glyphicon {
+      margin-right: 5px; }
+    .tab-bills .nav-tabs li .count {
+      margin-left: 2px;
+      padding: 4px 6px;
+      border-radius: 15px;
+      color: #f7f7f7; }
+    .tab-bills .nav-tabs li a {
+      color: #eaeaea; }
+  .tab-bills .nav-tabs li.active a, .tab-bills .nav-tabs li.active a:hover, .tab-bills .nav-tabs li.active a:focus {
+    background: #ffffff;
+    color: #1111dd;
+    font-weight: bold; }
+
+.b {
+  font-weight: bold; }
+
+.r {
+  color: #e80000; }
+
+.detail {
+  display: none;
+  overflow: auto;
+  position: absolute;
+  max-width: 1000px;
+  padding: 10px;
+  font-size: 1.2em;
+  background: rgba(200, 200, 255, 0.9);
+  border-radius: 10px;
+  z-index: 10; }
+
+.detail span {
+  display: inline-block; }
+.detail h3 {
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #e8e3e3; }
+.detail .d-i {
+  padding: 10px 5px;
+  border-left: 3px solid #eaeaea; }
+  .detail .d-i .d-label {
+    display: inline-block;
+    font-size: 1.1em;
+    font-weight: bold; }
+  .detail .d-i .d-info {
+    color: #006f8e;
+    font-size: 0.95em;
+    font-weight: bold; }
+  .detail .d-i .d-label-b {
+    overflow: none;
+    padding: 3px;
+    width: 150px;
+    border-bottom: 1px solid #e8e8e8; }
+  .detail .d-i .d-info-b {
+    overflow: none;
+    padding: 3px;
+    width: 120px;
+    border-bottom: 1px solid #e8e8e8; }
+  .detail .d-i:hover {
+    border-left: 3px solid #e00000;
+    background: #fcfcfc; }
+.detail .d {
+  margin-right: 10px;
+  float: left; }
+.detail .d:hover h3 {
+  border-bottom: 2px solid #ffffff; }
+.detail .glyphicon-info-sign {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.2em;
+  color: #337ab7; }
+
+/*# sourceMappingURL=main.css.map */

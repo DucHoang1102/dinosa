@@ -1,0 +1,32 @@
+.tab-bills {
+	nav {
+		border-radius: 0px;
+		border: none;
+	}
+	.nav-tabs {
+		border: none;
+		margin-left: -15px;
+		li {
+			font-size: 1.1em;
+			.glyphicon {
+				margin-right: 5px;
+			}
+			.count {
+				margin-left: 2px;
+				padding: 4px 6px;
+				border-radius: 15px;
+				color: #f7f7f7;
+			}
+			a {
+				color: #eaeaea;
+			}
+		}
+		li.active {
+			a, a:hover, a:focus {
+				background: #ffffff;
+				color: #1111dd;
+				font-weight: bold;
+			}
+		}
+	}
+}
