@@ -23,11 +23,16 @@
 			width: 100%;
 			height: 100%;
 		}
-		.print .labels h3{
+		.print .labels h3 {
 			color: #000000;
 			margin-top: 15px;
 			padding-top: 5px;
 			border-top: 2px solid #cecece;
+		}
+		.print .labels .stt {
+			border-radius: 7px;
+			border: 3px solid black;
+			padding: 0px 7px;
 		}
 		.print .labels .glyphicon {
 			font-size: 0.8em;
@@ -90,10 +95,10 @@
 		@include('orders.prints.countEmbryoTshirt')
 
 		<div class="row">
-			@foreach ($orders_daXacNhan as $key => $order)
+			@foreach ($orders_daXacNhan as $stt => $order)
 				<div class="col-xs-6">
 					<div class="labels">
-						<h3 style="border:none; margin-top:0px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Thông khách hàng</h3>
+						<h3 style="border:none; margin-top:0px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Thông khách hàng </h3>
 						<div>
 							<span class="labels-left">HỌ TÊN: </span>    <span class="labels-right">{{ $order->name or "" }}</span>
 						</div>
