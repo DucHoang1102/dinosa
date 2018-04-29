@@ -4,9 +4,12 @@
 /upload/d-p-1234/
 /upload/mail-orders/
 /storage/*.key
+<<<<<<< HEAD
 /vendor
 /apps/vendor/
 /build/
+=======
+>>>>>>> developer
 /.idea
 /.vagrant
 Homestead.json
@@ -21,5 +24,10 @@ nano.save.1
 nano.save.2
 nano.save.3
 nano.save.4
+<<<<<<< HEAD
 THIETKEDINOSA.txt
 
+=======
+nano.save.5
+THIETKEDINOSA.txt
+>>>>>>> developer

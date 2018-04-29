@@ -72,7 +72,6 @@
 				width: 90%;
 			}
 		}
-
 		@media only print  {
 			.print-product .product img {
 				display: block;
@@ -120,13 +119,11 @@
 
 	<script type="text/javascript">
 		(function($){
-
 			$('.print-product').on('click', '.product .del', function() {
 				$(this).parent().hide(500, function(){
 					$(this).remove();
 				});
 			});
-
 			// Fix lỗi 1 sản phẩm bị thừa 1 trang in
 			if ( $('.print-product .product').length == 1 ) {
 				$('.print-product .product').css({
@@ -135,7 +132,6 @@
 					left     : '0px'
 				});
 			}
-
 		})(jQuery);
 	</script>
 </body>

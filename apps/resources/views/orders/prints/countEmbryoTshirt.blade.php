@@ -20,7 +20,7 @@
 @endphp
 
 <div class="row">
-	<div class="col-xs-7 count-embryo-tshirt" style="font-size:1.5em; height: 1550px;">
+	<div class="col-xs-7 count-embryo-tshirt" style="font-size:1.5em; height: 780px;">
 		<table class="table" style="border: 2px solid black">
 		    <thead>
 		      <tr>
