@@ -3,6 +3,7 @@ namespace App\functions;
 
 use DB;
 use App\functions\helpers\RandomId;
+use GuzzleHttp\Client;
 /*
 |--------------------------------------------------------------------------
 | ProductHandling
@@ -18,26 +19,45 @@ class ProductHandling
 	{
 		$subject = strtoupper(trim($subject));
 		$re      = '/^((A|D)[0-9]*[A-Z]?)(CT1|CT2|DT1|DT2|AK1|AK2|AK3|BL1)\((S|M|L|XL|XXL)\)$/';
-		$prices  = [
-    		'ACT1' => 150000, 'ACT2' => 150000,
-    		'ADT1' => 160000, 'ADT2' => 160000,
-    		'DCT1' => 129500, 'DCT2' => 129500,
-    		'DDT1' => 129500, 'DDT2' => 129500,
-    		'AAK1' => 250000, 'AAK2' => 250000,
-    		'AAK3' => 250000, 'ABL1' => 150000,
-    	];
 
 		preg_match($re, $subject, $matches);
-
+ 
 		return [
 			'name_category_product' => isset( $matches[2] ) ? $matches[2] : '',
 			'id_image_print'        => isset( $matches[1] ) ? $matches[1] : '',
 			'name_embryo_tshirt'    => isset( $matches[3] ) ? $matches[3] : '',
 			'name'                  => isset( $matches[0] ) ? $matches[0] : '',
 			'size'                  => isset( $matches[4] ) ? $matches[4] : '',
-			'price'                 => isset( $prices[ $matches[2].$matches[3] ] ) ? $prices[ $matches[2].$matches[3] ] : '',
+			'price'                 => self::getPrice("{$matches[2]}-{$matches[1]}-{$matches[3]}-{$matches[4]}"),
 		];
 	}
+
+    // Lấy giá sản phẩm ở service khác
+    public static function getPrice($match) {
+        try {
+            $client = new Client([
+                'base_uri' => env('PRICE_SERVICE_BASE_URI',''),
+                'timeout'  => 2.0,
+            ]);
+
+            $response = $client->request('GET', 'api/check', ['json' => [
+                "price" => [
+                    "match"=> $match
+                ]
+            ]]);
+
+            if ($response->getStatusCode() === 200) {
+                $result = json_decode($response->getBody()->getContents(), true);
+                if ($result['price'] === null)
+                    return 0;
+                else
+                    return $result['price'];
+            }
+        }
+        catch (\Throwable $e) {
+            return 0;
+        }
+    }
 
 	// Lấy sản phẩm theo id_orders 
 	public static function get($id_orders='0')
