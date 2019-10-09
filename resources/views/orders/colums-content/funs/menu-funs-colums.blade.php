@@ -1,6 +1,6 @@
 {{-- Chức năng xử riêng cho đơn mới --}}
 <div class="funs-donmoi" {{ $funs_donmoi ?? 'style=display:none' }}>
-	<div class="load-oldcustomer"><img src="upload/loads/load_1.gif" width="40px"></div>
+	<div class="load-oldcustomer"><img src="img/loads/load_1.gif" width="40px"></div>
 	<div class="add-order">
 		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 	</div>

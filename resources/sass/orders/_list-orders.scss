@@ -1,0 +1,324 @@
+// Variables
+$color-list-head : #003f7f;
+$color-list-body : #000000;
+$margin-icon     : 4px;
+$font-size-head  : 1.2em;
+$font-size-body  : 1.25em;
+$align-body      : 1.1em;
+$color-produce   : #0000a0;
+$color-backgorund: #fcfcfc;
+
+@mixin scrollbar()
+{
+	::-webkit-scrollbar {
+	    width: 7px;
+	}
+	::-webkit-scrollbar-track {
+	    background-color: #eaeaea;
+	    border-left: 2px solid #ccc;
+	    border-radius: 8px;
+	}
+	::-webkit-scrollbar-thumb {
+	    background-color: #444444;
+	    border-radius: 8px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+	  background-color: #aaa;
+	  border-radius: 8px;
+	}
+}
+@mixin width_head($stt:0%, $ngaynhan:0%, $hoten:0%, $phone:0%, 
+				  $diachi:0%, $sanpham:0%, $tongtien:0%, $xacnhan:0%)
+{
+	.stt {
+		width: $stt;
+		padding-left: 10px;}
+	.ngaynhan {
+		width: $ngaynhan;}
+	.hoten {
+		width: $hoten;}
+	.phone {
+		width: $phone;}
+	.diachi {
+		width: $diachi;}
+	.sanpham {
+		width: $sanpham;}
+	.tongtien {
+		width: $tongtien;}
+	.xacnhan {
+		width: $xacnhan;}
+}
+
+@mixin tbody_tr_td($border, $margin, $size-icon)
+{
+	.table-tbody {
+		margin-top: -20px;
+		height: 500px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding-top: 18px;
+		background: $color-backgorund;
+	}
+	.table-thead {
+		
+	}
+	tbody tr td {
+		border: $border;
+		font-size: $font-size-body;
+		padding-left: $align-body;
+		&.stt {
+			position: relative;
+			.eye-node {
+				position: absolute;
+				display: none;
+				top: 10px;
+				color: #b1c5d6;
+				font-size: 1.1em;
+				&:hover {
+					color: #337ab7;
+				}
+			}
+		}
+		&.moneys {
+			.label {
+				display: block;
+				font-size: 1.1em;
+				border-radius: 0px;
+				text-align: center;
+				padding: 3px 5px;
+				color: #CC0001;
+				border-bottom: 2px solid #CC0001;
+				.glyphicon {
+					font-size: 0.9em;
+					margin-left: 3px;
+					color: #d3b1b1;
+					cursor: pointer;
+					&:hover{
+						color: #1111ff;}}
+			}
+			.plus-money {
+				.total_money {
+					display: block;
+					width: 100%;
+					font-size: 1.1em;
+					color: #CC0001;
+					font-weight: bold;
+					margin: 5px 0px;
+					border-bottom: 1px solid #bcbcbc;
+				}
+				button {
+					padding: 5px 7px;
+				}
+				span {
+					font-weight: bold;
+				}
+			}};
+		&.phone {
+			position: relative;
+			.autocomplete .atc-item {
+				display: block;
+				padding: 5px 3px 5px 7px;
+				border-radius: 5px;
+				border-bottom: 1px solid #fcfcfc;
+				background: #0a0a0a;
+				color: #fcfcfc;
+			}
+			.autocomplete .atc-item:hover {
+				background: #515151;
+			} 
+			.autocomplete {
+				z-index: 10;
+				cursor: pointer;
+				position: absolute;
+				font-size: 0.85em;
+				top: 35px;
+				left: 20px;
+				width: 300px;
+			}
+		}
+		&.sanpham {
+			color: $color-produce;
+			.glyphicon-ok-circle {
+				display: inline-block;
+				padding-top: 5px;
+				font-size: 1.5em;
+				color: #8989ff;
+				cursor: pointer;
+				&:hover{
+					color: #1111ff;}}
+			.product-success {
+				position: relative;
+				margin-bottom: 2px;
+				cursor: pointer;
+				color: #f2f2f2;
+				font-size: 0.9em;
+				background: #8989ff; 
+				border-radius: 5px;
+				padding: 2px 2px 2px 4px;
+				.glyphicon {
+					margin: 0 3px;
+					&:hover {
+						color: #000000;}
+				}
+				&:hover {
+					background: #3a3aff;
+				}
+				.glyphicon {
+					position: absolute;
+					right: 3px;
+					top: 50%;
+					transform: translateY(-50%);
+					font-size: 1em;
+					&:hover {
+						color: #bfbfbf;
+					}
+				}
+			}
+			.bg-1 {
+				background: #f2605e !important;
+				&:hover {
+					background:#C9302C !important;
+				}
+			}
+		}
+		&.functions {
+			.menu_funs {
+				width: 100%;
+				button {
+					position: relative;
+					display: inline-block;
+					top: 0px;
+					transition: all 0.2s;
+					text-align: center;
+					&:hover {
+						top: -5px;
+					}
+				}
+			}
+		}
+	}
+	tbody tr {
+		&:hover span.eye-node{
+			display: inline-block;
+		}
+	}
+}
+
+@mixin thead_tr_th()
+{
+	thead tr th {
+		color: $color-list-head;
+		font-size: $font-size-head;
+		span {
+			margin-right: $margin-icon;
+			&.glyphicon-info-sign {
+				position: relative;
+				display: inline-block;
+				right: -90%;
+				font-size: 1.2em;
+				color: #4169E1;
+				&:hover {
+					color: #6988e5;
+				}
+			}
+		}
+	}
+}
+
+@include scrollbar();
+
+.list-bills {
+	#donmoi {
+		.load-oldcustomer {
+			position: absolute;
+			display: none;
+			background: rgba(255,255,255,0.9);
+			text-align: center;
+			vertical-align: middle;
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		input {
+			border-top: none;
+			border-left: none;
+			width: 99%;
+			border-right: none;
+			border-bottom: 2px solid #eaeaea;
+			height: 100%;
+			background-color: transparent;
+			&:focus, &:hover {
+				outline: none;
+				border-bottom: 2px solid #125FBB;
+				box-shadow: 0px 7px 10px -8px;}
+		}
+		.load {
+			width: 30px;
+		}
+		.add-order {
+			position: absolute;
+			bottom: 20px;
+			display: block;
+			font-size: 2.3em;
+			cursor: pointer;
+			padding-bottom: 15px;
+			opacity: 0.5;
+			transition: all .2s;
+			&:hover {
+				font-size: 2.8em;
+				opacity: 1;}
+		}
+	}
+	#donmoi, #daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		@include width_head($stt:4%, $hoten:16%, $phone:12%, $diachi:34%, $sanpham:12%, $tongtien:10%, $xacnhan:12%);
+		@include tbody_tr_td($border:none, $margin:$margin-icon, $size-icon:none);
+		@include thead_tr_th();
+	}
+	
+	#daxacnhan, #dainxong, #dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		tbody tr td {
+			border-bottom: 1px solid #e0e0e0;
+		}
+	}
+	#daxacnhan {
+		.funs-xacnhan {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			.glyphicon-print {
+				font-size: 1.5em;
+			}
+		}
+	}
+	#dainxong {
+		.funs-dainxong {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+		}
+	}
+	#thungrac {
+		.funs-thungrac {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+		}
+	}
+
+	#dangchuyen, #chuyenthanhcong, #chuyenthatbai, #thungrac{
+		.date {
+			font-weight: bold;
+			font-style: italic;
+			padding: 5px 10px;
+			font-size: 1.3em;
+			margin-bottom: 20px;
+			background: #efefef;
+		}
+	}
+
+}
