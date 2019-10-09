@@ -1,0 +1,63 @@
+/**/
+
+.tab-bills > li > a {
+  color: #000000; 
+  font-size: 1.1em;
+  padding: 15px 25px;
+}
+
+.tab-bills > li > a > span {
+  margin-right: 5px;
+}
+.tab-pane {
+  padding: 10px;
+}
+.tab-bills > li.active > a,
+.tab-bills > li.active > a:hover,
+.tab-bills > li.active > a:focus {
+  color: blue;
+  font-weight: bold;
+}
+
+.table-bills input{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #cecece;
+	width: 98%;
+	height: 100%;
+	font-size: 1.1em;
+}
+.table-bills input:focus,
+.table-bills input:hover
+ {
+	outline: none;
+	border-bottom: 2px solid #3939f9;
+}
+.table-bills thead tr th{
+	color: #3939f9;
+}
+.table-bills thead tr th span {
+	margin-right: 5px;
+}
+.table-bills .ngaynhan {
+	width: 110px;
+}
+.table-bills .hoten {
+	width: 250px;
+}
+.table-bills .phone {
+	width: 130px;
+}
+.table-bills .diachi {
+	width: 450px;
+}
+.table-bills .sanpham {
+	width: 150px;
+}
+.table-bills .tongtien {
+
+}
+#donmoi .add-item span{
+	font-size: 2em;
+}
