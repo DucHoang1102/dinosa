@@ -11,7 +11,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcomed');
+    return redirect('/orders');
 });
 
 // Test xóa sau khi sử dụng xong: Router test, view test, controller test
